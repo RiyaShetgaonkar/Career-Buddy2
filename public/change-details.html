@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Buddy | Change Details</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Segoe UI',sans-serif;
+  color:#fff;
+  min-height:100vh;
+  background:
+    linear-gradient(135deg,#0f2027,#203a43,#2c5364),
+    url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d");
+  background-size:cover;
+  background-position:center;
+  overflow-x:hidden;
+}
+
+/* FLOATING PARTICLES */
+.floating-shapes span{
+  position:fixed;
+  width:12px;
+  height:12px;
+  background:rgba(0,255,255,.6);
+  border-radius:50%;
+  animation:floatUp 16s linear infinite;
+  filter:blur(1px);
+  z-index:0;
+}
+@keyframes floatUp{
+  from{transform:translateY(110vh);opacity:0;}
+  20%{opacity:1;}
+  to{transform:translateY(-130vh) translateX(60px);opacity:0;}
+}
+
+/* HOLOGRAM TITLE */
+.hologram{
+  text-shadow:
+    0 0 6px rgba(0,255,255,.7),
+    0 0 20px rgba(0,255,255,.5);
+}
+
+/* HEADER */
+header{
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 6px 20px rgba(0,0,0,.4);
+}
+
+.header-container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{font-size:1.8rem;font-weight:700;color:#00ffc8;}
+
+.user-menu{
+  position:relative;cursor:pointer;
+}
+.user-icon{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;color:#00ffc8;
+}
+.dropdown{
+  display:none;position:absolute;top:50px;right:0;
+  background:rgba(15,32,39,.95);
+  color:#fff;border-radius:10px;
+  box-shadow:0 5px 20px rgba(0,0,0,.5);
+  padding:15px;
+  min-width:220px;
+  z-index:1001;
+}
+.dropdown p{
+  margin:0 0 10px;font-weight:bold;
+}
+.dropdown a{
+  display:block;color:#00ffc8;text-decoration:none;margin-bottom:8px;
+  transition:.3s;
+}
+.dropdown a:hover{color:#0ff;}
+
+/* MAIN CARD */
+.change-details-section{
+  max-width:800px;margin:80px auto;
+  background:rgba(15,32,39,.92);
+  backdrop-filter:blur(12px);
+  padding:35px 40px;
+  border-radius:25px;
+  box-shadow:0 30px 60px rgba(0,0,0,.6);
+  position:relative;z-index:1;
+}
+
+/* FORM */
+.change-details-section h2{
+  font-size:2rem;text-align:center;margin-bottom:25px;
+}
+.form-group{margin-bottom:22px;position:relative;}
+label{display:block;margin-bottom:8px;font-weight:600;}
+.form-group i{
+  position:absolute;top:38px;left:12px;color:#00ffc8;font-size:1.2rem;opacity:.8;
+}
+input,textarea{
+  width:100%;padding:12px 12px 12px 40px;
+  border-radius:12px;border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.1);color:#fff;font-size:1rem;
+  outline:none;transition:.3s;
+}
+input::placeholder,textarea::placeholder{color:#ddd;}
+input:focus,textarea:focus{border-color:#00ffc8;box-shadow:0 0 12px rgba(0,255,200,.5);}
+textarea{resize:vertical;min-height:80px;}
+
+/* SUBMIT BUTTON */
+.submit-btn{
+  padding:12px 25px;background:linear-gradient(135deg,#31beb2,#00ffc8);
+  color:#003333;font-size:1rem;font-weight:600;border:none;border-radius:14px;
+  cursor:pointer;transition:.3s;width:100%;
+}
+.submit-btn:hover{transform:translateY(-3px);box-shadow:0 15px 30px rgba(0,255,200,.4);}
+
+/* FOOTER */
+
+.footer{
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:#fff;
+  padding:60px 40px 20px;
+}
+
+.footer-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:40px;
+}
+
+.footer-logo{
+  font-size:1.8rem;
+  margin-bottom:15px;
+}
+
+.footer-box h3{
+  margin-bottom:15px;
+  position:relative;
+}
+
+.footer-box h3::after{
+  content:'';
+  width:40px;
+  height:3px;
+  background:#00c6ff;
+  display:block;
+  margin-top:5px;
+}
+
+.footer-box ul{
+  list-style:none;
+}
+
+.footer-box ul li{
+  margin-bottom:10px;
+}
+
+.footer-box ul li a{
+  color:#ddd;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.footer-box ul li a:hover{
+  color:#00c6ff;
+  padding-left:5px;
+}
+
+.social-icons{
+  display:flex;
+  gap:15px;
+  margin-top:15px;
+}
+
+.social-icons img{
+  width:28px;
+  filter:invert(1);
+  transition:.3s;
+}
+
+.social-icons img:hover{
+  transform:scale(1.3);
+}
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.2);
+  margin-top:40px;
+  padding-top:20px;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+.footer-bottom a{
+  color:#00c6ff;
+  text-decoration:none;
+}
+</style>
+</head>
+<body>
+
+<!-- FLOATING PARTICLES -->
+<div class="floating-shapes">
+  <span style="left:5%;animation-delay:0s"></span>
+  <span style="left:20%;animation-delay:3s"></span>
+  <span style="left:35%;animation-delay:6s"></span>
+  <span style="left:50%;animation-delay:1s"></span>
+  <span style="left:65%;animation-delay:4s"></span>
+  <span style="left:80%;animation-delay:7s"></span>
+  <span style="left:95%;animation-delay:2s"></span>
+</div>
+
+<header>
+  <div class="header-container">
+    <div class="logo">CareerBuddy</div>
+    <div class="user-menu" id="user-menu">
+      <div class="user-icon"><i class="fas fa-user"></i></div>
+      <div class="dropdown" id="dropdown">
+        <p id="username-display">Username: JohnDoe</p>
+        <a href="/view-details"><i class="fas fa-eye"></i> View Details</a>
+        <a href="change-details.html"><i class="fas fa-user-edit"></i> Change Details</a>
+        <a href="#"><i class="fas fa-key"></i> Change Password</a>
+        <a href="#" id="logout-btn" style="color:#ff6b6b;font-weight:bold;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="change-details-section">
+  <h2 class="hologram"><i class="fas fa-user-cog"></i> Update Your Details</h2>
+  <form id="detailsForm">
+    <div class="form-group">
+      <i class="fas fa-user"></i>
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+    </div>
+    <div class="form-group">
+      <i class="fas fa-envelope"></i>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Your email" readonly>
+    </div>
+    <div class="form-group">
+      <i class="fas fa-phone"></i>
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+    </div>
+    <div class="form-group">
+      <i class="fas fa-calendar-alt"></i>
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" name="dob" required>
+    </div>
+    <div class="form-group">
+      <i class="fas fa-school"></i>
+      <label for="college">College</label>
+      <input type="text" id="college" name="college" required>
+    </div>
+    <div class="form-group">
+      <i class="fas fa-graduation-cap"></i>
+      <label for="degree">Degree</label>
+      <input type="text" id="degree" name="degree" required>
+    </div>
+    <div class="form-group">
+      <i class="fas fa-layer-group"></i>
+      <label for="branch">Branch</label>
+      <input type="text" id="branch" name="branch" required>
+    </div>
+    <div class="form-group">
+      <i class="fas fa-calendar"></i>
+      <label for="year">Year</label>
+      <input type="text" id="year" name="year" required>
+    </div>
+    <div class="form-group">
+      <i class="fas fa-map-marker-alt"></i>
+      <label for="state">State</label>
+      <input type="text" id="state" name="state" required>
+    </div>
+    <div class="form-group">
+      <i class="fas fa-star"></i>
+      <label for="cgpa">CGPA</label>
+      <input type="number" id="cgpa" name="cgpa" step="0.01" min="0" max="10" required>
+    </div>
+    <div class="form-group">
+      <i class="fas fa-lightbulb"></i>
+      <label for="skills">Skills</label>
+      <textarea id="skills" name="skills" placeholder="List your skills" required></textarea>
+    </div>
+    <button type="submit" class="submit-btn"><i class="fas fa-save"></i> Update Details</button>
+  </form>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Brand -->
+    <div class="footer-box">
+      <h2 class="footer-logo">CareerBuddy</h2>
+      <p>
+        Empowering students with AI-powered learning, curated courses,
+        and real-world internships.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Chatbot</a></li>
+        <li><a href="#">Courses</a></li>
+        <li><a href="#">Internships</a></li>
+      </ul>
+    </div>
+
+    <!-- Resources -->
+    <div class="footer-box">
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Career Guidance</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>Email: support@CareerBuddy.com</p>
+      <p>Phone: +91 98765 43210</p>
+
+      <div class="social-icons">
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733561.png"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 CareerBuddy. All Rights Reserved.</p>
+    <p>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms & Conditions</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+const userMenu = document.getElementById('user-menu');
+const dropdown = document.getElementById('dropdown');
+userMenu.addEventListener('click', (e)=>{ e.stopPropagation(); dropdown.style.display = dropdown.style.display==='block'?'none':'block'; });
+window.onclick = ()=>dropdown.style.display='none';
+
+document.getElementById("detailsForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(e.target);
+  const data = {};
+
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
+
+  try {
+    const res = await fetch("/updateUserDetails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include",
+      body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+
+    if (res.ok) {
+      alert("✅ Details updated successfully!");
+      window.location.href = "/view-details";
+    } else {
+      alert(result.message || "❌ Update failed");
+    }
+  } catch (err) {
+    console.error("Update error:", err);
+    alert("❌ Server error. Please try again.");
+  }
+});
+
+</script>
+
+</body>
+</html>

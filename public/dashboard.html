@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Buddy | Student Dashboard</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Segoe UI',sans-serif;
+  color:#fff;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:
+    linear-gradient(135deg,#0f2027,#203a43,#2c5364),
+    url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d");
+  background-size:cover;
+  background-position:center;
+}
+
+/* HOLOGRAM TEXT */
+.hologram{
+  text-shadow:
+    0 0 6px rgba(0,255,255,.7),
+    0 0 20px rgba(0,255,255,.5);
+}
+
+/* FORM CONTAINER */
+.login-container{
+  width:100%;
+  max-width:500px;
+  background:rgba(15,32,39,.92);
+  backdrop-filter:blur(10px);
+  padding:40px 35px;
+  border-radius:25px;
+  box-shadow:0 30px 60px rgba(0,0,0,.6);
+  position:relative;
+  z-index:1;
+}
+
+/* TITLE */
+.login-container h1{
+  text-align:center;
+  font-size:2.4rem;
+  margin-bottom:10px;
+}
+
+.login-container p{
+  text-align:center;
+  opacity:.85;
+  margin-bottom:35px;
+}
+
+/* FORM GROUP */
+.form-group{
+  margin-bottom:22px;
+  position:relative;
+}
+
+label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:600;
+  font-size:.95rem;
+}
+
+/* ICONS */
+.form-group i{
+  position:absolute;
+  top:38px;
+  left:12px;
+  color:#00ffc8;
+  font-size:1.1rem;
+  opacity:.8;
+}
+
+/* INPUTS */
+input, select, textarea{
+  width:100%;
+  padding:14px 14px 14px 38px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.05);
+  color:#fff;
+  font-size:1rem;
+  outline:none;
+  transition:.3s;
+}
+
+input::placeholder, textarea::placeholder{
+  color:#ddd;
+}
+
+input:focus, select:focus, textarea:focus{
+  border-color:#00ffc8;
+  box-shadow:0 0 12px rgba(0,255,200,.5);
+}
+
+/* TEXTAREA */
+textarea{
+  padding:14px 14px 14px 38px;
+  resize:vertical;
+}
+
+/* BUTTONS */
+.buttons{
+  display:flex;
+  gap:15px;
+  margin-top:25px;
+}
+
+button{
+  flex:1;
+  padding:14px;
+  border:none;
+  border-radius:14px;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.submit-btn{
+  background:linear-gradient(135deg,#31beb2,#00ffc8);
+  color:#003333;
+}
+
+.submit-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 30px rgba(0,255,200,.4);
+}
+
+.reset-btn{
+  background:rgba(255,255,255,.15);
+  color:#fff;
+}
+
+.reset-btn:hover{
+  background:rgba(255,255,255,.3);
+}
+
+/* BACK HOME */
+.back-home{
+  text-align:center;
+  margin-top:20px;
+}
+
+.back-home a{
+  color:#ccc;
+  font-size:.9rem;
+  text-decoration:none;
+}
+
+.back-home a:hover{
+  color:#00ffc8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-container">
+  <h1 class="hologram"><i class="fas fa-user-graduate"></i> Student Dashboard</h1>
+  <p>Fill in your details below</p>
+
+  <form id="userForm" action="/saveData" method="POST">
+    <!-- HIDDEN USERNAME FIELD -->
+    <input type="hidden" name="username" value="USERNAME_HERE">
+
+    <div class="form-group">
+      <i class="fas fa-user"></i>
+      <label>Full Name</label>
+      <input type="text" name="data[Name]" placeholder="Enter your full name" required>
+    </div>
+
+    <div class="form-group">
+      <i class="fas fa-envelope"></i>
+      <label>Email Address</label>
+      <input type="email" name="data[Email Address]" placeholder="Enter your email" required>
+    </div>
+
+    <div class="form-group">
+      <i class="fas fa-phone"></i>
+      <label>Phone Number</label>
+      <input type="tel" name="data[Phone Number]" placeholder="Enter your phone number" required>
+    </div>
+
+    <div class="form-group">
+      <i class="fas fa-calendar-alt"></i>
+      <label>Date of Birth</label>
+      <input type="date" name="data[Date of Birth]" required>
+    </div>
+
+    <div class="form-group">
+      <i class="fas fa-school"></i>
+      <label>College / University Name</label>
+      <input type="text" name="data[College / University Name]" placeholder="Enter your college/university" required>
+    </div>
+
+    <div class="form-group">
+      <i class="fas fa-graduation-cap"></i>
+      <label>Degree / Program</label>
+      <select name="data[Degree]" required>
+        <option value="">--Select your program--</option>
+        <option value="BCA">BCA</option>
+        <option value="BE">BE</option>
+        <option value="BBA">BBA</option>
+        <option value="BCOM">BCom</option>
+        <option value="BSC">BSc</option>
+        <option value="BED">B.Ed</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <i class="fas fa-code"></i>
+      <label>Branch / Specialization</label>
+      <select name="data[Branch / Specialization]" required>
+        <option value="">--Select branch--</option>
+        <optgroup label="BCA">
+          <option value="Software Development">Software Development</option>
+          <option value="Web Development">Web Development</option>
+          <option value="Mobile App Development">Mobile App Development</option>
+        </optgroup>
+        <optgroup label="BE">
+          <option value="Computer Science (CSE)">Computer Science (CSE)</option>
+          <option value="Mechanical Engineering">Mechanical Engineering</option>
+          <option value="Electrical Engineering">Electrical Engineering</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <i class="fas fa-percentage"></i>
+      <label>CGPA / Percentage</label>
+      <input type="text" name="data[CGPA / Percentage]" placeholder="Ex: 8.5 / 85%" required>
+    </div>
+
+    <div class="form-group">
+      <i class="fas fa-map-marker-alt"></i>
+      <label>State</label>
+      <input type="text" name="data[State]" placeholder="Enter your state" required>
+    </div>
+
+    <div class="form-group">
+      <i class="fas fa-lightbulb"></i>
+      <label>Skills</label>
+      <textarea name="data[Skills]" placeholder="Mention your skills" rows="3" required></textarea>
+    </div>
+
+    <div class="buttons">
+      <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit</button>
+      <button type="reset" class="reset-btn"><i class="fas fa-undo"></i> Reset</button>
+    </div>
+
+    <div class="back-home">
+      <a href="index.html">← Back to Home</a>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

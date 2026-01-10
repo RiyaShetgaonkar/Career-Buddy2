@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Buddy | Sign Up</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Segoe UI',sans-serif;
+  color:#fff;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:
+    linear-gradient(135deg,#0f2027,#203a43,#2c5364),
+    url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d");
+  background-size:cover;
+  background-position:center;
+}
+
+/* HOLOGRAM TEXT */
+.hologram{
+  text-shadow:
+    0 0 6px rgba(0,255,255,.7),
+    0 0 20px rgba(0,255,255,.5);
+}
+
+/* SIGNUP CONTAINER */
+.signup-container{
+  width:100%;
+  max-width:450px;
+  background:rgba(15,32,39,.92);
+  backdrop-filter:blur(10px);
+  padding:45px 35px;
+  border-radius:25px;
+  box-shadow:0 30px 60px rgba(0,0,0,.6);
+  position:relative;
+  z-index:1;
+}
+
+/* TITLE */
+.signup-container h1{
+  text-align:center;
+  font-size:2.4rem;
+  margin-bottom:10px;
+}
+
+.signup-container p{
+  text-align:center;
+  opacity:.85;
+  margin-bottom:35px;
+}
+
+/* FORM */
+.form-group{
+  margin-bottom:22px;
+  position:relative;
+}
+
+label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:600;
+  font-size:.95rem;
+}
+
+/* ICONS INSIDE INPUT */
+.form-group i{
+  position:absolute;
+  top:38px;
+  left:12px;
+  color:#00ffc8;
+  font-size:1.1rem;
+  opacity:.8;
+}
+
+input{
+  width:100%;
+  padding:14px 14px 14px 38px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.1);
+  color:#fff;
+  font-size:1rem;
+  outline:none;
+  transition:.3s;
+}
+
+input::placeholder{
+  color:#ddd;
+}
+
+input:focus{
+  border-color:#00ffc8;
+  box-shadow:0 0 12px rgba(0,255,200,.5);
+}
+
+/* BUTTONS */
+.buttons{
+  display:flex;
+  gap:15px;
+  margin-top:25px;
+}
+
+button{
+  flex:1;
+  padding:14px;
+  border:none;
+  border-radius:14px;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.submit-btn{
+  background:linear-gradient(135deg,#31beb2,#00ffc8);
+  color:#003333;
+}
+
+.submit-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 30px rgba(0,255,200,.4);
+}
+
+.reset-btn{
+  background:rgba(255,255,255,.15);
+  color:#fff;
+}
+
+.reset-btn:hover{
+  background:rgba(255,255,255,.3);
+}
+
+/* LOGIN LINK */
+.login-link{
+  text-align:center;
+  margin-top:25px;
+}
+
+.login-link a{
+  color:#00ffc8;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.login-link a:hover{
+  text-decoration:underline;
+}
+
+/* BACK HOME */
+.back-home{
+  text-align:center;
+  margin-top:20px;
+}
+
+.back-home a{
+  color:#ccc;
+  font-size:.9rem;
+  text-decoration:none;
+}
+
+.back-home a:hover{
+  color:#00ffc8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="signup-container">
+  <h1 class="hologram"><i class="fas fa-user-plus"></i> Create Your Account</h1>
+  <p>Join Career Buddy today! Fill in the details below.</p>
+
+  <form action="/signup" method="post">
+    
+    <div class="form-group">
+      <i class="fas fa-envelope"></i>
+      <label>Email</label>
+      <input type="email" name="email" placeholder="Enter your email" required>
+    </div>
+
+    <div class="form-group">
+      <i class="fas fa-lock"></i>
+      <label>Password</label>
+      <input type="password" name="password" placeholder="Enter your password" required>
+    </div>
+
+    <div class="form-group">
+      <i class="fas fa-lock"></i>
+      <label>Confirm Password</label>
+      <input type="password" name="confirm-password" placeholder="Confirm your password" required>
+    </div>
+
+    <div class="buttons">
+      <button type="submit" class="submit-btn"><i class="fas fa-user-check"></i> Sign Up</button>
+      <button type="reset" class="reset-btn"><i class="fas fa-undo"></i> Reset</button>
+    </div>
+
+    <div class="login-link">
+      <p>Already have an account? <a href="login.html">Log In</a></p>
+    </div>
+
+    <div class="back-home">
+      <a href="index.html">← Back to Home</a>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

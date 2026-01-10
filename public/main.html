@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Buddy Dashboard</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Segoe UI',sans-serif;
+  color:#fff;
+  min-height:100vh;
+  background:
+    linear-gradient(135deg,#0f2027,#203a43,#2c5364),
+    url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d');
+  background-size:cover;
+  background-position:center;
+  overflow-x:hidden;
+}
+
+/* FLOATING PARTICLES */
+.floating-shapes span{
+  position:fixed;
+  width:12px;height:12px;
+  background:rgba(0,255,255,.6);
+  border-radius:50%;
+  animation:floatUp 16s linear infinite;
+  filter:blur(1px);
+  z-index:0;
+}
+@keyframes floatUp{
+  from{transform:translateY(110vh);opacity:0;}
+  20%{opacity:1;}
+  to{transform:translateY(-130vh) translateX(60px);opacity:0;}
+}
+
+/* HEADER */
+header{
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 6px 20px rgba(0,0,0,.5);
+}
+.logo{font-size:1.8rem;font-weight:700;color:#00ffc8;}
+
+.user-menu{position:relative;cursor:pointer;}
+.user-icon{
+  width:45px;height:45px;
+  border-radius:50%;
+  background:url('https://www.pngmart.com/files/21/Admin-Profile-Vector-PNG-Clipart.png') center/cover;
+  border:2px solid #00ffc8;
+}
+.dropdown{
+  display:none;
+  position:absolute;
+  right:0;
+  top:60px;
+  background:rgba(15,32,39,.95);
+  width:230px;
+  padding:15px;
+  border-radius:15px;
+  box-shadow:0 20px 40px rgba(0,0,0,.7);
+  z-index:1001;
+}
+.dropdown p{font-weight:bold;margin-bottom:10px;color:#00ffc8;}
+.dropdown a{
+  display:block;
+  padding:10px;
+  text-decoration:none;
+  color:#00ffc8;
+  border-radius:8px;
+  transition:.3s;
+}
+.dropdown a:hover{color:#0ff;background:rgba(0,255,255,.1);}
+
+/* HERO */
+.hero{
+  height:65vh;
+  background:
+    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+    url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  padding:60px;
+  color:#fff;
+}
+.hero h1{font-size:3rem;margin-bottom:15px;text-shadow:0 0 12px #00ffc8;}
+.hero p{font-size:1.5rem;margin-bottom:25px;line-height:1.6;}
+.hero button{
+  padding:14px 35px;
+  background:linear-gradient(135deg,#00c6ff,#00ffc8);
+  border:none;
+  border-radius:30px;
+  font-size:1rem;
+  cursor:pointer;
+  color:#003;
+  font-weight:600;
+  transition:.3s;
+}
+.hero button:hover{background:#fff;}
+
+/* NAV CARDS */
+.nav-sections{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  margin-top:-40px;
+  flex-wrap:wrap;
+}
+.nav-card{
+  background:rgba(250, 250, 250, 0.9);
+  width:280px;
+  padding:50px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,255,255,.2);
+  cursor:pointer;
+  transition:.4s;
+}
+.nav-card img{width:100px;margin-bottom:15px;}
+.nav-card h3{color:#05120f;text-shadow:0 0 6px #0ff;}
+.nav-card:hover{transform:translateY(-10px) scale(1.05);box-shadow:0 25px 50px rgba(0,255,255,.4);}
+
+/* CONTENT */
+.content{padding:30px 40px;position:relative;z-index:1;}
+
+/* CHAT */
+.chatbot-section{
+  display:none;
+  max-width:900px;
+  margin:auto;
+  background:rgba(15,32,39,.95);
+  border-radius:20px;
+  box-shadow:0 30px 60px rgba(0,255,255,.2);
+  overflow:hidden;
+}
+.chat-header{
+  background:linear-gradient(135deg,#00c6ff,#00ffc8);
+  padding:20px;
+  color:#003;
+  font-size:1.2rem;
+  font-weight:600;
+}
+.chat-window{
+  height:350px;
+  padding:20px;
+  overflow-y:auto;
+  background:rgba(255,255,255,.05);
+}
+.msg{
+  margin-bottom:15px;
+  max-width:70%;
+  padding:12px 18px;
+  border-radius:20px;
+}
+.user-msg{
+  background:#00c6ff;color:#003;margin-left:auto;
+}
+.bot-msg{
+  background:rgba(0,255,255,.2);color:#003;
+}
+.chat-input{
+  display:flex;
+  padding:15px;
+  gap:10px;
+}
+.chat-input input{
+  flex:1;padding:12px;border-radius:30px;border:1px solid #00ffc8;background:rgba(255,255,255,.1);color:#fff;
+}
+.chat-input button{
+  padding:12px 25px;
+  border:none;
+  background:#00ffc8;
+  color:#003;
+  border-radius:30px;
+}
+
+/* CARDS */
+.grid{
+  display:none;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:50px;
+}
+.card{
+  background:rgba(39, 31, 15, 0.9);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 20px 40px rgba(0,255,255,.2);
+  transition:.4s;
+}
+.card img{width:100%;height:180px;object-fit:cover;}
+.card-body{padding:50px;color:#00ffc8;}
+.card-body h3{margin-bottom:8x;text-shadow:0 0 6px #0ff;}
+.card:hover{transform:scale(1.05);box-shadow:0 25px 50px rgba(0,255,255,.3);}
+
+/* FAQ */
+.faq { color: #003;
+  max-width: 900px;
+  margin: 50px auto;
+  font-family: 'Roboto', sans-serif;
+  
+}
+.faq h2 {color: #f1f0f0;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+.faq-item {
+  background: #fff;
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,.1);
+  transition: transform 0.3s;
+}
+.faq-item:hover {
+  transform: scale(1.02);
+}
+.faq-item h4 {
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq-item p {
+  display: none;
+  margin-top: 10px;
+  line-height: 1.6;
+  color: #555;
+}
+.faq-item.active p {
+  display: block;
+}
+
+
+/* ===== FOOTER ===== */
+/* ===== FOOTER ===== */
+.footer{
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:#fff;
+  padding:60px 40px 20px;
+}
+
+.footer-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:40px;
+}
+
+.footer-logo{
+  font-size:1.8rem;
+  margin-bottom:15px;
+}
+
+.footer-box h3{
+  margin-bottom:15px;
+  position:relative;
+}
+
+.footer-box h3::after{
+  content:'';
+  width:40px;
+  height:3px;
+  background:#00c6ff;
+  display:block;
+  margin-top:5px;
+}
+
+.footer-box ul{
+  list-style:none;
+}
+
+.footer-box ul li{
+  margin-bottom:10px;
+}
+
+.footer-box ul li a{
+  color:#ddd;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.footer-box ul li a:hover{
+  color:#00c6ff;
+  padding-left:5px;
+}
+
+.social-icons{
+  display:flex;
+  gap:15px;
+  margin-top:15px;
+}
+
+.social-icons img{
+  width:28px;
+  filter:invert(1);
+  transition:.3s;
+}
+
+.social-icons img:hover{
+  transform:scale(1.3);
+}
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.2);
+  margin-top:40px;
+  padding-top:20px;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+.footer-bottom a{
+  color:#00c6ff;
+  text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+  
+<!-- FLOATING PARTICLES -->
+<div class="floating-shapes">
+  <span style="left:5%;animation-delay:0s"></span>
+  <span style="left:20%;animation-delay:3s"></span>
+  <span style="left:35%;animation-delay:6s"></span>
+  <span style="left:50%;animation-delay:1s"></span>
+  <span style="left:65%;animation-delay:4s"></span>
+  <span style="left:80%;animation-delay:7s"></span>
+  <span style="left:95%;animation-delay:2s"></span>
+</div>
+
+
+<header>
+  <div class="logo">CAREER BUDDY</div>
+  <div class="user-menu" id="userMenu">
+    <div class="user-icon"></div>
+    <div class="dropdown" id="dropdown">
+      <p id="username-display">Username: JohnDoe</p>
+      <a href="/view-details">View Details</a>
+      <a href="change-details.html">Change My Details</a>
+      <a href="#">Change Password</a>
+      <a href="#" id="logout-btn" style="color:red;font-weight:bold;">Logout</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Welcome</h1>
+    <p>Career Buddy is a smart and user-friendly career guidance platform designed to help students and job seekers make confident career decisions. It acts as a personal mentor by providing AI-powered assistance, personalized course recommendations, internship and placement opportunities, and skill-based guidance. Career Buddy bridges the gap between education and employment by helping users explore career paths, build relevant skills, and stay informed about industry trends. With an easy-to-use interface and supportive tools, Career Buddy empowers users to plan their future effectively and achieve their professional goals..</p>
+    <button onclick="showChat()" >Start Chat</button>
+  </div>
+</section>
+
+<div class="nav-sections">
+  <div class="nav-card" onclick="showChat()">
+    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png">
+    <h3>AI Chatbot</h3>
+  </div>
+  <div class="nav-card" onclick="showCourses()">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+    <h3>Courses</h3>
+  </div>
+  <div class="nav-card" onclick="showInternships()">
+    <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png">
+    <h3>Internships</h3>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- CHAT -->
+  <div class="chatbot-section" id="chatbot">
+    <div class="chat-header">AI Assistant</div>
+    <div class="chat-window" id="chat-window">
+      <div class="msg bot-msg">Hello! How can I help you today?</div>
+    </div>
+    <div class="chat-input">
+      <input id="chat-input" placeholder="Type your message...">
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+
+  <!-- COURSES -->
+  <div class="grid" id="courses">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
+      <div class="card-body">
+        <h3>Web Development</h3>
+        <p>HTML, CSS, JavaScript & React</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c">
+      <div class="card-body">
+        <h3>Data Science</h3>
+        <p>Python, ML & AI</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERNSHIPS -->
+  <div class="grid" id="internships">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0">
+      <div class="card-body">
+        <h3>Software Internship</h3>
+        <p>Industry-level experience</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="faq">
+  <h2 style="margin-bottom:20px;">Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <h4>What is Career Buddy?</h4>
+    <p>
+      Career Buddy is an AI-powered career guidance platform designed to help
+      students and job seekers make informed career decisions. It provides
+      personalized recommendations for courses, internships, skills, and
+      career paths based on user interests and goals.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h4>Who can use Career Buddy?</h4>
+    <p>
+      Career Buddy is suitable for students, fresh graduates, and working
+      professionals who want career guidance, skill development, or better
+      job opportunities.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h4>Is Career Buddy free to use?</h4>
+    <p>
+      Yes, Career Buddy offers free access to basic features such as career
+      guidance, chatbot assistance, and course exploration. Premium features
+      may be added in the future.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h4>How does the AI Chatbot help?</h4>
+    <p>
+      The AI chatbot acts as a virtual mentor. It answers career-related
+      questions, suggests learning paths, recommends skills, and guides users
+      toward suitable courses and internships.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h4>Are internships real and verified?</h4>
+    <p>
+      Yes, the internships listed on Career Buddy are curated and verified
+      from trusted companies and platforms to ensure genuine opportunities.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h4>Can I change my profile picture?</h4>
+    <p>
+      Yes, users can upload, change, or remove their profile picture anytime
+      using the profile menu in the dashboard.
+    </p>
+  </div>
+</div>
+<script>
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    item.classList.toggle('active');
+  });
+});
+</script>
+
+<script>
+/* Dropdown */
+userMenu.onclick=()=>{
+  dropdown.style.display=dropdown.style.display==="block"?"none":"block";
+};
+
+/* Sections */
+function hideAll(){
+  chatbot.style.display="none";
+  courses.style.display="none";
+  internships.style.display="none";
+}
+function showChat(){hideAll();chatbot.style.display="block";}
+function showCourses(){hideAll();courses.style.display="grid";}
+function showInternships(){hideAll();internships.style.display="grid";}
+
+/* Chat */
+sendBtn.onclick=async()=>{
+  const msg=chatInput.value.trim();
+  if(!msg) return;
+  chatWindow.innerHTML+=`<div class="msg user-msg">${msg}</div>`;
+  chatInput.value="";
+};
+</script>
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Brand -->
+    <div class="footer-box">
+      <h2 class="footer-logo">CareerBuddy</h2>
+      <p>
+        Empowering students with AI-powered learning, curated courses,
+        and real-world internships.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Chatbot</a></li>
+        <li><a href="#">Courses</a></li>
+        <li><a href="#">Internships</a></li>
+      </ul>
+    </div>
+
+    <!-- Resources -->
+    <div class="footer-box">
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Career Guidance</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>Email: support@CareerBuddy.com</p>
+      <p>Phone: +91 98765 43210</p>
+
+      <div class="social-icons">
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733561.png"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 CareerBuddy. All Rights Reserved.</p>
+    <p>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms & Conditions</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
