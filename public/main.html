@@ -396,7 +396,7 @@ header{
 
   <!-- COURSES -->
   <div class="grid" id="courses">
-    <div class="card">
+    <!-- <div class="card">
       <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
       <div class="card-body">
         <h3>Web Development</h3>
@@ -409,7 +409,7 @@ header{
         <h3>Data Science</h3>
         <p>Python, ML & AI</p>
       </div>
-    </div>
+    </div>-->
   </div>
 
   <!-- INTERNSHIPS -->
@@ -565,7 +565,12 @@ document.addEventListener("DOMContentLoaded", () => {
     internships.style.display = "none";
   }
   window.showChat = () => { hideAll(); chatbot.style.display = "block"; };
-  window.showCourses = () => { hideAll(); courses.style.display = "grid"; };
+  window.showCourses = () => {
+  hideAll();
+  courses.style.display = "grid";
+  loadCourses();
+  };
+
   window.showInternships = () => { hideAll(); internships.style.display = "grid"; };
 
   // Chat send
@@ -591,6 +596,42 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Chat failed");
     }
   };
+
+  // Course Loading
+  async function loadCourses() {
+  const coursesGrid = document.getElementById("courses");
+  coursesGrid.innerHTML = "";
+
+  try {
+    const res = await fetch("/getRecommendedCourses");
+    const courses = await res.json();
+
+    if (courses.length === 0) {
+      coursesGrid.innerHTML = "<p style='color:white;'>No courses found for your profile.</p>";
+      return;
+    }
+
+    courses.forEach(course => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <img src="${course.image}">
+        <div class="card-body">
+          <h3>${course.title}</h3>
+          <p>${course.platform}</p>
+          <a href="${course.link}" target="_blank" style="color:#00ffc8;font-weight:bold;">
+            View Course →
+          </a>
+        </div>
+      `;
+      coursesGrid.appendChild(card);
+    });
+  } catch (err) {
+    console.error(err);
+    coursesGrid.innerHTML = "<p>Error loading courses</p>";
+  }
+}
 
   // Fetch and display username
   fetch('/getUserDetails')
