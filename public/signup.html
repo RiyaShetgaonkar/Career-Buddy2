@@ -216,6 +216,41 @@ button{
     </div>
   </form>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const signupForm = document.querySelector("form");
+  if (!signupForm) return;
+
+  signupForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = signupForm.email.value.trim();
+    const password = signupForm.password.value.trim();
+    const confirm = signupForm["confirm-password"].value.trim();
+
+    if (!email || !password || !confirm) return alert("All fields required");
+    if (password !== confirm) return alert("Passwords do not match");
+
+    try {
+      const res = await fetch("/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, "confirm-password": confirm }),
+      });
+
+      if (res.redirected) {
+        window.location.href = res.url;
+      } else {
+        const text = await res.text();
+        alert(text || "Signup failed");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Server error. Try again.");
+    }
+  });
+});
+</script>
 
 </body>
 </html>

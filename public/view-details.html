@@ -28,14 +28,12 @@ body{
   background-position:center;
 }
 
-/* HOLOGRAM TEXT */
 .hologram{
   text-shadow:
     0 0 6px rgba(0,255,255,.7),
     0 0 20px rgba(0,255,255,.5);
 }
 
-/* CARD */
 .card{
   width:100%;
   max-width:650px;
@@ -46,14 +44,12 @@ body{
   box-shadow:0 30px 60px rgba(0,0,0,.6);
 }
 
-/* TITLE */
 .card h2{
   text-align:center;
   font-size:2.2rem;
   margin-bottom:25px;
 }
 
-/* TABLE */
 table{
   width:100%;
   border-collapse:collapse;
@@ -74,13 +70,10 @@ td{
   color:#00ffc8;
 }
 
-/* ICON BEFORE LABEL */
 .label i{
   margin-right:8px;
-  opacity:.9;
 }
 
-/* BACK BUTTON */
 .back-home{
   text-align:center;
   margin-top:25px;
@@ -101,44 +94,63 @@ td{
 <body>
 
 <div class="card">
-  <h2 class="hologram"><i class="fas fa-id-card"></i> Your Saved Details</h2>
+  <h2 class="hologram"><i class="fas fa-id-card"></i> Your Details</h2>
 
   <table id="detailsTable"></table>
 
   <div class="back-home">
-    <a href="dashboard.html">← Back to Dashboard</a>
+    <a href="main.html">← Back to Dashboard</a>
   </div>
 </div>
 
 <script>
 async function loadDetails() {
   try {
-    const res = await fetch("/getUserDetails", {
-      method: "GET",
-      credentials: "include"
-    });
-
+    const res = await fetch("/getUserDetails", { credentials: "include" });
     const data = await res.json();
+
     const table = document.getElementById("detailsTable");
 
     if (data.message) {
-      table.innerHTML = `<tr><td>${data.message}</td></tr>`;
+      table.innerHTML = `<tr><td>
+  ${
+    Array.isArray(data[field.key])
+      ? data[field.key].join(", ")
+      : data[field.key] || "-"
+  }
+</td>
+</tr>`;
       return;
     }
 
-    let html = "";
-    for (let key in data) {
-      if (key === "_id" || key === "__v") continue;
+    const fieldsOrder = [
+      { key: "email", label: "Email" },
+      { key: "fullName", label: "Full Name" },
+      { key: "phone", label: "Phone" },
+      { key: "dob", label: "Date of Birth" },
+      { key: "college", label: "College" },
+      { key: "degree", label: "Degree" },
+      { key: "branch", label: "Branch" },
+      { key: "year", label: "Year" },
+      { key: "state", label: "State" },
+      { key: "cgpa", label: "CGPA" },
+      { key: "skills", label: "Skills" }
+    ];
 
-      html += `
-        <tr>
-          <td class="label">
-            <i class="fas fa-angle-right"></i>${key}
-          </td>
-          <td>${data[key]}</td>
-        </tr>
-      `;
-    }
+    let html = "";
+
+    fieldsOrder.forEach(field => {
+      if (data.hasOwnProperty(field.key)) {
+        html += `
+          <tr>
+            <td class="label">
+              <i class="fas fa-angle-right"></i>${field.label}
+            </td>
+            <td>${data[field.key] || "-"}</td>
+          </tr>
+        `;
+      }
+    });
 
     table.innerHTML = html;
 
@@ -149,6 +161,7 @@ async function loadDetails() {
 
 loadDetails();
 </script>
+
 
 </body>
 </html>

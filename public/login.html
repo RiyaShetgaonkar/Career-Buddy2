@@ -212,17 +212,51 @@ button{
 </div>
 
 <script>
-const params = new URLSearchParams(window.location.search);
-if (params.get("loggedout") === "true") {
-  alert("✅ You have successfully logged out!");
-} else if (params.get("sessionexpired") === "true") {
-  alert("⚠️ Your session has expired. Please log in again.");
-}
-window.history.pushState(null, "", window.location.href);
-window.onpopstate = function () {
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = document.querySelector("form");
+  if (!loginForm) return;
+
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = loginForm.email.value.trim();
+    const password = loginForm.password.value.trim();
+
+    if (!email || !password) return alert("All fields are required");
+
+    try {
+      const res = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (res.redirected) {
+        window.location.href = res.url;
+      } else {
+        const text = await res.text();
+        alert(text || "Login failed");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Server error. Try again.");
+    }
+  });
+
+  // Logout / session alerts
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("loggedout") === "true") {
+    alert("✅ You have successfully logged out!");
+  } else if (params.get("sessionexpired") === "true") {
+    alert("⚠️ Your session has expired. Please log in again.");
+  }
   window.history.pushState(null, "", window.location.href);
-};
+  window.onpopstate = function () {
+    window.history.pushState(null, "", window.location.href);
+  };
+});
 </script>
+
 
 </body>
 </html>

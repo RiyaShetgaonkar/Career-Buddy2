@@ -347,11 +347,12 @@ header{
   <div class="user-menu" id="userMenu">
     <div class="user-icon"></div>
     <div class="dropdown" id="dropdown">
-      <p id="username-display">Username: JohnDoe</p>
+      <p id="username-display">Username: Loading...</p>
+
       <a href="/view-details">View Details</a>
       <a href="change-details.html">Change My Details</a>
       <a href="#">Change Password</a>
-      <a href="#" id="logout-btn" style="color:red;font-weight:bold;">Logout</a>
+      <a href="/logout" id="logout-btn" style="color:red;font-weight:bold;">Logout</a>
     </div>
   </div>
 </header>
@@ -479,38 +480,9 @@ header{
     </p>
   </div>
 </div>
-<script>
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.addEventListener('click', () => {
-    item.classList.toggle('active');
-  });
-});
-</script>
 
-<script>
-/* Dropdown */
-userMenu.onclick=()=>{
-  dropdown.style.display=dropdown.style.display==="block"?"none":"block";
-};
 
-/* Sections */
-function hideAll(){
-  chatbot.style.display="none";
-  courses.style.display="none";
-  internships.style.display="none";
-}
-function showChat(){hideAll();chatbot.style.display="block";}
-function showCourses(){hideAll();courses.style.display="grid";}
-function showInternships(){hideAll();internships.style.display="grid";}
 
-/* Chat */
-sendBtn.onclick=async()=>{
-  const msg=chatInput.value.trim();
-  if(!msg) return;
-  chatWindow.innerHTML+=`<div class="msg user-msg">${msg}</div>`;
-  chatInput.value="";
-};
-</script>
 <footer class="footer">
   <div class="footer-container">
 
@@ -569,6 +541,76 @@ sendBtn.onclick=async()=>{
     </p>
   </div>
 </footer>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const usernameDisplay = document.getElementById("username-display");
+  const userMenu = document.getElementById("userMenu");
+  const dropdown = document.getElementById("dropdown");
+  const chatInput = document.getElementById("chat-input");
+  const sendBtn = document.getElementById("send-btn");
+  const chatWindow = document.getElementById("chat-window");
+  const chatbot = document.getElementById("chatbot");
+  const courses = document.getElementById("courses");
+  const internships = document.getElementById("internships");
+
+  // Dropdown menu toggle
+  userMenu.onclick = () => {
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+  };
+
+  // Sections control
+  function hideAll() {
+    chatbot.style.display = "none";
+    courses.style.display = "none";
+    internships.style.display = "none";
+  }
+  window.showChat = () => { hideAll(); chatbot.style.display = "block"; };
+  window.showCourses = () => { hideAll(); courses.style.display = "grid"; };
+  window.showInternships = () => { hideAll(); internships.style.display = "grid"; };
+
+  // Chat send
+  sendBtn.onclick = async () => {
+    const msg = chatInput.value.trim();
+    if (!msg) return;
+
+    chatWindow.innerHTML += `<div class="msg user-msg">${msg}</div>`;
+    chatInput.value = "";
+
+    try {
+      const res = await fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: msg }),
+      });
+      const data = await res.json();
+
+      chatWindow.innerHTML += `<div class="msg bot-msg">${data.reply}</div>`;
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    } catch (err) {
+      console.error(err);
+      alert("Chat failed");
+    }
+  };
+
+  // Fetch and display username
+  fetch('/getUserDetails')
+    .then(res => res.json())
+    .then(data => {
+      usernameDisplay.textContent = `Username: ${data.fullName || "Guest"}`;
+    })
+    .catch(err => {
+      console.error(err);
+      usernameDisplay.textContent = "Username: Guest";
+    });
+
+  // FAQ toggle
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('active');
+    });
+  });
+});
+</script>
 
 </body>
 </html>

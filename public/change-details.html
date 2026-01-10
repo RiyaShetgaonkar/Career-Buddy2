@@ -197,6 +197,12 @@ textarea{resize:vertical;min-height:80px;}
   transform:scale(1.3);
 }
 
+.back-home{
+  text-align:center;
+  margin-top:25px;
+}
+
+
 .footer-bottom{
   border-top:1px solid rgba(255,255,255,.2);
   margin-top:40px;
@@ -250,11 +256,6 @@ textarea{resize:vertical;min-height:80px;}
       <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
     </div>
     <div class="form-group">
-      <i class="fas fa-envelope"></i>
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Your email" readonly>
-    </div>
-    <div class="form-group">
       <i class="fas fa-phone"></i>
       <label for="phone">Phone</label>
       <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
@@ -301,6 +302,10 @@ textarea{resize:vertical;min-height:80px;}
     </div>
     <button type="submit" class="submit-btn"><i class="fas fa-save"></i> Update Details</button>
   </form>
+
+  <div class="back-home">
+    <a href="main.html">← Back to Dashboard</a>
+  </div>
 </div>
 
 <footer class="footer">
@@ -363,46 +368,78 @@ textarea{resize:vertical;min-height:80px;}
 </footer>
 
 <script>
-const userMenu = document.getElementById('user-menu');
-const dropdown = document.getElementById('dropdown');
-userMenu.addEventListener('click', (e)=>{ e.stopPropagation(); dropdown.style.display = dropdown.style.display==='block'?'none':'block'; });
-window.onclick = ()=>dropdown.style.display='none';
+// Pre-fill user details when page loads
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const res = await fetch('/getUserDetails', {
+      method: 'GET',
+      credentials: 'include'
+    });
 
-document.getElementById("detailsForm").addEventListener("submit", async (e) => {
+    if (!res.ok) throw new Error('Failed to fetch user details');
+
+    const data = await res.json();
+
+    // Populate the form fields with existing database values
+    document.getElementById('fullName').value = data.fullName || '';
+    document.getElementById('phone').value = data.phone || '';
+    document.getElementById('dob').value = data.dob || '';
+    document.getElementById('college').value = data.college || '';
+    document.getElementById('degree').value = data.degree || '';
+    document.getElementById('branch').value = data.branch || '';
+    document.getElementById('year').value = data.year || '';
+    document.getElementById('state').value = data.state || '';
+    document.getElementById('cgpa').value = data.cgpa || '';
+    document.getElementById('skills').value = (data.skills || []).join(', ');
+  } catch (err) {
+    console.error('Error loading user details:', err);
+    alert('⚠️ Failed to load your details. Please refresh the page.');
+  }
+});
+
+// Handle form submission
+document.getElementById('detailsForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const formData = new FormData(e.target);
-  const data = {};
-
-  formData.forEach((value, key) => {
-    data[key] = value;
-  });
+  // Map inputs to server keys
+  const payload = {
+    "data[Name]": document.getElementById('fullName').value.trim(),
+    "data[Phone Number]": document.getElementById('phone').value.trim(),
+    "data[Date of Birth]": document.getElementById('dob').value.trim(),
+    "data[College / University Name]": document.getElementById('college').value.trim(),
+    "data[Degree]": document.getElementById('degree').value.trim(),
+    "data[Branch / Specialization]": document.getElementById('branch').value.trim(),
+    "data[Year]": document.getElementById('year').value.trim(),
+    "data[State]": document.getElementById('state').value.trim(),
+    "data[CGPA / Percentage]": document.getElementById('cgpa').value.trim(),
+    "data[Skills]": document.getElementById('skills').value.trim()
+  };
 
   try {
-    const res = await fetch("/updateUserDetails", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      credentials: "include",
-      body: JSON.stringify(data)
+    const res = await fetch('/updateUserDetails', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      credentials: 'include'
     });
 
     const result = await res.json();
 
     if (res.ok) {
-      alert("✅ Details updated successfully!");
-      window.location.href = "/view-details";
+      alert(result.message);
+      if (result.redirect) window.location.href = result.redirect;
     } else {
-      alert(result.message || "❌ Update failed");
+      alert(result.message || 'Update failed');
     }
   } catch (err) {
-    console.error("Update error:", err);
-    alert("❌ Server error. Please try again.");
+    console.error(err);
+    alert('⚠️ Failed to update details. Try again.');
   }
 });
-
 </script>
+
+
+
 
 </body>
 </html>
