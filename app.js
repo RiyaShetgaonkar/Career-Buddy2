@@ -1,4 +1,5 @@
 // ------------------- app.js -------------------
+const coursesData = require("./coursesData");
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -231,6 +232,81 @@ app.get("/getUserDetails", async (req, res) => {
   const doc = await db.collection("users").doc(req.session.uid).get();
   res.json(doc.data());
 });
+
+// ------------------- RECOMMEND COURSES -------------------
+app.get("/getRecommendedCourses", async (req, res) => {
+  try {
+    console.log("HIT /getRecommendedCourses");
+
+    if (!req.session.uid) {
+      console.log("NO SESSION UID");
+      return res.status(401).json([]);
+    }
+
+    const doc = await db.collection("users").doc(req.session.uid).get();
+
+    if (!doc.exists) {
+      console.log("USER DOC NOT FOUND");
+      return res.json([]);
+    }
+
+    const user = doc.data();
+    console.log("USER DATA:", user);
+
+    const normalize = (s) => s.toLowerCase().trim();
+
+    const userSkills = Array.isArray(user.skills)
+      ? user.skills.map(normalize)
+      : [];
+
+    const userBranch = user.branch ? normalize(user.branch) : "";
+    const userDegree = user.degree ? normalize(user.degree) : "";
+    const userCGPA = parseFloat(user.cgpa) || 0;
+
+    const recommended = coursesData
+      .map((course) => {
+        let score = 0;
+
+        // Skill match
+        course.skills.forEach((skill) => {
+          if (userSkills.includes(skill.toLowerCase())) score += 3;
+        });
+
+        // Branch match
+        if (
+          course.branch.includes("Any") ||
+          course.branch.map(b => b.toLowerCase()).includes(userBranch) ||
+          (userBranch.includes("computer") && course.branch.includes("CSE"))
+        ) {
+          score += 2;
+        }
+
+        // Degree match
+        if (
+          course.degree.includes("Any") ||
+          course.degree.map(d => d.toLowerCase()).includes(userDegree)
+        ) {
+          score += 1;
+        }
+
+        // CGPA match
+        if (userCGPA >= course.cgpaMin) score += 1;
+
+        return { ...course, score };
+      })
+      .filter((c) => c.score >= 3)
+      .sort((a, b) => b.score - a.score);
+
+    console.log("RECOMMENDED COUNT:", recommended.length);
+
+    res.json(recommended);
+  } catch (err) {
+    console.error("COURSE ROUTE ERROR:", err);
+    res.status(500).json([]);
+  }
+});
+
+
 
 // ------------------- GEMINI CHATBOT -------------------
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
