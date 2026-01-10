@@ -254,48 +254,73 @@ app.get("/getRecommendedCourses", async (req, res) => {
     console.log("USER DATA:", user);
 
     const normalize = (s) => s.toLowerCase().trim();
+    const normalizeArray = (arr) => arr.map(v => normalize(v));
 
     const userSkills = Array.isArray(user.skills)
-      ? user.skills.map(normalize)
-      : [];
+  ? normalizeArray(user.skills)
+  : [];
 
-    const userBranch = user.branch ? normalize(user.branch) : "";
-    const userDegree = user.degree ? normalize(user.degree) : "";
-    const userCGPA = parseFloat(user.cgpa) || 0;
+const userBranch = user.branch ? normalize(user.branch) : "";
+const userDegree = user.degree ? normalize(user.degree) : "";
+const userCGPA = parseFloat(user.cgpa) || 0;
 
-    const recommended = coursesData
-      .map((course) => {
-        let score = 0;
+let recommended = coursesData
+  .filter(course => {
+    const courseDegrees = normalizeArray(course.degree);
+    const courseBranches = normalizeArray(course.branch);
 
-        // Skill match
-        course.skills.forEach((skill) => {
-          if (userSkills.includes(skill.toLowerCase())) score += 3;
-        });
+    // ✅ DEGREE MUST MATCH
+    const degreeMatch =
+      courseDegrees.includes("any") ||
+      courseDegrees.includes(userDegree);
 
-        // Branch match
-        if (
-          course.branch.includes("Any") ||
-          course.branch.map(b => b.toLowerCase()).includes(userBranch) ||
-          (userBranch.includes("computer") && course.branch.includes("CSE"))
-        ) {
-          score += 2;
-        }
+    if (!degreeMatch) return false;
 
-        // Degree match
-        if (
-          course.degree.includes("Any") ||
-          course.degree.map(d => d.toLowerCase()).includes(userDegree)
-        ) {
-          score += 1;
-        }
+    // ✅ BRANCH MUST MATCH
+    const branchMatch =
+      courseBranches.includes("any") ||
+      courseBranches.includes(userBranch);
 
-        // CGPA match
-        if (userCGPA >= course.cgpaMin) score += 1;
+    if (!branchMatch) return false;
 
-        return { ...course, score };
-      })
-      .filter((c) => c.score >= 3)
-      .sort((a, b) => b.score - a.score);
+    // ✅ CGPA CHECK
+    if (userCGPA < course.cgpaMin) return false;
+
+    return true;
+  })
+  .map(course => {
+    // 🎯 Skill relevance scoring (ONLY after degree+branch match)
+    let skillScore = 0;
+
+    course.skills.forEach(skill => {
+      if (userSkills.includes(normalize(skill))) {
+        skillScore += 1;
+      }
+    });
+
+    return {
+      ...course,
+      skillScore
+    };
+  })
+  // ❌ Remove courses with ZERO skill relevance
+  .filter(c => c.skillScore > 0)
+  // 🔥 Best matches first
+  .sort((a, b) => b.skillScore - a.skillScore);
+
+  if (recommended.length === 0) {
+  recommended = coursesData.filter(course => {
+    const courseDegrees = normalizeArray(course.degree);
+    const courseBranches = normalizeArray(course.branch);
+
+    return (
+      (courseDegrees.includes("any") || courseDegrees.includes(userDegree)) &&
+      courseBranches.includes("any") &&
+      userCGPA >= course.cgpaMin
+    );
+  });
+}
+
 
     console.log("RECOMMENDED COUNT:", recommended.length);
 
