@@ -1,5 +1,6 @@
 // ------------------- app.js -------------------
 const coursesData = require("./coursesData");
+const internshipsData = require("./internshipsData");
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -321,7 +322,6 @@ let recommended = coursesData
   });
 }
 
-
     console.log("RECOMMENDED COUNT:", recommended.length);
 
     res.json(recommended);
@@ -331,6 +331,91 @@ let recommended = coursesData
   }
 });
 
+// ------------------- RECOMMEND INTERNSHIPS -------------------
+app.get("/getRecommendedInternships", async (req, res) => {
+  try {
+    console.log("HIT /getRecommendedInternships");
+
+    if (!req.session.uid) return res.status(401).json([]);
+
+    const doc = await db.collection("users").doc(req.session.uid).get();
+    if (!doc.exists) return res.json([]);
+
+    const user = doc.data();
+
+    const normalize = (s) => s.toLowerCase().trim();
+    const normalizeArray = (arr) => arr.map(v => normalize(v));
+
+    const userSkills = Array.isArray(user.skills)
+      ? normalizeArray(user.skills)
+      : [];
+
+    const userBranch = user.branch ? normalize(user.branch) : "";
+    const userDegree = user.degree ? normalize(user.degree) : "";
+    const userCGPA = parseFloat(user.cgpa) || 0;
+
+    let recommended = internshipsData
+      .filter(internship => {
+        const internshipDegrees = normalizeArray(internship.degree);
+        const internshipBranches = normalizeArray(internship.branch);
+
+        // ✅ DEGREE MUST MATCH
+        const degreeMatch =
+          internshipDegrees.includes("any") ||
+          internshipDegrees.includes(userDegree);
+
+        if (!degreeMatch) return false;
+
+        // ✅ BRANCH MUST MATCH
+        const branchMatch =
+          internshipBranches.includes("any") ||
+          internshipBranches.includes(userBranch);
+
+        if (!branchMatch) return false;
+
+        // ✅ CGPA CHECK
+        if (userCGPA < internship.cgpaMin) return false;
+
+        return true;
+      })
+      .map(internship => {
+        let skillScore = 0;
+
+        internship.skills.forEach(skill => {
+          if (userSkills.includes(normalize(skill))) {
+            skillScore += 1;
+          }
+        });
+
+        return { ...internship, skillScore };
+      })
+      // ❌ remove irrelevant internships
+      .filter(i => i.skillScore > 0)
+      // 🔥 best matches first
+      .sort((a, b) => b.skillScore - a.skillScore);
+
+    // 🧠 FALLBACK: Degree-only internships
+    if (recommended.length === 0) {
+      recommended = internshipsData.filter(internship => {
+        const internshipDegrees = normalizeArray(internship.degree);
+        const internshipBranches = normalizeArray(internship.branch);
+
+        return (
+          (internshipDegrees.includes("any") ||
+            internshipDegrees.includes(userDegree)) &&
+          internshipBranches.includes("any") &&
+          userCGPA >= internship.cgpaMin
+        );
+      });
+    }
+
+    console.log("INTERNSHIP COUNT:", recommended.length);
+    res.json(recommended);
+  } catch (err) {
+    console.error("INTERNSHIP ROUTE ERROR:", err);
+    res.status(500).json([]);
+  }
+});
 
 
 // ------------------- GEMINI CHATBOT -------------------
