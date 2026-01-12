@@ -307,6 +307,7 @@ let recommended = coursesData
     console.error("COURSE ROUTE ERROR:", err);
     res.status(500).json([]);
   }
+
 });
 
 // ------------------- RECOMMEND INTERNSHIPS -------------------

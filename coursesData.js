@@ -1,3 +1,4 @@
+
 // coursesData.js
 module.exports = [
   {
@@ -753,3 +754,4 @@ module.exports = [
   image: "https://images.unsplash.com/photo-1526378722484-cc5cdd6b2aeb"
 }
 ];
+
