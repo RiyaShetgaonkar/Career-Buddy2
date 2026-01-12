@@ -1,445 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Career Buddy | Change Details</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-
-body{
-  font-family:'Segoe UI',sans-serif;
-  color:#fff;
-  min-height:100vh;
-  background:
-    linear-gradient(135deg,#0f2027,#203a43,#2c5364),
-    url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d");
-  background-size:cover;
-  background-position:center;
-  overflow-x:hidden;
-}
-
-/* FLOATING PARTICLES */
-.floating-shapes span{
-  position:fixed;
-  width:12px;
-  height:12px;
-  background:rgba(0,255,255,.6);
-  border-radius:50%;
-  animation:floatUp 16s linear infinite;
-  filter:blur(1px);
-  z-index:0;
-}
-@keyframes floatUp{
-  from{transform:translateY(110vh);opacity:0;}
-  20%{opacity:1;}
-  to{transform:translateY(-130vh) translateX(60px);opacity:0;}
-}
-
-/* HOLOGRAM TITLE */
-.hologram{
-  text-shadow:
-    0 0 6px rgba(0,255,255,.7),
-    0 0 20px rgba(0,255,255,.5);
-}
-
-/* HEADER */
-header{
-  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  position:sticky;
-  top:0;
-  z-index:1000;
-  box-shadow:0 6px 20px rgba(0,0,0,.4);
-}
-
-.header-container{
-  max-width:1200px;
-  margin:auto;
-  padding:20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.logo{font-size:1.8rem;font-weight:700;color:#00ffc8;}
-
-.user-menu{
-  position:relative;cursor:pointer;
-}
-.user-icon{
-  width:40px;height:40px;border-radius:50%;
-  background:rgba(255,255,255,.15);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.5rem;color:#00ffc8;
-}
-.dropdown{
-  display:none;position:absolute;top:50px;right:0;
-  background:rgba(15,32,39,.95);
-  color:#fff;border-radius:10px;
-  box-shadow:0 5px 20px rgba(0,0,0,.5);
-  padding:15px;
-  min-width:220px;
-  z-index:1001;
-}
-.dropdown p{
-  margin:0 0 10px;font-weight:bold;
-}
-.dropdown a{
-  display:block;color:#00ffc8;text-decoration:none;margin-bottom:8px;
-  transition:.3s;
-}
-.dropdown a:hover{color:#0ff;}
-
-/* MAIN CARD */
-.change-details-section{
-  max-width:800px;margin:80px auto;
-  background:rgba(15,32,39,.92);
-  backdrop-filter:blur(12px);
-  padding:35px 40px;
-  border-radius:25px;
-  box-shadow:0 30px 60px rgba(0,0,0,.6);
-  position:relative;z-index:1;
-}
-
-/* FORM */
-.change-details-section h2{
-  font-size:2rem;text-align:center;margin-bottom:25px;
-}
-.form-group{margin-bottom:22px;position:relative;}
-label{display:block;margin-bottom:8px;font-weight:600;}
-.form-group i{
-  position:absolute;top:38px;left:12px;color:#00ffc8;font-size:1.2rem;opacity:.8;
-}
-input,textarea{
-  width:100%;padding:12px 12px 12px 40px;
-  border-radius:12px;border:1px solid rgba(255,255,255,.2);
-  background:rgba(255,255,255,.1);color:#fff;font-size:1rem;
-  outline:none;transition:.3s;
-}
-input::placeholder,textarea::placeholder{color:#ddd;}
-input:focus,textarea:focus{border-color:#00ffc8;box-shadow:0 0 12px rgba(0,255,200,.5);}
-textarea{resize:vertical;min-height:80px;}
-
-/* SUBMIT BUTTON */
-.submit-btn{
-  padding:12px 25px;background:linear-gradient(135deg,#31beb2,#00ffc8);
-  color:#003333;font-size:1rem;font-weight:600;border:none;border-radius:14px;
-  cursor:pointer;transition:.3s;width:100%;
-}
-.submit-btn:hover{transform:translateY(-3px);box-shadow:0 15px 30px rgba(0,255,200,.4);}
-
-/* FOOTER */
-
-.footer{
-  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  color:#fff;
-  padding:60px 40px 20px;
-}
-
-.footer-container{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:40px;
-}
-
-.footer-logo{
-  font-size:1.8rem;
-  margin-bottom:15px;
-}
-
-.footer-box h3{
-  margin-bottom:15px;
-  position:relative;
-}
-
-.footer-box h3::after{
-  content:'';
-  width:40px;
-  height:3px;
-  background:#00c6ff;
-  display:block;
-  margin-top:5px;
-}
-
-.footer-box ul{
-  list-style:none;
-}
-
-.footer-box ul li{
-  margin-bottom:10px;
-}
-
-.footer-box ul li a{
-  color:#ddd;
-  text-decoration:none;
-  transition:.3s;
-}
-
-.footer-box ul li a:hover{
-  color:#00c6ff;
-  padding-left:5px;
-}
-
-.social-icons{
-  display:flex;
-  gap:15px;
-  margin-top:15px;
-}
-
-.social-icons img{
-  width:28px;
-  filter:invert(1);
-  transition:.3s;
-}
-
-.social-icons img:hover{
-  transform:scale(1.3);
-}
-
-.back-home{
-  text-align:center;
-  margin-top:25px;
-}
-
-
-.footer-bottom{
-  border-top:1px solid rgba(255,255,255,.2);
-  margin-top:40px;
-  padding-top:20px;
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-}
-
-.footer-bottom a{
-  color:#00c6ff;
-  text-decoration:none;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Buddy | Manage Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family:'Segoe UI',sans-serif; color:#fff; min-height:100vh;
+            display:flex; justify-content:center; align-items:center;
+            background: linear-gradient(135deg,#0f2027,#203a43,#2c5364), url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d");
+            background-size:cover; background-position:center; background-attachment: fixed;
+            padding: 40px 20px;
+        }
+        .page-bg { position:fixed; inset:0; background: linear-gradient(rgba(15,32,39,0.85), rgba(15,32,39,0.85)); z-index:-1; }
+        .hologram { text-shadow: 0 0 6px rgba(0,255,255,.7), 0 0 20px rgba(0,255,255,.5); }
+        .login-container {
+            width:100%; max-width:600px; background:rgba(15,32,39,.92);
+            backdrop-filter:blur(10px); padding:40px 35px; border-radius:25px;
+            box-shadow:0 30px 60px rgba(0,0,0,.6); position:relative;
+        }
+        .login-container h1 { text-align:center; font-size:2.2rem; margin-bottom:10px; color: #00ffc8; }
+        .login-container p.subtitle { text-align:center; opacity:.85; margin-bottom:35px; }
+        .form-group { margin-bottom:22px; position:relative; }
+        label { display:block; margin-bottom:8px; font-weight:600; font-size:.95rem; color: #00ffc8; }
+        .form-group i { position:absolute; top:38px; left:12px; color:#00ffc8; font-size:1.1rem; opacity:.8; }
+        input, select, textarea {
+            width:100%; padding:14px 14px 14px 38px; border-radius:12px;
+            border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.05);
+            color:#fff; font-size:1rem; outline:none; transition:.3s;
+        }
+        .view-mode input, .view-mode select, .view-mode textarea {
+            border: 1px solid transparent;
+            background: rgba(255,255,255,0.02);
+            pointer-events: none;
+            color: #ddd;
+        }
+        .buttons { display:flex; gap:15px; margin-top:25px; }
+        button { flex:1; padding:14px; border:none; border-radius:14px; font-size:1rem; font-weight:600; cursor:pointer; transition:.3s; }
+        .edit-btn { background: #00ffc8; color: #003333; }
+        .save-btn { background: linear-gradient(135deg,#31beb2,#00ffc8); color: #003333; display: none; }
+        .cancel-btn { background: rgba(255,255,255,0.1); color: #fff; display: none; }
+        .back-home { text-align:center; margin-top:20px; }
+        .back-home a { color:#ccc; text-decoration:none; }
+        select option { background-color: #203a43; color: #ffffff; }
+    </style>
 </head>
 <body>
+    <div class="page-bg"></div>
 
-<!-- FLOATING PARTICLES -->
-<div class="floating-shapes">
-  <span style="left:5%;animation-delay:0s"></span>
-  <span style="left:20%;animation-delay:3s"></span>
-  <span style="left:35%;animation-delay:6s"></span>
-  <span style="left:50%;animation-delay:1s"></span>
-  <span style="left:65%;animation-delay:4s"></span>
-  <span style="left:80%;animation-delay:7s"></span>
-  <span style="left:95%;animation-delay:2s"></span>
-</div>
+    <div class="login-container view-mode" id="container">
+        <h1 class="hologram"><i class="fas fa-user-edit"></i> My Profile</h1>
+        <p class="subtitle" id="status-text">Viewing your saved information</p>
 
-<header>
-  <div class="header-container">
-    <div class="logo">CareerBuddy</div>
-    <div class="user-menu" id="user-menu">
-      <div class="user-icon"><i class="fas fa-user"></i></div>
-      <div class="dropdown" id="dropdown">
-        <p id="username-display">Username: JohnDoe</p>
-        <a href="/view-details"><i class="fas fa-eye"></i> View Details</a>
-        <a href="change-details.html"><i class="fas fa-user-edit"></i> Change Details</a>
-        <a href="#"><i class="fas fa-key"></i> Change Password</a>
-        <a href="#" id="logout-btn" style="color:#ff6b6b;font-weight:bold;"><i class="fas fa-sign-out-alt"></i> Logout</a>
-      </div>
-    </div>
-  </div>
-</header>
+        <form id="detailsForm">
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <label>Full Name</label>
+                <input type="text" id="fullName" name="data[Name]" required>
+            </div>
 
-<div class="change-details-section">
-  <h2 class="hologram"><i class="fas fa-user-cog"></i> Update Your Details</h2>
-  <form id="detailsForm">
-    <div class="form-group">
-      <i class="fas fa-user"></i>
-      <label for="fullName">Full Name</label>
-      <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
-    </div>
-    <div class="form-group">
-      <i class="fas fa-phone"></i>
-      <label for="phone">Phone</label>
-      <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
-    </div>
-    <div class="form-group">
-      <i class="fas fa-calendar-alt"></i>
-      <label for="dob">Date of Birth</label>
-      <input type="date" id="dob" name="dob" required>
-    </div>
-    <div class="form-group">
-      <i class="fas fa-school"></i>
-      <label for="college">College</label>
-      <input type="text" id="college" name="college" required>
-    </div>
-    <div class="form-group">
-      <i class="fas fa-graduation-cap"></i>
-      <label for="degree">Degree</label>
-      <input type="text" id="degree" name="degree" required>
-    </div>
-    <div class="form-group">
-      <i class="fas fa-layer-group"></i>
-      <label for="branch">Branch</label>
-      <input type="text" id="branch" name="branch" required>
-    </div>
-    <div class="form-group">
-      <i class="fas fa-calendar"></i>
-      <label for="year">Year</label>
-      <input type="text" id="year" name="year" required>
-    </div>
-    <div class="form-group">
-      <i class="fas fa-map-marker-alt"></i>
-      <label for="state">State</label>
-      <input type="text" id="state" name="state" required>
-    </div>
-    <div class="form-group">
-      <i class="fas fa-star"></i>
-      <label for="cgpa">CGPA</label>
-      <input type="number" id="cgpa" name="cgpa" step="0.01" min="0" max="10" required>
-    </div>
-    <div class="form-group">
-      <i class="fas fa-lightbulb"></i>
-      <label for="skills">Skills</label>
-      <textarea id="skills" name="skills" placeholder="List your skills" required></textarea>
-    </div>
-    <button type="submit" class="submit-btn"><i class="fas fa-save"></i> Update Details</button>
-  </form>
+            <div class="form-group">
+                <i class="fas fa-graduation-cap"></i>
+                <label>Degree</label>
+                <select name="data[Degree]" id="degreeSelect" required>
+                    <option value="">--Select Degree--</option>
+                    <option value="BCA">BCA</option>
+                    <option value="BE">BE</option>
+                    <option value="BBA">BBA</option>
+                    <option value="BCOM">BCom</option>
+                    <option value="BSC">BSc</option>
+                    <option value="BED">B.Ed</option>
+                </select>
+            </div>
 
-  <div class="back-home">
-    <a href="main.html">← Back to Dashboard</a>
-  </div>
-</div>
+            <div class="form-group">
+                <i class="fas fa-code"></i>
+                <label>Branch / Specialization</label>
+                <select name="data[Branch / Specialization]" id="branchSelect" required>
+                    <option value="">--Select branch--</option>
+                </select>
+            </div>
 
-<footer class="footer">
-  <div class="footer-container">
+            <div class="form-group">
+                <i class="fas fa-layer-group"></i>
+                <label>Year of Study</label>
+                <select id="year" name="data[Year]" required>
+                    <option value="1st Year">1st Year</option>
+                    <option value="2nd Year">2nd Year</option>
+                    <option value="3rd Year">3rd Year</option>
+                    <option value="4th Year">4th Year</option>
+                </select>
+            </div>
 
-    <!-- Brand -->
-    <div class="footer-box">
-      <h2 class="footer-logo">CareerBuddy</h2>
-      <p>
-        Empowering students with AI-powered learning, curated courses,
-        and real-world internships.
-      </p>
+            <div class="form-group"><i class="fas fa-phone"></i><label>Phone</label><input type="tel" id="phone" name="data[Phone Number]" required></div>
+            <div class="form-group"><i class="fas fa-calendar-alt"></i><label>DOB</label><input type="date" id="dob" name="data[Date of Birth]" required></div>
+            <div class="form-group"><i class="fas fa-school"></i><label>College</label><input type="text" id="college" name="data[College / University Name]" required></div>
+            <div class="form-group"><i class="fas fa-star"></i><label>CGPA</label><input type="text" id="cgpa" name="data[CGPA / Percentage]" required></div>
+            <div class="form-group"><i class="fas fa-map-marker-alt"></i><label>State</label><input type="text" id="state" name="data[State]" required></div>
+            <div class="form-group"><i class="fas fa-lightbulb"></i><label>Skills</label><textarea id="skills" name="data[Skills]" rows="3" required></textarea></div>
+
+            <div class="buttons">
+                <button type="button" class="edit-btn" id="editBtn" onclick="toggleEdit(true)"><i class="fas fa-edit"></i> Edit Details</button>
+                <button type="submit" class="save-btn" id="saveBtn"><i class="fas fa-save"></i> Save Changes</button>
+                <button type="button" class="cancel-btn" id="cancelBtn" onclick="toggleEdit(false)">Cancel</button>
+            </div>
+
+            <div class="back-home"><a href="main.html">← Back to Dashboard</a></div>
+        </form>
     </div>
 
-    <!-- Quick Links -->
-    <div class="footer-box">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Chatbot</a></li>
-        <li><a href="#">Courses</a></li>
-        <li><a href="#">Internships</a></li>
-      </ul>
-    </div>
+    <script>
+        const branches = {
+            BCA: ["Computer Applications", "Software Development", "Web Development", "Data Science", "Cyber Security", "Cloud Computing"],
+            BE: ["Computer Science Engineering", "Information Technology", "Artificial Intelligence & ML", "Electronics & Communication", "Electrical Engineering", "Mechanical Engineering", "Civil Engineering"],
+            BBA: ["General Management", "Finance", "Marketing", "Human Resource Management", "International Business", "Business Analytics"],
+            BCOM: ["General Commerce", "Accounting & Finance", "Banking & Insurance", "Taxation", "Corporate Secretaryship"],
+            BSC: ["Computer Science", "Information Technology", "Mathematics", "Physics", "Chemistry", "Biotechnology", "Microbiology"],
+            BED: ["English", "Mathematics", "Science", "Social Science", "Special Education"]
+        };
 
-    <!-- Resources -->
-    <div class="footer-box">
-      <h3>Resources</h3>
-      <ul>
-        <li><a href="#">Help Center</a></li>
-        <li><a href="#">Career Guidance</a></li>
-        <li><a href="#">Community</a></li>
-        <li><a href="#">Blog</a></li>
-      </ul>
-    </div>
+        const degreeSelect = document.getElementById("degreeSelect");
+        const branchSelect = document.getElementById("branchSelect");
 
-    <!-- Contact -->
-    <div class="footer-box">
-      <h3>Contact Us</h3>
-      <p>Email: support@CareerBuddy.com</p>
-      <p>Phone: +91 98765 43210</p>
+        function updateBranchOptions(selectedDegree, selectedBranch = "") {
+            branchSelect.innerHTML = '<option value="">--Select branch--</option>';
+            if (branches[selectedDegree]) {
+                branches[selectedDegree].forEach(branch => {
+                    const option = document.createElement("option");
+                    option.value = branch;
+                    option.textContent = branch;
+                    if (branch === selectedBranch) option.selected = true;
+                    branchSelect.appendChild(option);
+                });
+            }
+        }
 
-      <div class="social-icons">
-        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
-        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png"></a>
-        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733561.png"></a>
-        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"></a>
-      </div>
-    </div>
+        degreeSelect.addEventListener("change", (e) => updateBranchOptions(e.target.value));
 
-  </div>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const res = await fetch('/getUserDetails');
+                const data = await res.json();
 
-  <div class="footer-bottom">
-    <p>© 2026 CareerBuddy. All Rights Reserved.</p>
-    <p>
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Terms & Conditions</a>
-    </p>
-  </div>
-</footer>
+                document.getElementById('fullName').value = data.fullName || '';
+                document.getElementById('phone').value = data.phone || '';
+                document.getElementById('dob').value = data.dob || '';
+                document.getElementById('college').value = data.college || '';
+                document.getElementById('cgpa').value = data.cgpa || '';
+                document.getElementById('state').value = data.state || '';
+                document.getElementById('skills').value = (data.skills || []).join(', ');
 
-<script>
-// Pre-fill user details when page loads
-document.addEventListener('DOMContentLoaded', async () => {
-  try {
-    const res = await fetch('/getUserDetails', {
-      method: 'GET',
-      credentials: 'include'
-    });
+                // Key fix: Matches 'year' lowercase from app.js payload
+                if (data.year) {
+                    document.getElementById('year').value = data.year;
+                }
 
-    if (!res.ok) throw new Error('Failed to fetch user details');
+                if (data.degree) {
+                    degreeSelect.value = data.degree;
+                    // Critical: populate options FIRST, then the value will stick
+                    updateBranchOptions(data.degree, data.branch);
+                }
+            } catch (err) { 
+                console.error("Error loading data:", err);
+            }
+        });
 
-    const data = await res.json();
+        function toggleEdit(isEditing) {
+            const container = document.getElementById('container');
+            document.getElementById('editBtn').style.display = isEditing ? 'none' : 'block';
+            document.getElementById('saveBtn').style.display = isEditing ? 'block' : 'none';
+            document.getElementById('cancelBtn').style.display = isEditing ? 'block' : 'none';
+            if (isEditing) {
+                container.classList.remove('view-mode');
+                document.getElementById('status-text').innerText = "Editing your information";
+            } else {
+                location.reload();
+            }
+        }
 
-    // Populate the form fields with existing database values
-    document.getElementById('fullName').value = data.fullName || '';
-    document.getElementById('phone').value = data.phone || '';
-    document.getElementById('dob').value = data.dob || '';
-    document.getElementById('college').value = data.college || '';
-    document.getElementById('degree').value = data.degree || '';
-    document.getElementById('branch').value = data.branch || '';
-    document.getElementById('year').value = data.year || '';
-    document.getElementById('state').value = data.state || '';
-    document.getElementById('cgpa').value = data.cgpa || '';
-    document.getElementById('skills').value = (data.skills || []).join(', ');
-  } catch (err) {
-    console.error('Error loading user details:', err);
-    alert('⚠️ Failed to load your details. Please refresh the page.');
-  }
-});
+        document.getElementById('detailsForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-// Handle form submission
-document.getElementById('detailsForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
+    // Force values from elements to ensure nothing is missed
+    const payload = {
+        "data[Name]": document.getElementById('fullName').value,
+        "data[Phone Number]": document.getElementById('phone').value,
+        "data[Date of Birth]": document.getElementById('dob').value,
+        "data[College / University Name]": document.getElementById('college').value,
+        "data[Degree]": document.getElementById('degreeSelect').value,
+        "data[Branch / Specialization]": document.getElementById('branchSelect').value,
+        "data[Year]": document.getElementById('year').value, // Matches <select id="year">
+        "data[CGPA / Percentage]": document.getElementById('cgpa').value,
+        "data[State]": document.getElementById('state').value,
+        "data[Skills]": document.getElementById('skills').value
+    };
 
-  // Map inputs to server keys
-  const payload = {
-    "data[Name]": document.getElementById('fullName').value.trim(),
-    "data[Phone Number]": document.getElementById('phone').value.trim(),
-    "data[Date of Birth]": document.getElementById('dob').value.trim(),
-    "data[College / University Name]": document.getElementById('college').value.trim(),
-    "data[Degree]": document.getElementById('degree').value.trim(),
-    "data[Branch / Specialization]": document.getElementById('branch').value.trim(),
-    "data[Year]": document.getElementById('year').value.trim(),
-    "data[State]": document.getElementById('state').value.trim(),
-    "data[CGPA / Percentage]": document.getElementById('cgpa').value.trim(),
-    "data[Skills]": document.getElementById('skills').value.trim()
-  };
+    console.log("DEBUG: Sending payload to server:", payload);
 
-  try {
-    const res = await fetch('/updateUserDetails', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      credentials: 'include'
-    });
+    try {
+        const res = await fetch('/updateUserDetails', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
 
-    const result = await res.json();
+        const result = await res.json();
 
-    if (res.ok) {
-      alert(result.message);
-      if (result.redirect) window.location.href = result.redirect;
-    } else {
-      alert(result.message || 'Update failed');
+        if (res.ok && result.success) {
+            alert("Profile Saved Successfully!");
+            // Refresh logic
+            window.location.reload(); 
+        } else {
+            alert("Error saving: " + result.message);
+        }
+    } catch (err) {
+        console.error("Network Error:", err);
+        alert("Failed to connect to server.");
     }
-  } catch (err) {
-    console.error(err);
-    alert('⚠️ Failed to update details. Try again.');
-  }
 });
-</script>
-
-
-
-
+    </script>
 </body>
 </html>

@@ -4,102 +4,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Career Buddy | View Details</title>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-body{
-  font-family:'Segoe UI',sans-serif;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:#fff;
-  background:
-    linear-gradient(135deg,#0f2027,#203a43,#2c5364),
-    url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d");
-  background-size:cover;
-  background-position:center;
-}
-
-.hologram{
-  text-shadow:
-    0 0 6px rgba(0,255,255,.7),
-    0 0 20px rgba(0,255,255,.5);
-}
-
-.card{
-  width:100%;
-  max-width:650px;
-  background:rgba(15,32,39,.92);
-  backdrop-filter:blur(10px);
-  padding:35px 30px;
-  border-radius:25px;
-  box-shadow:0 30px 60px rgba(0,0,0,.6);
-}
-
-.card h2{
-  text-align:center;
-  font-size:2.2rem;
-  margin-bottom:25px;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-tr{
-  border-bottom:1px solid rgba(255,255,255,.15);
-}
-
-td{
-  padding:14px 10px;
-  font-size:1rem;
-}
-
-.label{
-  width:40%;
-  font-weight:600;
-  color:#00ffc8;
-}
-
-.label i{
-  margin-right:8px;
-}
-
-.back-home{
-  text-align:center;
-  margin-top:25px;
-}
-
-.back-home a{
-  color:#ccc;
-  font-size:.95rem;
-  text-decoration:none;
-}
-
-.back-home a:hover{
-  color:#00ffc8;
-}
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+        font-family:'Segoe UI',sans-serif; min-height:100vh;
+        display:flex; justify-content:center; align-items:center; color:#fff;
+        background: linear-gradient(135deg,#0f2027,#203a43,#2c5364), url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d");
+        background-size:cover; background-position:center;
+    }
+    .hologram { text-shadow: 0 0 6px rgba(0,255,255,.7), 0 0 20px rgba(0,255,255,.5); }
+    .card { width:100%; max-width:650px; background:rgba(15,32,39,.92); backdrop-filter:blur(10px); padding:35px 30px; border-radius:25px; box-shadow:0 30px 60px rgba(0,0,0,.6); }
+    .card h2 { text-align:center; font-size:2.2rem; margin-bottom:25px; }
+    table { width:100%; border-collapse:collapse; }
+    tr { border-bottom:1px solid rgba(255,255,255,.15); }
+    td { padding:14px 10px; font-size:1rem; vertical-align: top; }
+    .label { width:40%; font-weight:600; color:#00ffc8; }
+    .label i { margin-right:8px; width: 20px; }
+    .back-home { text-align:center; margin-top:25px; display: flex; justify-content: center; gap: 20px; }
+    .back-home a { color:#ccc; font-size:.95rem; text-decoration:none; transition: .3s; }
+    .back-home a:hover { color:#00ffc8; }
 </style>
 </head>
 
 <body>
-
 <div class="card">
   <h2 class="hologram"><i class="fas fa-id-card"></i> Your Details</h2>
-
   <table id="detailsTable"></table>
-
+  
   <div class="back-home">
     <a href="main.html">← Back to Dashboard</a>
+    <a href="change-details.html" style="color: #00ffc8;"><i class="fas fa-user-edit"></i> Edit Profile</a>
   </div>
 </div>
 
@@ -108,60 +44,62 @@ async function loadDetails() {
   try {
     const res = await fetch("/getUserDetails", { credentials: "include" });
     const data = await res.json();
-
     const table = document.getElementById("detailsTable");
 
-    if (data.message) {
-      table.innerHTML = `<tr><td>
-  ${
-    Array.isArray(data[field.key])
-      ? data[field.key].join(", ")
-      : data[field.key] || "-"
-  }
-</td>
-</tr>`;
-      return;
-    }
-
+    // 1. Define the fields and their icons
     const fieldsOrder = [
-      { key: "email", label: "Email" },
-      { key: "fullName", label: "Full Name" },
-      { key: "phone", label: "Phone" },
-      { key: "dob", label: "Date of Birth" },
-      { key: "college", label: "College" },
-      { key: "degree", label: "Degree" },
-      { key: "branch", label: "Branch" },
-      { key: "year", label: "Year" },
-      { key: "state", label: "State" },
-      { key: "cgpa", label: "CGPA" },
-      { key: "skills", label: "Skills" }
+      { key: "email", label: "Email", icon: "fa-envelope" },
+      { key: "fullName", label: "Full Name", icon: "fa-user" },
+      { key: "phone", label: "Phone", icon: "fa-phone" },
+      { key: "dob", label: "Date of Birth", icon: "fa-calendar-alt" },
+      { key: "college", label: "College", icon: "fa-school" },
+      { key: "degree", label: "Degree", icon: "fa-graduation-cap" },
+      { key: "branch", label: "Branch", icon: "fa-code" },
+      { key: "year", label: "Year of Study", icon: "fa-layer-group" },
+      { key: "state", label: "State", icon: "fa-map-marker-alt" },
+      { key: "cgpa", label: "CGPA", icon: "fa-star" },
+      { key: "skills", label: "Skills", icon: "fa-lightbulb" }
     ];
 
     let html = "";
 
     fieldsOrder.forEach(field => {
-      if (data.hasOwnProperty(field.key)) {
-        html += `
-          <tr>
-            <td class="label">
-              <i class="fas fa-angle-right"></i>${field.label}
-            </td>
-            <td>${data[field.key] || "-"}</td>
-          </tr>
-        `;
-      }
-    });
+    // 1. Get primary key (usually what is in REQUIRED_FIELDS)
+    let value = data[field.key];
 
+    // 2. Safety Fallbacks for different naming conventions
+    if (field.key === "year") {
+        value = data.year || data["Year"] || data["Year of Study"];
+    }
+    if (field.key === "branch") {
+        value = data.branch || data["Branch"] || data["Branch / Specialization"];
+    }
+
+    // 3. Handle skills array
+    if (Array.isArray(value)) {
+        value = value.join(", ");
+    }
+
+    // 4. Final display check (handles empty strings)
+    const displayValue = (value && value.toString().trim() !== "") ? value : '<span style="opacity:0.5;">Not Set</span>';
+
+    html += `
+    <tr>
+        <td class="label">
+            <i class="fas ${field.icon}"></i> ${field.label}
+        </td>
+        <td style="color: #fff; opacity: 0.9;">${displayValue}</td>
+    </tr>`;
+});
     table.innerHTML = html;
 
   } catch (err) {
     console.error("Error loading details:", err);
+    document.getElementById("detailsTable").innerHTML = "<tr><td colspan='2' style='text-align:center;'>Error loading data.</td></tr>";
   }
 }
 
 loadDetails();
 </script>
-
-
 </body>
 </html>

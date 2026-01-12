@@ -1,4 +1,6 @@
 // ------------------- app.js -------------------
+const coursesData = require("./coursesData");
+const internshipsData = require("./internshipsData");
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -49,6 +51,7 @@ app.use(
 );
 
 // ------------------- CONSTANTS -------------------
+// ✅ Updated to include "year" (lowercase) to match your Firestore schema
 const REQUIRED_FIELDS = [
   "fullName",
   "phone",
@@ -56,6 +59,7 @@ const REQUIRED_FIELDS = [
   "college",
   "degree",
   "branch",
+  "year", 
   "cgpa",
   "state",
   "skills",
@@ -69,13 +73,10 @@ app.get("/login", (_, res) => res.sendFile(path.join(__dirname, "public", "login
 // ------------------- SIGNUP -------------------
 app.post("/signup", async (req, res) => {
   const { email, password, "confirm-password": confirmPassword } = req.body;
-
   if (!email || !password || !confirmPassword)
     return res.send("<h3 style='color:red;'>All fields are required</h3>");
-
   if (password.length < 6)
     return res.send("<h3>Password must be at least 6 characters</h3>");
-
   if (password !== confirmPassword)
     return res.send("<h3>Passwords do not match</h3>");
 
@@ -91,6 +92,7 @@ app.post("/signup", async (req, res) => {
       college: "",
       degree: "",
       branch: "",
+      year: "",
       cgpa: "",
       state: "",
       skills: [],
@@ -98,7 +100,6 @@ app.post("/signup", async (req, res) => {
       createdAt: new Date(),
       updatedAt: new Date(),
     });
-
     res.redirect("/login");
   } catch (err) {
     console.error(err);
@@ -113,10 +114,8 @@ app.post("/login", async (req, res) => {
     const user = await auth.getUserByEmail(email);
     const doc = await db.collection("users").doc(user.uid).get();
     if (!doc.exists) return res.send("<h3>User not found</h3>");
-
     req.session.uid = user.uid;
     req.session.email = email;
-
     res.redirect("/main");
   } catch (err) {
     console.error(err);
@@ -125,23 +124,9 @@ app.post("/login", async (req, res) => {
 });
 
 // ------------------- AUTH MIDDLEWARE -------------------
-const protectedRoutes = [
-  "/main",
-  "/view-details",
-  "/update-details",
-  "/getUserDetails",
-  "/updateUserDetails",
-  "/profile-status",
-  "/chat",
-];
-
+const protectedRoutes = ["/main", "/view-details", "/update-details", "/getUserDetails", "/updateUserDetails", "/profile-status", "/chat"];
 app.use(protectedRoutes, (req, res, next) => {
-  // Prevent caching
   res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
-  res.setHeader("Pragma", "no-cache");
-  res.setHeader("Expires", "0");
-  res.setHeader("Surrogate-Control", "no-store");
-
   if (!req.session.uid) return res.redirect("/login");
   next();
 });
@@ -149,119 +134,348 @@ app.use(protectedRoutes, (req, res, next) => {
 // ------------------- DASHBOARD & MAIN -------------------
 app.get("/main", async (req, res) => {
   const uid = req.session.uid;
-  if (!uid) return res.redirect("/login");
-
   try {
     const doc = await db.collection("users").doc(uid).get();
-    if (!doc.exists) return res.redirect("/login");
-
     const data = doc.data();
-
-    // Check if profile is empty
     const profileEmpty = REQUIRED_FIELDS.every(
       (f) => Array.isArray(data[f]) ? data[f].length === 0 : !data[f]
     );
 
     if (profileEmpty) {
-      // Serve dashboard.html with username replaced
-      const html = fs
-        .readFileSync(path.join(__dirname, "public", "dashboard.html"), "utf8")
-        .replace(/USERNAME_HERE/g, data.fullName || "");
+      const html = fs.readFileSync(path.join(__dirname, "public", "dashboard.html"), "utf8")
+        .replace(/USERNAME_HERE/g, data.fullName || "Student");
       return res.send(html);
     }
-
-    // Profile filled → main.html
     res.sendFile(path.join(__dirname, "public", "main.html"));
   } catch (err) {
-    console.error(err);
     res.send("<h3>Unable to load dashboard</h3>");
   }
 });
 
-// ------------------- PROFILE STATUS -------------------
-app.get("/profile-status", async (req, res) => {
-  try {
-    const doc = await db.collection("users").doc(req.session.uid).get();
-    const data = doc.data();
-    const completed = REQUIRED_FIELDS.every(
-      (f) => Array.isArray(data[f]) ? data[f].length > 0 : !!data[f]
-    );
-    res.json({ completed });
-  } catch {
-    res.json({ completed: false });
-  }
-});
-
-// ------------------- UPDATE DETAILS -------------------
+// ------------------- UPDATE DETAILS (Unified Final Fix) -------------------
 app.post("/updateUserDetails", async (req, res) => {
   try {
-    // Map dashboard form fields to Firestore
+    const uid = req.session.uid;
+    if (!uid) return res.status(401).json({ message: "Unauthorized" });
+
+    // DEBUG: This will print the exact structure coming from your browser to your terminal
+    console.log("DEBUG: DATA RECEIVED FROM CLIENT:", req.body);
+
+    const b = req.body; // Shortcut
+
     const payload = {
-      fullName: req.body["data[Name]"] || "",
-      phone: req.body["data[Phone Number]"] || "",
-      dob: req.body["data[Date of Birth]"] || "",
-      college: req.body["data[College / University Name]"] || "",
-      degree: req.body["data[Degree]"] || "",
-      branch: req.body["data[Branch / Specialization]"] || "",
-      cgpa: req.body["data[CGPA / Percentage]"] || "",
-      state: req.body["data[State]"] || "",
-      skills: req.body["data[Skills]"]
-        ? req.body["data[Skills]"].split(",").map((s) => s.trim())
-        : [],
+      fullName: b["data[Name]"] || b.fullName || b.Name || "",
+      phone: b["data[Phone Number]"] || b.phone || "",
+      dob: b["data[Date of Birth]"] || b.dob || "",
+      college: b["data[College / University Name]"] || b.college || "",
+      
+      // ✅ CATCHES EVERY VARIATION: dashboard, manage profile, or raw json
+      year: b["data[Year]"] || b["data[Year of Study]"] || b.year || "", 
+      
+      degree: b["data[Degree]"] || b.degree || "",
+
+      // ✅ HANDLES: specialization strings
+      branch: b["data[Branch / Specialization]"] || b["data[Branch]"] || b.branch || "",
+      
+      cgpa: b["data[CGPA / Percentage]"] || b.cgpa || "",
+      state: b["data[State]"] || b.state || "",
+      
+      // Skills handling: checks if already array or needs splitting
+      skills: Array.isArray(b["data[Skills]"] || b.skills) 
+        ? (b["data[Skills]"] || b.skills)
+        : (b["data[Skills]"] || b.skills || "")
+            .toString()
+            .split(",")
+            .map(s => s.trim())
+            .filter(s => s !== "")
     };
 
-    await db
-      .collection("users")
-      .doc(req.session.uid)
-      .set({ ...payload, updatedAt: new Date() }, { merge: true });
+    // Use merge: true so we don't overwrite email/password fields
+    await db.collection("users").doc(uid).set({ 
+      ...payload, 
+      updatedAt: new Date() 
+    }, { merge: true });
 
-    res.json({ message: "Profile updated successfully", redirect: "/main" });
+    console.log("DEBUG: Firestore Update Successful for UID:", uid);
+    res.json({ success: true, message: "Profile updated", redirect: "/main" });
+    
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Update failed" });
+    console.error("CRITICAL UPDATE ERROR:", err);
+    res.status(500).json({ success: false, message: "Server error during update" });
   }
 });
-
 // ------------------- VIEW DETAILS -------------------
-app.get("/view-details", (_, res) =>
-  res.sendFile(path.join(__dirname, "public", "view-details.html"))
-);
+app.get("/view-details", (_, res) => res.sendFile(path.join(__dirname, "public", "view-details.html")));
 
 app.get("/getUserDetails", async (req, res) => {
   const doc = await db.collection("users").doc(req.session.uid).get();
   res.json(doc.data());
 });
 
-// ------------------- GEMINI CHATBOT -------------------
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({
-  model: "gemini-1.5-flash",
-  systemInstruction: `
-ROLE: Career & Academic Guidance Bot
-Only answer career/academic queries.
-Off-topic → refuse politely using the exact sentence.
-Use Markdown.
-`,
+// ------------------- RECOMMEND COURSES -------------------
+app.get("/getRecommendedCourses", async (req, res) => {
+  try {
+    console.log("HIT /getRecommendedCourses");
+
+    if (!req.session.uid) {
+      console.log("NO SESSION UID");
+      return res.status(401).json([]);
+    }
+
+    const doc = await db.collection("users").doc(req.session.uid).get();
+
+    if (!doc.exists) {
+      console.log("USER DOC NOT FOUND");
+      return res.json([]);
+    }
+
+    const user = doc.data();
+    console.log("USER DATA:", user);
+
+    const normalize = (s) => s.toLowerCase().trim();
+    const normalizeArray = (arr) => arr.map(v => normalize(v));
+
+    const userSkills = Array.isArray(user.skills)
+  ? normalizeArray(user.skills)
+  : [];
+
+const userBranch = user.branch ? normalize(user.branch) : "";
+const userDegree = user.degree ? normalize(user.degree) : "";
+const userCGPA = parseFloat(user.cgpa) || 0;
+
+let recommended = coursesData
+  .filter(course => {
+    const courseDegrees = normalizeArray(course.degree);
+    const courseBranches = normalizeArray(course.branch);
+
+    // ✅ DEGREE MUST MATCH
+    const degreeMatch =
+      courseDegrees.includes("any") ||
+      courseDegrees.includes(userDegree);
+
+    if (!degreeMatch) return false;
+
+    // ✅ BRANCH MUST MATCH
+    const branchMatch =
+      courseBranches.includes("any") ||
+      courseBranches.includes(userBranch);
+
+    if (!branchMatch) return false;
+
+    // ✅ CGPA CHECK
+    if (userCGPA < course.cgpaMin) return false;
+
+    return true;
+  })
+  .map(course => {
+    // 🎯 Skill relevance scoring (ONLY after degree+branch match)
+    let skillScore = 0;
+
+    course.skills.forEach(skill => {
+      if (userSkills.includes(normalize(skill))) {
+        skillScore += 1;
+      }
+    });
+
+    return {
+      ...course,
+      skillScore
+    };
+  })
+  // ❌ Remove courses with ZERO skill relevance
+  .filter(c => c.skillScore > 0)
+  // 🔥 Best matches first
+  .sort((a, b) => b.skillScore - a.skillScore);
+
+  if (recommended.length === 0) {
+  recommended = coursesData.filter(course => {
+    const courseDegrees = normalizeArray(course.degree);
+    const courseBranches = normalizeArray(course.branch);
+
+    return (
+      (courseDegrees.includes("any") || courseDegrees.includes(userDegree)) &&
+      courseBranches.includes("any") &&
+      userCGPA >= course.cgpaMin
+    );
+  });
+}
+
+    console.log("RECOMMENDED COUNT:", recommended.length);
+
+    res.json(recommended);
+  } catch (err) {
+    console.error("COURSE ROUTE ERROR:", err);
+    res.status(500).json([]);
+  }
 });
 
-app.post("/chat", async (req, res) => {
+// ------------------- RECOMMEND INTERNSHIPS -------------------
+app.get("/getRecommendedInternships", async (req, res) => {
   try {
-    const result = await model.generateContent(req.body.message);
-    res.json({ reply: result.response.text() });
+    console.log("HIT /getRecommendedInternships");
+
+    if (!req.session.uid) return res.status(401).json([]);
+
+    const doc = await db.collection("users").doc(req.session.uid).get();
+    if (!doc.exists) return res.json([]);
+
+    const user = doc.data();
+
+    const normalize = (s) => s.toLowerCase().trim();
+    const normalizeArray = (arr) => arr.map(v => normalize(v));
+
+    const userSkills = Array.isArray(user.skills)
+      ? normalizeArray(user.skills)
+      : [];
+
+    const userBranch = user.branch ? normalize(user.branch) : "";
+    const userDegree = user.degree ? normalize(user.degree) : "";
+    const userCGPA = parseFloat(user.cgpa) || 0;
+
+    let recommended = internshipsData
+      .filter(internship => {
+        const internshipDegrees = normalizeArray(internship.degree);
+        const internshipBranches = normalizeArray(internship.branch);
+
+        // ✅ DEGREE MUST MATCH
+        const degreeMatch =
+          internshipDegrees.includes("any") ||
+          internshipDegrees.includes(userDegree);
+
+        if (!degreeMatch) return false;
+
+        // ✅ BRANCH MUST MATCH
+        const branchMatch =
+          internshipBranches.includes("any") ||
+          internshipBranches.includes(userBranch);
+
+        if (!branchMatch) return false;
+
+        // ✅ CGPA CHECK
+        if (userCGPA < internship.cgpaMin) return false;
+
+        return true;
+      })
+      .map(internship => {
+        let skillScore = 0;
+
+        internship.skills.forEach(skill => {
+          if (userSkills.includes(normalize(skill))) {
+            skillScore += 1;
+          }
+        });
+
+        return { ...internship, skillScore };
+      })
+      // ❌ remove irrelevant internships
+      .filter(i => i.skillScore > 0)
+      // 🔥 best matches first
+      .sort((a, b) => b.skillScore - a.skillScore);
+
+    // 🧠 FALLBACK: Degree-only internships
+    if (recommended.length === 0) {
+      recommended = internshipsData.filter(internship => {
+        const internshipDegrees = normalizeArray(internship.degree);
+        const internshipBranches = normalizeArray(internship.branch);
+
+        return (
+          (internshipDegrees.includes("any") ||
+            internshipDegrees.includes(userDegree)) &&
+          internshipBranches.includes("any") &&
+          userCGPA >= internship.cgpaMin
+        );
+      });
+    }
+
+    console.log("INTERNSHIP COUNT:", recommended.length);
+    res.json(recommended);
   } catch (err) {
-    console.error(err);
-    res.json({ reply: "Sorry, I couldn't process your message." });
+    console.error("INTERNSHIP ROUTE ERROR:", err);
+    res.status(500).json([]);
+  }
+});
+
+
+// ------------------- GEMINI CHATBOT (Firestore Integrated) -------------------
+
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+// Try 2.5 first, fallback to gemini-pro
+let model;
+try {
+  model = genAI.getGenerativeModel({
+    model: "gemini-2.5-flash-lite",
+    systemInstruction: `
+ROLE: You are a strict Career and Academic Guidance Chatbot.
+
+GUARDRAILS:
+1. ONLY answer questions related to careers, resumes, skills, and academic paths.
+2. If a user asks about anything else, refuse.
+3. Use this refusal:
+"I apologize, but I am specialized in career and academic guidance only. I cannot provide information on other topics."
+4. Use Markdown: **bold** for careers, bullet points for steps.
+`
+  });
+} catch (e) {
+  // Fallback (guaranteed)
+  model = genAI.getGenerativeModel({
+    model: "gemini-pro",
+    systemInstruction: `
+ROLE: You are a strict Career and Academic Guidance Chatbot.
+(Same guardrails apply)
+`
+  });
+}
+
+app.post("/chat", async (req, res) => {
+  const { message } = req.body;
+  const uid = req.session.uid;
+
+  if (!uid) {
+    return res.status(401).json({ reply: "Please log in to chat." });
+  }
+
+  try {
+    const userDoc = await db.collection("users").doc(uid).get();
+    const userData = userDoc.exists ? userDoc.data() : {};
+
+    const userContext = `
+Student Name: ${userData.fullName || "Student"}
+Year: ${userData.year || "Unknown"}
+Degree: ${userData.degree || "Unknown"}
+Branch: ${userData.branch || "Unknown"}
+Skills: ${(userData.skills || []).join(", ") || "No skills listed yet"}
+`;
+
+    const prompt = `
+Student Data:
+${userContext}
+
+User Message:
+"${message}"
+
+Instructions:
+Provide personalized career advice based on the student's branch and year.
+If the query is off-topic, use the standard refusal.
+`;
+
+    const result = await model.generateContent(prompt);
+    res.json({ reply: result.response.text() });
+
+  } catch (err) {
+    console.error("Chat Error:", err);
+    res.status(500).json({
+      reply:
+        "I apologize, but I'm having trouble connecting to the AI right now."
+    });
   }
 });
 
 // ------------------- LOGOUT -------------------
 app.get("/logout", (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      console.error("Logout error:", err);
-      return res.redirect("/main");
-    }
-    res.clearCookie("connect.sid", { path: "/" });
+  req.session.destroy(() => {
+    res.clearCookie("connect.sid");
     res.redirect("/login?loggedout=true");
   });
 });

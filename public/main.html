@@ -395,33 +395,10 @@ header{
   </div>
 
   <!-- COURSES -->
-  <div class="grid" id="courses">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
-      <div class="card-body">
-        <h3>Web Development</h3>
-        <p>HTML, CSS, JavaScript & React</p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c">
-      <div class="card-body">
-        <h3>Data Science</h3>
-        <p>Python, ML & AI</p>
-      </div>
-    </div>
-  </div>
+  <div class="grid" id="courses"></div>
 
   <!-- INTERNSHIPS -->
-  <div class="grid" id="internships">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0">
-      <div class="card-body">
-        <h3>Software Internship</h3>
-        <p>Industry-level experience</p>
-      </div>
-    </div>
-  </div>
+  <div class="grid" id="internships"></div>
 
 </div>
 <div class="faq">
@@ -565,32 +542,137 @@ document.addEventListener("DOMContentLoaded", () => {
     internships.style.display = "none";
   }
   window.showChat = () => { hideAll(); chatbot.style.display = "block"; };
-  window.showCourses = () => { hideAll(); courses.style.display = "grid"; };
-  window.showInternships = () => { hideAll(); internships.style.display = "grid"; };
+  window.showCourses = () => {
+  hideAll();
+  courses.style.display = "grid";
+  loadCourses();
+  };
+
+  window.showInternships = () => {
+  hideAll();
+  internships.style.display = "grid";
+  loadInternships();
+  };
+
 
   // Chat send
-  sendBtn.onclick = async () => {
+  // Chat sending logic
+sendBtn.onclick = async () => {
     const msg = chatInput.value.trim();
     if (!msg) return;
 
+    // 1. Append User Message
     chatWindow.innerHTML += `<div class="msg user-msg">${msg}</div>`;
     chatInput.value = "";
 
-    try {
-      const res = await fetch("/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: msg }),
-      });
-      const data = await res.json();
+    // 2. Add Loading Indicator
+    const loadingId = "bot-loading-" + Date.now();
+    chatWindow.innerHTML += `<div class="msg bot-msg" id="${loadingId}"><i>Thinking...</i></div>`;
+    chatWindow.scrollTop = chatWindow.scrollHeight;
 
-      chatWindow.innerHTML += `<div class="msg bot-msg">${data.reply}</div>`;
-      chatWindow.scrollTop = chatWindow.scrollHeight;
+    try {
+        const res = await fetch("/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: msg }),
+        });
+        
+        const data = await res.json();
+        
+        // 3. Replace Loading with Actual Reply
+        const loadingElement = document.getElementById(loadingId);
+        if (loadingElement) {
+            // Convert simple Markdown-style bolding from AI
+            loadingElement.innerHTML = data.reply.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+        }
+        
+        chatWindow.scrollTop = chatWindow.scrollHeight;
     } catch (err) {
-      console.error(err);
-      alert("Chat failed");
+        console.error(err);
+        const loadingElement = document.getElementById(loadingId);
+        if (loadingElement) loadingElement.innerText = "Error: Could not connect to AI.";
     }
-  };
+};
+
+// Also allow "Enter" key to send message
+chatInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") sendBtn.click();
+});
+
+  // Courses Loading
+  async function loadCourses() {
+  const coursesGrid = document.getElementById("courses");
+  coursesGrid.innerHTML = "";
+
+  try {
+    const res = await fetch("/getRecommendedCourses");
+    const courses = await res.json();
+
+    if (courses.length === 0) {
+      coursesGrid.innerHTML = "<p style='color:white;'>No courses found for your profile.</p>";
+      return;
+    }
+
+    courses.forEach(course => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <img src="${course.image}">
+        <div class="card-body">
+          <h3>${course.title}</h3>
+          <p>${course.platform}</p>
+          <a href="${course.link}" target="_blank" style="color:#00ffc8;font-weight:bold;">
+            View Course →
+          </a>
+        </div>
+      `;
+      coursesGrid.appendChild(card);
+    });
+  } catch (err) {
+    console.error(err);
+    coursesGrid.innerHTML = "<p>Error loading courses</p>";
+  }
+}
+
+  // Internships Loading
+async function loadInternships() {
+  try {
+    const res = await fetch("/getRecommendedInternships");
+
+    if (!res.ok) throw new Error("Failed to load internships");
+
+    const internships = await res.json();
+    const container = document.getElementById("internships");
+
+    container.innerHTML = "";
+
+    if (internships.length === 0) {
+      container.innerHTML = "<p>No internships found for your profile.</p>";
+      return;
+    }
+
+    internships.forEach(intern => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <img src="${intern.image}" alt="${intern.title}">
+        <h3>${intern.title}</h3>
+        <p><strong>Company:</strong> ${intern.company}</p>
+        <p><strong>Duration:</strong> ${intern.duration}</p>
+        <p><strong>Stipend:</strong> ${intern.stipend}</p>
+        <p><strong>Skills:</strong> ${intern.skills.join(", ")}</p>
+        <a href="${intern.link}" target="_blank">Apply Now</a>
+      `;
+
+      container.appendChild(card);
+    });
+  } catch (err) {
+    console.error("Internship load error:", err);
+  }
+}
+
 
   // Fetch and display username
   fetch('/getUserDetails')
