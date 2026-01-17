@@ -577,19 +577,475 @@ module.exports = [
   platform: "AngelList",
   link: "https://angel.co/jobs",
   image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71"
-}
+},
 
 
 /* ======================= BCOM ======================= */
+{
+  title: "Business Operations Intern",
+  skills: ["business operations", "reporting", "communication"],
+  degree: ["BCOM"],
+  branch: ["General Commerce"],
+  cgpaMin: 5,
+  platform: "Internshala",
+  link: "https://internshala.com/internships/business-internship",
+  image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+},
+{
+  title: "Sales & Commerce Intern",
+  skills: ["sales", "customer handling", "market analysis"],
+  degree: ["BCOM"],
+  branch: ["General Commerce"],
+  cgpaMin: 5,
+  platform: "Indeed",
+  link: "https://in.indeed.com/q-sales-intern-jobs.html",
+  image: "https://images.unsplash.com/photo-1549924231-f129b911e442"
+},
+{
+  title: "Business Research Intern",
+  skills: ["research", "data collection", "analysis"],
+  degree: ["BCOM"],
+  branch: ["General Commerce"],
+  cgpaMin: 6,
+  platform: "LinkedIn",
+  link: "https://www.linkedin.com/jobs/business-research-intern-jobs/",
+  image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df"
+},
+{
+  title: "Supply Chain Intern",
+  skills: ["logistics", "inventory", "coordination"],
+  degree: ["BCOM"],
+  branch: ["General Commerce"],
+  cgpaMin: 5,
+  platform: "Internshala",
+  link: "https://internshala.com/internships/supply-chain-internship",
+  image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d"
+},
+{
+  title: "Operations Management Intern",
+  skills: ["operations", "process improvement", "documentation"],
+  degree: ["BCOM"],
+  branch: ["General Commerce"],
+  cgpaMin: 6,
+  platform: "Indeed",
+  link: "https://in.indeed.com/q-operations-intern-jobs.html",
+  image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e"
+},
+{
+  title: "Accounting Intern",
+  skills: ["accounting", "bookkeeping", "ledger entries"],
+  degree: ["BCOM"],
+  branch: ["Accounting"],
+  cgpaMin: 6,
+  platform: "Internshala",
+  link: "https://internshala.com/internships/accounting-internship",
+  image: "https://images.unsplash.com/photo-1554224154-22dec7ec8818"
+},
+{
+  title: "Finance & Accounts Intern",
+  skills: ["financial reporting", "accounting", "excel"],
+  degree: ["BCOM"],
+  branch: ["Accounting"],
+  cgpaMin: 6,
+  platform: "Indeed",
+  link: "https://in.indeed.com/q-finance-accounting-intern-jobs.html",
+  image: "https://images.unsplash.com/photo-1556761175-4b46a572b786"
+},
+{
+  title: "GST & Taxation Intern",
+  skills: ["gst", "tax filing", "compliance"],
+  degree: ["BCOM"],
+  branch: ["Accounting"],
+  cgpaMin: 5,
+  platform: "Internshala",
+  link: "https://internshala.com/internships/taxation-internship",
+  image: "https://images.unsplash.com/photo-1586486855514-8c633cc6fd38"
+},
+{
+  title: "Audit Intern",
+  skills: ["auditing", "financial analysis", "documentation"],
+  degree: ["BCOM"],
+  branch: ["Accounting"],
+  cgpaMin: 6,
+  platform: "LinkedIn",
+  link: "https://www.linkedin.com/jobs/audit-intern-jobs/",
+  image: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d"
+},
+{
+  title: "Tally ERP Intern",
+  skills: ["tally", "accounting software", "gst"],
+  degree: ["BCOM"],
+  branch: ["Accounting"],
+  cgpaMin: 5,
+  platform: "Udemy",
+  link: "https://www.udemy.com/topic/tally/",
+  image: "https://images.unsplash.com/photo-1605902711622-cfb43c4437d1"
+},
 
 
 /* ======================= BSC ======================= */
-
+{
+  title: "Software Development Intern",
+  company: "TechNova Solutions",
+  skills: ["python", "java", "problem solving"],
+  degree: ["BSC"],
+  branch: ["Computer Science"],
+  duration: "3 Months",
+  stipend: "₹8,000/month",
+  cgpaMin: 6,
+  link: "https://internshala.com/software-development-internship",
+  image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+},
+{
+  title: "Web Development Intern",
+  company: "WebWorks India",
+  skills: ["html", "css", "javascript"],
+  degree: ["BSC"],
+  branch: ["Computer Science"],
+  duration: "2 Months",
+  stipend: "₹6,000/month",
+  cgpaMin: 5,
+  link: "https://internshala.com/web-development-internship",
+  image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+},
+{
+  title: "Data Science Intern",
+  company: "DataMinds",
+  skills: ["python", "statistics", "machine learning"],
+  degree: ["BSC"],
+  branch: ["Computer Science"],
+  duration: "4 Months",
+  stipend: "₹10,000/month",
+  cgpaMin: 7,
+  link: "https://internshala.com/data-science-internship",
+  image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71"
+},
+{
+  title: "Cyber Security Intern",
+  company: "SecureNet",
+  skills: ["networking", "cyber security", "linux"],
+  degree: ["BSC"],
+  branch: ["Computer Science"],
+  duration: "3 Months",
+  stipend: "₹9,000/month",
+  cgpaMin: 6,
+  link: "https://internshala.com/cyber-security-internship",
+  image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b"
+},
+{
+  title: "Database Management Intern",
+  company: "InfoSys Data Labs",
+  skills: ["sql", "dbms", "data handling"],
+  degree: ["BSC"],
+  branch: ["Computer Science"],
+  duration: "2 Months",
+  stipend: "₹7,000/month",
+  cgpaMin: 5,
+  link: "https://internshala.com/database-internship",
+  image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d"
+},
+{
+  title: "Data Analyst Intern",
+  company: "Insight Analytics",
+  skills: ["statistics", "excel", "python"],
+  degree: ["BSC"],
+  branch: ["Mathematics"],
+  duration: "3 Months",
+  stipend: "₹8,000/month",
+  cgpaMin: 6,
+  link: "https://internshala.com/data-analyst-internship",
+  image: "https://images.unsplash.com/photo-1526378722443-4bdaecfa2f77"
+},
+{
+  title: "Operations Research Intern",
+  company: "OptiSolve",
+  skills: ["optimization", "linear programming"],
+  degree: ["BSC"],
+  branch: ["Mathematics"],
+  duration: "2 Months",
+  stipend: "₹6,000/month",
+  cgpaMin: 6,
+  link: "https://internshala.com/operations-research-internship",
+  image: "https://images.unsplash.com/photo-1509228468518-180dd4864904"
+},
+{
+  title: "Business Analytics Intern",
+  company: "BizMetrics",
+  skills: ["statistics", "data analysis", "excel"],
+  degree: ["BSC"],
+  branch: ["Mathematics"],
+  duration: "3 Months",
+  stipend: "₹7,000/month",
+  cgpaMin: 5,
+  link: "https://internshala.com/business-analytics-internship",
+  image: "https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0"
+},
+{
+  title: "Research Assistant Intern",
+  company: "Math Research Lab",
+  skills: ["mathematical modeling", "research"],
+  degree: ["BSC"],
+  branch: ["Mathematics"],
+  duration: "4 Months",
+  stipend: "₹9,000/month",
+  cgpaMin: 7,
+  link: "https://internshala.com/research-internship",
+  image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb"
+},
+{
+  title: "Quantitative Analysis Intern",
+  company: "FinQuant",
+  skills: ["probability", "statistics", "analysis"],
+  degree: ["BSC"],
+  branch: ["Mathematics"],
+  duration: "3 Months",
+  stipend: "₹10,000/month",
+  cgpaMin: 7,
+  link: "https://internshala.com/quantitative-analyst-internship",
+  image: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f"
+},
+{
+  title: "Physics Research Intern",
+  company: "National Research Lab",
+  skills: ["research", "data analysis", "physics concepts"],
+  degree: ["BSC"],
+  branch: ["Physics"],
+  duration: "4 Months",
+  stipend: "₹8,000/month",
+  cgpaMin: 6,
+  link: "https://internshala.com/physics-research-internship",
+  image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31"
+},
+{
+  title: "Astrophysics Intern",
+  company: "Space Science Center",
+  skills: ["astrophysics", "data modeling"],
+  degree: ["BSC"],
+  branch: ["Physics"],
+  duration: "3 Months",
+  stipend: "₹10,000/month",
+  cgpaMin: 7,
+  link: "https://internshala.com/astrophysics-internship",
+  image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa"
+},
+{
+  title: "Electronics & Instrumentation Intern",
+  company: "ElectroLabs",
+  skills: ["electronics", "instrumentation"],
+  degree: ["BSC"],
+  branch: ["Physics"],
+  duration: "2 Months",
+  stipend: "₹6,000/month",
+  cgpaMin: 5,
+  link: "https://internshala.com/electronics-internship",
+  image: "https://images.unsplash.com/photo-1518770660439-4636190af475"
+},
+{
+  title: "Computational Physics Intern",
+  company: "SimuTech",
+  skills: ["python", "simulation", "numerical methods"],
+  degree: ["BSC"],
+  branch: ["Physics"],
+  duration: "3 Months",
+  stipend: "₹9,000/month",
+  cgpaMin: 6,
+  link: "https://internshala.com/computational-physics-internship",
+  image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+},
+{
+  title: "Laboratory Assistant Intern",
+  company: "Advanced Physics Lab",
+  skills: ["experiments", "data recording"],
+  degree: ["BSC"],
+  branch: ["Physics"],
+  duration: "2 Months",
+  stipend: "₹5,000/month",
+  cgpaMin: 5,
+  link: "https://internshala.com/lab-assistant-internship",
+  image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d"
+},
 
 
 /* ======================= BED ======================= */
-
-
-
+{
+  title: "English Teaching Intern",
+  company: "ABC International School",
+  skills: ["communication", "lesson planning", "grammar"],
+  degree: ["BED"],
+  branch: ["English"],
+  cgpaMin: 5,
+  duration: "3 Months",
+  stipend: "₹5,000/month",
+  link: "https://internshala.com/english-teaching-internship",
+  image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f"
+},
+{
+  title: "Content Writing & Teaching Intern",
+  company: "EduLearn Academy",
+  skills: ["creative writing", "content development"],
+  degree: ["BED"],
+  branch: ["English"],
+  cgpaMin: 5,
+  duration: "2 Months",
+  stipend: "₹4,000/month",
+  link: "https://internshala.com/content-writing-internship",
+  image: "https://images.unsplash.com/photo-1455390582262-044cdead277a"
+},
+{
+  title: "Online English Tutor Intern",
+  company: "Vedantu",
+  skills: ["online teaching", "communication"],
+  degree: ["BED"],
+  branch: ["English"],
+  cgpaMin: 6,
+  duration: "3 Months",
+  stipend: "₹6,000/month",
+  link: "https://www.vedantu.com/careers",
+  image: "https://images.unsplash.com/photo-1519681393784-d120267933ba"
+},
+{
+  title: "Spoken English Trainer Intern",
+  company: "British Council Partner",
+  skills: ["spoken english", "presentation"],
+  degree: ["BED"],
+  branch: ["English"],
+  cgpaMin: 6,
+  duration: "2 Months",
+  stipend: "₹7,000/month",
+  link: "https://internshala.com/spoken-english-internship",
+  image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+},
+{
+  title: "English Curriculum Developer Intern",
+  company: "EdTech Solutions",
+  skills: ["curriculum design", "lesson planning"],
+  degree: ["BED"],
+  branch: ["English"],
+  cgpaMin: 6,
+  duration: "3 Months",
+  stipend: "₹8,000/month",
+  link: "https://internshala.com/curriculum-development-internship",
+  image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
+},
+{
+  title: "Science Teaching Intern",
+  company: "Green Valley School",
+  skills: ["lesson planning", "scientific thinking"],
+  degree: ["BED"],
+  branch: ["Science"],
+  cgpaMin: 5,
+  duration: "3 Months",
+  stipend: "₹5,000/month",
+  link: "https://internshala.com/science-teaching-internship",
+  image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d"
+},
+{
+  title: "STEM Education Intern",
+  company: "STEM India",
+  skills: ["stem", "problem solving"],
+  degree: ["BED"],
+  branch: ["Science"],
+  cgpaMin: 6,
+  duration: "2 Months",
+  stipend: "₹6,000/month",
+  link: "https://internshala.com/stem-internship",
+  image: "https://images.unsplash.com/photo-1581091012184-7c54ab2f7b83"
+},
+{
+  title: "Virtual Lab Assistant Intern",
+  company: "Virtual Labs IIT",
+  skills: ["virtual labs", "experiments"],
+  degree: ["BED"],
+  branch: ["Science"],
+  cgpaMin: 5,
+  duration: "3 Months",
+  stipend: "₹4,000/month",
+  link: "https://www.vlab.co.in/",
+  image: "https://images.unsplash.com/photo-1526378722443-4bdaecfa2f77"
+},
+{
+  title: "Science Content Developer Intern",
+  company: "Byju's",
+  skills: ["content creation", "science concepts"],
+  degree: ["BED"],
+  branch: ["Science"],
+  cgpaMin: 6,
+  duration: "2 Months",
+  stipend: "₹8,000/month",
+  link: "https://byjus.com/careers/",
+  image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644"
+},
+{
+  title: "Laboratory Management Intern",
+  company: "EduLabs",
+  skills: ["lab safety", "equipment handling"],
+  degree: ["BED"],
+  branch: ["Science"],
+  cgpaMin: 5,
+  duration: "3 Months",
+  stipend: "₹5,500/month",
+  link: "https://internshala.com/lab-internship",
+  image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31"
+},
+{
+  title: "Special Education Teaching Intern",
+  company: "Hope Special School",
+  skills: ["inclusive education", "student support"],
+  degree: ["BED"],
+  branch: ["Special Education"],
+  cgpaMin: 5,
+  duration: "3 Months",
+  stipend: "₹6,000/month",
+  link: "https://internshala.com/special-education-internship",
+  image: "https://images.unsplash.com/photo-1509062522246-3755977927d7"
+},
+{
+  title: "Inclusive Classroom Assistant Intern",
+  company: "Inclusive India Foundation",
+  skills: ["classroom management", "inclusion"],
+  degree: ["BED"],
+  branch: ["Special Education"],
+  cgpaMin: 6,
+  duration: "2 Months",
+  stipend: "₹5,000/month",
+  link: "https://internshala.com/inclusive-education-internship",
+  image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+},
+{
+  title: "Learning Disability Support Intern",
+  company: "MindBridge Center",
+  skills: ["assessment", "learning support"],
+  degree: ["BED"],
+  branch: ["Special Education"],
+  cgpaMin: 5,
+  duration: "3 Months",
+  stipend: "₹7,000/month",
+  link: "https://internshala.com/learning-disability-internship",
+  image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2"
+},
+{
+  title: "Behavior Therapy Assistant Intern",
+  company: "ChildCare Clinic",
+  skills: ["behavior analysis", "counseling"],
+  degree: ["BED"],
+  branch: ["Special Education"],
+  cgpaMin: 6,
+  duration: "2 Months",
+  stipend: "₹8,000/month",
+  link: "https://internshala.com/behavior-therapy-internship",
+  image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b"
+},
+{
+  title: "Assistive Technology Intern",
+  company: "Enable India",
+  skills: ["assistive tools", "technology integration"],
+  degree: ["BED"],
+  branch: ["Special Education"],
+  cgpaMin: 6,
+  duration: "3 Months",
+  stipend: "₹9,000/month",
+  link: "https://enableindia.org/careers/",
+  image: "https://images.unsplash.com/photo-1584697964192-0b3b9c2c8c4f"
+}
 ];
 

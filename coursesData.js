@@ -505,16 +505,414 @@ module.exports = [
   platform: "Coursera",
   link: "https://www.coursera.org/learn/hr-analytics",
   image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71"
-}
+},
 
 
 /* ======================= BCOM ======================= */
+{
+  title: "Business Foundations",
+  skills: ["business basics", "economics", "management"],
+  degree: ["BCOM"],
+  branch: ["General Commerce"],
+  cgpaMin: 5,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/business-foundations",
+  image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+},
+{
+  title: "Introduction to Economics",
+  skills: ["microeconomics", "macroeconomics"],
+  degree: ["BCOM"],
+  branch: ["General Commerce"],
+  cgpaMin: 5,
+  platform: "edX",
+  link: "https://www.edx.org/learn/economics",
+  image: "https://images.unsplash.com/photo-1454165205744-3b78555e5572"
+},
+{
+  title: "Business Communication Skills",
+  skills: ["communication", "presentation", "writing"],
+  degree: ["BCOM"],
+  branch: ["General Commerce"],
+  cgpaMin: 5,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/business-communication",
+  image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+},
+{
+  title: "Principles of Management",
+  skills: ["management", "leadership", "planning"],
+  degree: ["BCOM"],
+  branch: ["General Commerce"],
+  cgpaMin: 5,
+  platform: "NPTEL",
+  link: "https://nptel.ac.in/courses/110/107/110107113/",
+  image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e"
+},
+{
+  title: "Business Law Basics",
+  skills: ["business law", "contracts", "compliance"],
+  degree: ["BCOM"],
+  branch: ["General Commerce"],
+  cgpaMin: 5,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/business-law",
+  image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f"
+},
+{
+  title: "Financial Accounting Fundamentals",
+  skills: ["accounting", "financial statements"],
+  degree: ["BCOM"],
+  branch: ["Accounting"],
+  cgpaMin: 6,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/financial-accounting",
+  image: "https://images.unsplash.com/photo-1554224154-22dec7ec8818"
+},
+{
+  title: "Management Accounting",
+  skills: ["costing", "budgeting", "analysis"],
+  degree: ["BCOM"],
+  branch: ["Accounting"],
+  cgpaMin: 6,
+  platform: "NPTEL",
+  link: "https://nptel.ac.in/courses/110/105/110105114/",
+  image: "https://images.unsplash.com/photo-1605902711622-cfb43c4437d1"
+},
+{
+  title: "Tally ERP with GST",
+  skills: ["tally", "gst", "taxation"],
+  degree: ["BCOM"],
+  branch: ["Accounting"],
+  cgpaMin: 5,
+  platform: "Udemy",
+  link: "https://www.udemy.com/course/tally-erp-9-with-gst/",
+  image: "https://images.unsplash.com/photo-1556155092-490a1ba16284"
+},
+{
+  title: "Corporate Accounting",
+  skills: ["company accounts", "final accounts"],
+  degree: ["BCOM"],
+  branch: ["Accounting"],
+  cgpaMin: 6,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/corporate-accounting",
+  image: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d"
+},
+{
+  title: "Income Tax Fundamentals",
+  skills: ["income tax", "tax planning"],
+  degree: ["BCOM"],
+  branch: ["Accounting"],
+  cgpaMin: 5,
+  platform: "NPTEL",
+  link: "https://nptel.ac.in/courses/110/105/110105121/",
+  image: "https://images.unsplash.com/photo-1586486855514-8c633cc6fd38"
+},
 
 
 /* ======================= BSC ======================= */
-
+{
+  title: "Python Programming for Computer Science",
+  skills: ["python", "programming", "algorithms"],
+  degree: ["BSC"],
+  branch: ["Computer Science"],
+  cgpaMin: 5,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/python",
+  image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4"
+},
+{
+  title: "Data Structures & Algorithms",
+  skills: ["data structures", "algorithms", "problem solving"],
+  degree: ["BSC"],
+  branch: ["Computer Science"],
+  cgpaMin: 6,
+  platform: "NPTEL",
+  link: "https://nptel.ac.in/courses/106106127",
+  image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c"
+},
+{
+  title: "Database Management Systems",
+  skills: ["sql", "dbms", "databases"],
+  degree: ["BSC"],
+  branch: ["Computer Science"],
+  cgpaMin: 5,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/dbms",
+  image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d"
+},
+{
+  title: "Operating Systems Fundamentals",
+  skills: ["operating systems", "processes", "memory management"],
+  degree: ["BSC"],
+  branch: ["Computer Science"],
+  cgpaMin: 6,
+  platform: "NPTEL",
+  link: "https://nptel.ac.in/courses/106102132",
+  image: "https://images.unsplash.com/photo-1581090700227-1e37b190418e"
+},
+{
+  title: "Web Development Basics",
+  skills: ["html", "css", "javascript"],
+  degree: ["BSC"],
+  branch: ["Computer Science"],
+  cgpaMin: 5,
+  platform: "Udemy",
+  link: "https://www.udemy.com/course/web-development/",
+  image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+},
+{
+  title: "Linear Algebra for Scientists",
+  skills: ["linear algebra", "matrices", "vectors"],
+  degree: ["BSC"],
+  branch: ["Mathematics"],
+  cgpaMin: 5,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/linear-algebra-machine-learning",
+  image: "https://images.unsplash.com/photo-1509228468518-180dd4864904"
+},
+{
+  title: "Probability & Statistics",
+  skills: ["probability", "statistics", "data analysis"],
+  degree: ["BSC"],
+  branch: ["Mathematics"],
+  cgpaMin: 6,
+  platform: "NPTEL",
+  link: "https://nptel.ac.in/courses/111105041",
+  image: "https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0"
+},
+{
+  title: "Discrete Mathematics",
+  skills: ["logic", "sets", "graph theory"],
+  degree: ["BSC"],
+  branch: ["Mathematics"],
+  cgpaMin: 5,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/discrete-mathematics",
+  image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb"
+},
+{
+  title: "Numerical Methods",
+  skills: ["numerical analysis", "computations", "matlab"],
+  degree: ["BSC"],
+  branch: ["Mathematics"],
+  cgpaMin: 6,
+  platform: "NPTEL",
+  link: "https://nptel.ac.in/courses/111106130",
+  image: "https://images.unsplash.com/photo-1526378722443-4bdaecfa2f77"
+},
+{
+  title: "Mathematics for Data Science",
+  skills: ["statistics", "linear algebra", "data science"],
+  degree: ["BSC"],
+  branch: ["Mathematics"],
+  cgpaMin: 6,
+  platform: "Coursera",
+  link: "https://www.coursera.org/specializations/mathematics-for-data-science",
+  image: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f"
+},
+{
+  title: "Classical Mechanics",
+  skills: ["mechanics", "motion", "laws of physics"],
+  degree: ["BSC"],
+  branch: ["Physics"],
+  cgpaMin: 5,
+  platform: "NPTEL",
+  link: "https://nptel.ac.in/courses/115101005",
+  image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31"
+},
+{
+  title: "Quantum Mechanics Fundamentals",
+  skills: ["quantum mechanics", "wave functions", "operators"],
+  degree: ["BSC"],
+  branch: ["Physics"],
+  cgpaMin: 7,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/quantum-mechanics",
+  image: "https://images.unsplash.com/photo-1581092334504-06c3f8a15d5d"
+},
+{
+  title: "Electromagnetism",
+  skills: ["electromagnetism", "fields", "maxwell equations"],
+  degree: ["BSC"],
+  branch: ["Physics"],
+  cgpaMin: 6,
+  platform: "NPTEL",
+  link: "https://nptel.ac.in/courses/115106061",
+  image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87"
+},
+{
+  title: "Computational Physics",
+  skills: ["python", "simulation", "numerical methods"],
+  degree: ["BSC"],
+  branch: ["Physics"],
+  cgpaMin: 6,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/computational-physics",
+  image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+},
+{
+  title: "Modern Physics",
+  skills: ["relativity", "quantum theory", "atomic physics"],
+  degree: ["BSC"],
+  branch: ["Physics"],
+  cgpaMin: 5,
+  platform: "Udemy",
+  link: "https://www.udemy.com/course/modern-physics/",
+  image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d"
+},
 
 
 /* ======================= BED ======================= */
-
+{
+  title: "English Language Teaching (ELT)",
+  skills: ["grammar", "communication", "lesson planning"],
+  degree: ["BED"],
+  branch: ["English"],
+  cgpaMin: 5,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/english-language-teaching",
+  image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f"
+},
+{
+  title: "Creative Writing for Teachers",
+  skills: ["creative writing", "storytelling"],
+  degree: ["BED"],
+  branch: ["English"],
+  cgpaMin: 5,
+  platform: "Udemy",
+  link: "https://www.udemy.com/course/creative-writing/",
+  image: "https://images.unsplash.com/photo-1455390582262-044cdead277a"
+},
+{
+  title: "Teaching English Grammar Effectively",
+  skills: ["grammar", "teaching methods"],
+  degree: ["BED"],
+  branch: ["English"],
+  cgpaMin: 6,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/teaching-grammar",
+  image: "https://images.unsplash.com/photo-1519681393784-d120267933ba"
+},
+{
+  title: "Communication Skills for Teachers",
+  skills: ["communication", "presentation"],
+  degree: ["BED"],
+  branch: ["English"],
+  cgpaMin: 5,
+  platform: "edX",
+  link: "https://www.edx.org/course/communication-skills",
+  image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+},
+{
+  title: "Digital Tools for English Teachers",
+  skills: ["digital teaching", "online tools"],
+  degree: ["BED"],
+  branch: ["English"],
+  cgpaMin: 6,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/digital-teaching",
+  image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
+},
+{
+  title: "Modern Teaching Methods in Science",
+  skills: ["lesson planning", "scientific thinking"],
+  degree: ["BED"],
+  branch: ["Science"],
+  cgpaMin: 5,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/science-teaching",
+  image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d"
+},
+{
+  title: "STEM Education for Teachers",
+  skills: ["stem", "experiential learning"],
+  degree: ["BED"],
+  branch: ["Science"],
+  cgpaMin: 6,
+  platform: "edX",
+  link: "https://www.edx.org/course/stem-education",
+  image: "https://images.unsplash.com/photo-1581091012184-7c54ab2f7b83"
+},
+{
+  title: "Online Science Teaching Tools",
+  skills: ["virtual labs", "online teaching"],
+  degree: ["BED"],
+  branch: ["Science"],
+  cgpaMin: 5,
+  platform: "Udemy",
+  link: "https://www.udemy.com/course/online-teaching-tools/",
+  image: "https://images.unsplash.com/photo-1526378722443-4bdaecfa2f77"
+},
+{
+  title: "Educational Psychology for Science Teachers",
+  skills: ["psychology", "student assessment"],
+  degree: ["BED"],
+  branch: ["Science"],
+  cgpaMin: 6,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/educational-psychology",
+  image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644"
+},
+{
+  title: "Practical Laboratory Management",
+  skills: ["lab safety", "experiments"],
+  degree: ["BED"],
+  branch: ["Science"],
+  cgpaMin: 5,
+  platform: "edX",
+  link: "https://www.edx.org/course/laboratory-management",
+  image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31"
+},
+{
+  title: "Foundations of Special Education",
+  skills: ["inclusive education", "student support"],
+  degree: ["BED"],
+  branch: ["Special Education"],
+  cgpaMin: 5,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/special-education",
+  image: "https://images.unsplash.com/photo-1509062522246-3755977927d7"
+},
+{
+  title: "Inclusive Classroom Strategies",
+  skills: ["classroom management", "inclusion"],
+  degree: ["BED"],
+  branch: ["Special Education"],
+  cgpaMin: 6,
+  platform: "edX",
+  link: "https://www.edx.org/course/inclusive-teaching",
+  image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+},
+{
+  title: "Teaching Students with Learning Disabilities",
+  skills: ["learning support", "assessment"],
+  degree: ["BED"],
+  branch: ["Special Education"],
+  cgpaMin: 5,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/learning-disabilities",
+  image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2"
+},
+{
+  title: "Behavior Management in Special Education",
+  skills: ["behavior analysis", "student counseling"],
+  degree: ["BED"],
+  branch: ["Special Education"],
+  cgpaMin: 6,
+  platform: "Udemy",
+  link: "https://www.udemy.com/course/behavior-management/",
+  image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b"
+},
+{
+  title: "Assistive Technology in Education",
+  skills: ["assistive tools", "technology integration"],
+  degree: ["BED"],
+  branch: ["Special Education"],
+  cgpaMin: 6,
+  platform: "Coursera",
+  link: "https://www.coursera.org/learn/assistive-technology",
+  image: "https://images.unsplash.com/photo-1584697964192-0b3b9c2c8c4f"
+}
 ];
