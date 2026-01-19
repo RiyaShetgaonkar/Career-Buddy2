@@ -3,13 +3,13 @@
 module.exports = [
   /* ======================= BCA ======================= */
   {
-  title: "Computer Applications Fundamentals",
+  title: "Introduction to Computer Science and Programming Specialization",
   skills: ["computer basics", "ms office", "problem solving"],
   degree: ["BCA"],
   branch: ["Computer Applications"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/computer-applications",
+  link: "https://www.coursera.org/specializations/introduction-computer-science-programming",
   image: "https://images.unsplash.com/photo-1517433456452-f9633a875f6f"
 },
 {
@@ -20,7 +20,7 @@ module.exports = [
   cgpaMin: 5,
   platform: "NPTEL",
   link: "https://nptel.ac.in/courses/106105085",
-  image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c"
+  image: "https://media.istockphoto.com/id/1254025801/photo/programming-html-application-code-running-down-a-computer-screen.jpg?b=1&s=170667a&w=0&k=20&c=Rmg7kP0Ds1SCJs6tpg1SCcf1xI6h74dszrEUEtAvTxk="
 },
 {
   title: "Java Programming Basics",
@@ -30,7 +30,7 @@ module.exports = [
   cgpaMin: 6,
   platform: "Udemy",
   link: "https://www.udemy.com/course/java-programming-tutorial-for-beginners/",
-  image: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f"
+  image: "https://unsplash.com/photos/man-using-macbook-pro-turned-on-showing-programming-language-npxXWgQ33ZQ"
 },
 {
   title: "Database Management Systems",
@@ -80,7 +80,7 @@ module.exports = [
   cgpaMin: 5,
   platform: "Coursera",
   link: "https://www.coursera.org/learn/object-oriented-java",
-  image: "https://images.unsplash.com/photo-1505685296765-3a2736de412f"
+  image: "https://miro.medium.com/v2/resize:fit:606/1*JmWdCHO1Ex8xtarkkgcrpA.png"
 },
 {
   title: "Software Engineering Fundamentals",
@@ -89,7 +89,7 @@ module.exports = [
   branch: ["Software Development"],
   cgpaMin: 5,
   platform: "NPTEL",
-  link: "https://nptel.ac.in/courses/106103115",
+  link: "https://nptel.ac.in/courses/106105182",
   image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c"
 },
 {
@@ -129,8 +129,8 @@ module.exports = [
   branch: ["Data Science"],
   cgpaMin: 5,
   platform: "Udemy",
-  link: "https://www.udemy.com/course/python-data-visualization/",
-  image: "https://images.unsplash.com/photo-1526378722484-cc5c5102d6c6"
+  link: "https://www.udemy.com/course/python-data-visualization-matplotlib-seaborn/",
+  image: "https://tse3.mm.bing.net/th/id/OIP.sJmlKLNI4koap9lXPqczAAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3"
 },
 {
   title: "Machine Learning Basics",
@@ -140,17 +140,17 @@ module.exports = [
   cgpaMin: 7,
   platform: "Coursera",
   link: "https://www.coursera.org/learn/machine-learning",
-  image: "https://images.unsplash.com/photo-1504639725590-34d0984388bd"
+  image: "https://miro.medium.com/v2/resize:fit:1358/1*cG6U1qstYDijh9bPL42e-Q.jpeg"
 },
 {
-  title: "SQL for Data Analysis",
+  title: "SQL for Data Science",
   skills: ["sql", "data querying"],
   degree: ["BCA"],
   branch: ["Data Science"],
   cgpaMin: 5,
   platform: "Coursera",
   link: "https://www.coursera.org/learn/sql-for-data-science",
-  image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d"
+  image: "https://tse2.mm.bing.net/th/id/OIP.c0rj0ek9RCUx8eR77MTgGwHaE8?rs=1&pid=ImgDetMain&o=7&rm=3"
 },
 /* ======================= BE ======================= */
 {
@@ -160,8 +160,8 @@ module.exports = [
   branch: ["Computer Science Engineering"],
   cgpaMin: 6,
   platform: "Coursera",
-  link: "https://www.coursera.org/",
-  image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4"
+  link: "https://www.coursera.org/learn/msft-data-structures-and-algorithms",
+  image: "https://cdn.prod.website-files.com/5dcc7f8c449e597be23356e0/65788300e4727694b6898722_top-algorithms-and-data-structures-you-really-need-to-know-blog-hero-image.webp"
 },
 {
   title: "Operating Systems Fundamentals",
@@ -170,8 +170,8 @@ module.exports = [
   branch: ["Computer Science Engineering"],
   cgpaMin: 6,
   platform: "NPTEL",
-  link: "https://nptel.ac.in/",
-  image: "https://images.unsplash.com/photo-1581092334391-5a4e97d5c9f1"
+  link: "https://nptel.ac.in/courses/106105214",
+  image: "https://tse2.mm.bing.net/th/id/OIP.yKaqOU3mLwyKhz7u9GD3sQHaEy?rs=1&pid=ImgDetMain&o=7&rm=3"
 },
 {
   title: "Database Management Systems",
@@ -180,7 +180,7 @@ module.exports = [
   branch: ["Computer Science Engineering"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/",
+  link: "https://www.coursera.org/learn/database-management",
   image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d"
 },
 {
@@ -190,8 +190,8 @@ module.exports = [
   branch: ["Computer Science Engineering"],
   cgpaMin: 6,
   platform: "NPTEL",
-  link: "https://nptel.ac.in/",
-  image: "https://images.unsplash.com/photo-1581090700227-1e37b190418e"
+  link: "https://nptel.ac.in/courses/106105183",
+  image: "https://technetworks.ca/wp-content/uploads/2025/01/what-is-the-primary-function-of-a-computer-network.jpg"
 },
 {
   title: "Software Engineering Principles",
@@ -200,7 +200,7 @@ module.exports = [
   branch: ["Computer Science Engineering"],
   cgpaMin: 5,
   platform: "Udemy",
-  link: "https://www.udemy.com/",
+  link: "https://www.udemy.com/course/software-engineering-101/",
   image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c"
 },
 {
@@ -210,8 +210,8 @@ module.exports = [
   branch: ["Information Technology"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/",
-  image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+  link: "https://www.coursera.org/specializations/html-css-javascript-for-web-developers",
+  image: "https://miro.medium.com/v2/resize:fit:1079/1*C5r9AP9QuGMduyp_J5QtiQ.jpeg"
 },
 {
   title: "Cloud Computing Basics",
@@ -221,16 +221,16 @@ module.exports = [
   cgpaMin: 6,
   platform: "AWS",
   link: "https://aws.amazon.com/training/",
-  image: "https://images.unsplash.com/photo-1504639725590-34d0984388bd"
+  image: "https://donklephant.com/wp-content/uploads/2018/09/future-of-cloud-computing.jpeg"
 },
 {
-  title: "Cyber Security Fundamentals",
+  title: "Foundations of Cybersecurity",
   skills: ["cyber security", "network security"],
   degree: ["BE"],
   branch: ["Information Technology"],
   cgpaMin: 6,
   platform: "Coursera",
-  link: "https://www.coursera.org/",
+  link: "https://www.coursera.org/learn/foundations-of-cybersecurity",
   image: "https://images.unsplash.com/photo-1510511459019-5dda7724fd87"
 },
 {
@@ -240,7 +240,7 @@ module.exports = [
   branch: ["Information Technology"],
   cgpaMin: 5,
   platform: "Udemy",
-  link: "https://www.udemy.com/",
+  link: "https://www.udemy.com/course/python-automation-basics-streamline-it-tasks/",
   image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4"
 },
 {
@@ -250,7 +250,7 @@ module.exports = [
   branch: ["Information Technology"],
   cgpaMin: 6,
   platform: "Coursera",
-  link: "https://www.coursera.org/",
+  link: "https://www.coursera.org/professional-certificates/ibm-it-project-manager",
   image: "https://images.unsplash.com/photo-1552664730-d307ca884978"
 },
 {
@@ -260,8 +260,8 @@ module.exports = [
   branch: ["Mechanical Engineering"],
   cgpaMin: 5,
   platform: "NPTEL",
-  link: "https://nptel.ac.in/",
-  image: "https://images.unsplash.com/photo-1509395176047-4a66953fd231"
+  link: "https://onlinecourses.nptel.ac.in/noc24_me146/preview",
+  image: "https://www.careerpower.in/blog/wp-content/uploads/sites/2/2024/01/09162453/thermodynamics-2-1.png"
 },
 {
   title: "CAD using AutoCAD",
@@ -270,8 +270,8 @@ module.exports = [
   branch: ["Mechanical Engineering"],
   cgpaMin: 5,
   platform: "Udemy",
-  link: "https://www.udemy.com/",
-  image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789"
+  link: "https://www.udemy.com/course/autodesk-autocad-beginner-to-an-advanced-level/",
+  image: "https://i.all3dp.com/workers/images/fit=scale-down,w=1200,h=675,gravity=0.5x0.5,format=auto/wp-content/uploads/2021/05/11152005/autocad-is-a-professional-cad-software-used-by-man-totalcad-210325.jpg"
 },
 {
   title: "Manufacturing Processes",
@@ -280,8 +280,8 @@ module.exports = [
   branch: ["Mechanical Engineering"],
   cgpaMin: 6,
   platform: "Coursera",
-  link: "https://www.coursera.org/",
-  image: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc"
+  link: "https://www.coursera.org/specializations/additive-manufacturing",
+  image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789"
 },
 {
   title: "Fluid Mechanics",
@@ -290,8 +290,8 @@ module.exports = [
   branch: ["Mechanical Engineering"],
   cgpaMin: 6,
   platform: "NPTEL",
-  link: "https://nptel.ac.in/",
-  image: "https://images.unsplash.com/photo-1581090700227-1e37b190418e"
+  link: "https://nptel.ac.in/courses/105103192",
+  image: "https://th.bing.com/th/id/OIP.gCvPpEVI_yx6xDzRm_HmwgHaE8?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3"
 },
 {
   title: "Robotics Basics",
@@ -300,8 +300,8 @@ module.exports = [
   branch: ["Mechanical Engineering"],
   cgpaMin: 6,
   platform: "Coursera",
-  link: "https://www.coursera.org/",
-  image: "https://images.unsplash.com/photo-1504639725590-34d0984388bd"
+  link: "https://www.coursera.org/learn/siemens-robotics-course",
+  image: "https://assets.skyfilabs.com/playto/blog-images/robotics-for-beginners-v3.webp"
 },
 {
   title: "Structural Analysis",
@@ -310,17 +310,17 @@ module.exports = [
   branch: ["Civil Engineering"],
   cgpaMin: 6,
   platform: "NPTEL",
-  link: "https://nptel.ac.in/",
+  link: "https://onlinecourses.nptel.ac.in/noc25_ce54/preview",
   image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e"
 },
 {
-  title: "Construction Planning & Management",
+  title: "Construction Management",
   skills: ["project planning", "management"],
   degree: ["BE"],
   branch: ["Civil Engineering"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/",
+  link: "https://www.coursera.org/specializations/construction-management",
   image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5"
 },
 {
@@ -330,8 +330,8 @@ module.exports = [
   branch: ["Civil Engineering"],
   cgpaMin: 5,
   platform: "Udemy",
-  link: "https://www.udemy.com/",
-  image: "https://images.unsplash.com/photo-1581090700227-1e37b190418e"
+  link: "https://www.udemy.com/course/professional-autocad-mastery-beginner-to-pro-in-autocad/",
+  image: "https://edstelearning.com/wp-content/uploads/2019/03/AutoCAD-Civil-2D-Drafting_1200.png"
 },
 {
   title: "Geotechnical Engineering",
@@ -340,18 +340,18 @@ module.exports = [
   branch: ["Civil Engineering"],
   cgpaMin: 6,
   platform: "NPTEL",
-  link: "https://nptel.ac.in/",
-  image: "https://images.unsplash.com/photo-1504306669229-14d0d7c0c7c5"
+  link: "https://nptel.ac.in/courses/105101201",
+  image: "https://blog.novatr.com/hs-fs/hubfs/Geotechnical%20Engineer%20Surveying%20a%20land.jpg?width=1980&height=1320&name=Geotechnical%20Engineer%20Surveying%20a%20land.jpg"
 },
 {
-  title: "Environmental Engineering",
+  title: "Global Environmental Management",
   skills: ["water treatment", "environment"],
   degree: ["BE"],
   branch: ["Civil Engineering"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/",
-  image: "https://images.unsplash.com/photo-1509395176047-4a66953fd231"
+  link: "https://www.coursera.org/learn/global-environmental-management",
+  image: "https://www.carrollengineering.com/wp-content/uploads/2021/06/AdobeStock_307688076-scaled.jpeg"
 },
 
 
@@ -404,7 +404,7 @@ module.exports = [
   cgpaMin: 0,
   platform: "Udemy",
   link: "https://www.udemy.com/course/excel-for-finance",
-  image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71"
+  image: "https://www.smartsheet.com/sites/default/files/2025-02/IC-Excel-5-Year-Financial-Planning-Template-12332_Example.png"
 },
 {
   title: "Digital Marketing Specialization",
@@ -464,7 +464,7 @@ module.exports = [
   cgpaMin: 5,
   platform: "Coursera",
   link: "https://www.coursera.org/learn/human-resource-management",
-  image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+  image: "https://jadeer.ai/wp-content/uploads/2023/11/ethics-fair-treatment-in-human-resources-management_.jpg"
 },
 {
   title: "Talent Acquisition & Recruitment",
@@ -474,7 +474,7 @@ module.exports = [
   cgpaMin: 5,
   platform: "Udemy",
   link: "https://www.udemy.com/course/talent-acquisition",
-  image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c"
+  image: "https://articleimg.lorman.com/blog/content/101_INNOVATION.png"
 },
 {
   title: "Organizational Behavior",
@@ -494,7 +494,7 @@ module.exports = [
   cgpaMin: 5,
   platform: "Coursera",
   link: "https://www.coursera.org/learn/performance-management",
-  image: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70"
+  image: "https://performance.eleapsoftware.com/wp-content/uploads/2020/08/performance-management-process-scaled.jpg"
 },
 {
   title: "HR Analytics",
@@ -504,7 +504,7 @@ module.exports = [
   cgpaMin: 6,
   platform: "Coursera",
   link: "https://www.coursera.org/learn/hr-analytics",
-  image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71"
+  image: "https://media.invisioncic.com/r273034/monthly_2023_04/large.IMG_20230309_182701_678.jpg.8622b05053a024b6eabf505f7a36fa48.jpg"
 },
 
 
@@ -517,7 +517,7 @@ module.exports = [
   cgpaMin: 5,
   platform: "Coursera",
   link: "https://www.coursera.org/learn/business-foundations",
-  image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+  image: "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/338931081/original/624ae7545babb38bf269d63eb9c0f63c1c92131a/be-your-coach-for-your-business-foundations.png"
 },
 {
   title: "Introduction to Economics",
@@ -527,7 +527,7 @@ module.exports = [
   cgpaMin: 5,
   platform: "edX",
   link: "https://www.edx.org/learn/economics",
-  image: "https://images.unsplash.com/photo-1454165205744-3b78555e5572"
+  image: "https://images.vexels.com/media/users/3/195894/raw/bab7363faa2e224eec792198d24909dc-economics-elements-illustration-set.jpg"
 },
 {
   title: "Business Communication Skills",
@@ -547,7 +547,7 @@ module.exports = [
   cgpaMin: 5,
   platform: "NPTEL",
   link: "https://nptel.ac.in/courses/110/107/110107113/",
-  image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e"
+  image: "https://www.simplilearn.com/ice9/free_resources_article_thumb/project-management-basic-principles-article.jpg"
 },
 {
   title: "Business Law Basics",
@@ -577,7 +577,7 @@ module.exports = [
   cgpaMin: 6,
   platform: "NPTEL",
   link: "https://nptel.ac.in/courses/110/105/110105114/",
-  image: "https://images.unsplash.com/photo-1605902711622-cfb43c4437d1"
+  image: "https://hospitalityinsights.ehl.edu/hubfs/Imported_Blog_Media/Hospitality_Insights_Strategic_Management_Accounting.jpg"
 },
 {
   title: "Tally ERP with GST",
@@ -630,7 +630,7 @@ module.exports = [
   cgpaMin: 6,
   platform: "NPTEL",
   link: "https://nptel.ac.in/courses/106106127",
-  image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c"
+  image: "https://cdn.prod.website-files.com/5dcc7f8c449e597be23356e0/65788300e4727694b6898722_top-algorithms-and-data-structures-you-really-need-to-know-blog-hero-image.webp"
 },
 {
   title: "Database Management Systems",
@@ -650,7 +650,7 @@ module.exports = [
   cgpaMin: 6,
   platform: "NPTEL",
   link: "https://nptel.ac.in/courses/106102132",
-  image: "https://images.unsplash.com/photo-1581090700227-1e37b190418e"
+  image: "https://tse2.mm.bing.net/th/id/OIP.yKaqOU3mLwyKhz7u9GD3sQHaEy?rs=1&pid=ImgDetMain&o=7&rm=3"
 },
 {
   title: "Web Development Basics",
@@ -700,7 +700,7 @@ module.exports = [
   cgpaMin: 6,
   platform: "NPTEL",
   link: "https://nptel.ac.in/courses/111106130",
-  image: "https://images.unsplash.com/photo-1526378722443-4bdaecfa2f77"
+  image: "https://static.vecteezy.com/system/resources/thumbnails/021/256/852/original/differential-equation-math-formula-text-background-teaching-engineering-teaching-equations-and-formulas-backgrounds-for-teaching-presentations-graphic-background-animation-free-video.jpg"
 },
 {
   title: "Mathematics for Data Science",
@@ -710,7 +710,7 @@ module.exports = [
   cgpaMin: 6,
   platform: "Coursera",
   link: "https://www.coursera.org/specializations/mathematics-for-data-science",
-  image: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f"
+  image: "https://miro.medium.com/v2/resize:fit:750/0*EMrX2AA1MpsClODa.jpg"
 },
 {
   title: "Classical Mechanics",
@@ -730,7 +730,7 @@ module.exports = [
   cgpaMin: 7,
   platform: "Coursera",
   link: "https://www.coursera.org/learn/quantum-mechanics",
-  image: "https://images.unsplash.com/photo-1581092334504-06c3f8a15d5d"
+  image: "https://cdn.britannica.com/50/190450-131-527BAEF7.jpg"
 },
 {
   title: "Electromagnetism",
@@ -740,7 +740,7 @@ module.exports = [
   cgpaMin: 6,
   platform: "NPTEL",
   link: "https://nptel.ac.in/courses/115106061",
-  image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87"
+  image: "https://images.newscientist.com/wp-content/uploads/2020/08/26150002/electromagnetsim-fyckc9_web.jpg"
 },
 {
   title: "Computational Physics",
@@ -750,7 +750,7 @@ module.exports = [
   cgpaMin: 6,
   platform: "Coursera",
   link: "https://www.coursera.org/learn/computational-physics",
-  image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+  image: "https://tse2.mm.bing.net/th/id/OIP.Hpcia8__83oRXdDzFXisSAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3"
 },
 {
   title: "Modern Physics",
@@ -760,7 +760,7 @@ module.exports = [
   cgpaMin: 5,
   platform: "Udemy",
   link: "https://www.udemy.com/course/modern-physics/",
-  image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d"
+  image: "https://static.vecteezy.com/system/resources/previews/028/340/804/large_2x/quantum-mechanics-scientific-concept-of-modern-physics-ai-generated-free-photo.jpeg"
 },
 
 
@@ -793,7 +793,7 @@ module.exports = [
   cgpaMin: 6,
   platform: "Coursera",
   link: "https://www.coursera.org/learn/teaching-grammar",
-  image: "https://images.unsplash.com/photo-1519681393784-d120267933ba"
+  image: "https://zak-learning.com/wp-content/uploads/2020/10/AdobeStock_103437308-2.jpeg"
 },
 {
   title: "Communication Skills for Teachers",
@@ -833,7 +833,7 @@ module.exports = [
   cgpaMin: 6,
   platform: "edX",
   link: "https://www.edx.org/course/stem-education",
-  image: "https://images.unsplash.com/photo-1581091012184-7c54ab2f7b83"
+  image: "https://science-teaching.org/wp-content/uploads/2022/12/stem-banner-que-es-educacion-stem.jpg"
 },
 {
   title: "Online Science Teaching Tools",
@@ -843,7 +843,7 @@ module.exports = [
   cgpaMin: 5,
   platform: "Udemy",
   link: "https://www.udemy.com/course/online-teaching-tools/",
-  image: "https://images.unsplash.com/photo-1526378722443-4bdaecfa2f77"
+  image: "https://edumanias.com/wp-content/uploads/2023/04/Breaking-Into-Online-Science-Teaching-Tips-And-Advice.jpg"
 },
 {
   title: "Educational Psychology for Science Teachers",
@@ -863,7 +863,7 @@ module.exports = [
   cgpaMin: 5,
   platform: "edX",
   link: "https://www.edx.org/course/laboratory-management",
-  image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31"
+  image: "https://cores.emory.edu/dar/_includes/images/sections/services/diagnostic_lab.png"
 },
 {
   title: "Foundations of Special Education",
@@ -883,7 +883,7 @@ module.exports = [
   cgpaMin: 6,
   platform: "edX",
   link: "https://www.edx.org/course/inclusive-teaching",
-  image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+  image: "https://3.files.edl.io/6b8d/21/05/12/163440-34b1b240-db01-4455-9389-41ec46b7f3f4.jpg"
 },
 {
   title: "Teaching Students with Learning Disabilities",
@@ -893,7 +893,7 @@ module.exports = [
   cgpaMin: 5,
   platform: "Coursera",
   link: "https://www.coursera.org/learn/learning-disabilities",
-  image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2"
+  image: "https://media.istockphoto.com/id/891832634/photo/drawing-together.jpg?s=612x612&w=0&k=20&c=Vj4OwgEJvBI5_1flF_c9d5iRZaiml3KUS0h59z-_jlc="
 },
 {
   title: "Behavior Management in Special Education",
@@ -903,7 +903,7 @@ module.exports = [
   cgpaMin: 6,
   platform: "Udemy",
   link: "https://www.udemy.com/course/behavior-management/",
-  image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b"
+  image: "https://www.graduateprogram.org/wp-content/uploads/2021/12/Dec-22-What-is-a-Special-Education-MSD-Degree-Moderate-and-Severe-Disabilities_web.jpg"
 },
 {
   title: "Assistive Technology in Education",
@@ -913,6 +913,6 @@ module.exports = [
   cgpaMin: 6,
   platform: "Coursera",
   link: "https://www.coursera.org/learn/assistive-technology",
-  image: "https://images.unsplash.com/photo-1584697964192-0b3b9c2c8c4f"
+  image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2"
 }
 ];
