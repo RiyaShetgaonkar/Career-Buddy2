@@ -242,6 +242,107 @@ header{
   display: block;
 }
 
+/* ===== IMPROVED CHAT UI ===== */
+
+.chatbot-section{
+  display:none;
+  max-width:900px;
+  margin:40px auto;
+  background:rgba(2, 20, 37, 0.95);
+  border-radius:25px;
+  box-shadow:0 40px 80px rgba(0,255,255,.25);
+  overflow:hidden;
+  backdrop-filter: blur(10px);
+}
+
+/* Header */
+
+.chat-header{
+  color: #002b2b;
+  text-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+
+/* Chat window */
+.chat-window{
+  height:380px;
+  padding:20px;
+  overflow-y:auto;
+  background:linear-gradient(
+    rgba(255,255,255,.03),
+    rgba(255,255,255,.01)
+  );
+  scrollbar-width: thin;
+}
+#chatbot-anchor{
+  height: 80px;
+}
+
+/* Message bubbles */
+.msg{
+  margin-bottom:14px;
+  max-width:75%;
+  padding:14px 20px;
+  border-radius:22px;
+  line-height:1.6;
+  animation:fadeIn .3s ease-in-out;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(10px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* User message */
+.user-msg{
+  background: rgb(255, 255, 255);
+   color:#062bcf;      /* DARKER TEXT for contrast */
+  font-weight: 600;
+}
+
+
+/* Bot message */
+.bot-msg{
+ background:linear-gradient(135deg,#00eaff,#00ffc8);
+  color:#003;
+  text-shadow: 0 0 8px rgba(0,255,255,0.6); /* GLOW */
+}
+
+
+/* Input area */
+.chat-input{
+  display:flex;
+  padding:15px;
+  gap:12px;
+  background:rgba(0,0,0,.25);
+}
+
+.chat-input input{
+  color: #ffffff;              /* brighter typing */
+  font-weight: 500;
+}
+
+.chat-input input::placeholder{
+  color: #9ffcff;              /* brighter placeholder */
+}
+
+
+/* Send button */
+.chat-input button{
+  padding:12px 28px;
+  border:none;
+  background:linear-gradient(135deg,#00eaff,#00ffc8);
+  color:#003;
+  border-radius:30px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.chat-input button:hover{
+  transform:scale(1.05);
+  box-shadow:0 10px 25px rgba(0,255,255,.4);
+}
 
 /* ===== FOOTER ===== */
 /* ===== FOOTER ===== */
@@ -324,6 +425,18 @@ header{
   color:#00c6ff;
   text-decoration:none;
 }
+.typing span{
+  animation:blink 1.4s infinite both;
+}
+.typing span:nth-child(2){animation-delay:.2s;}
+.typing span:nth-child(3){animation-delay:.4s;}
+
+@keyframes blink{
+  0%{opacity:.2;}
+  20%{opacity:1;}
+  100%{opacity:.2;}
+}
+
 
 </style>
 </head>
@@ -383,10 +496,13 @@ header{
 <div class="content">
 
   <!-- CHAT -->
+   <div id="chatbot-anchor"></div>
+
   <div class="chatbot-section" id="chatbot">
     <div class="chat-header">AI Assistant</div>
     <div class="chat-window" id="chat-window">
-      <div class="msg bot-msg">Hello! How can I help you today?</div>
+      <div class="msg bot-msg">Hello! How can I help you today?
+      </div>
     </div>
     <div class="chat-input">
       <input id="chat-input" placeholder="Type your message...">
@@ -534,6 +650,11 @@ document.addEventListener("DOMContentLoaded", () => {
   userMenu.onclick = () => {
     dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
   };
+  chatWindow.scrollTo({
+  top: chatWindow.scrollHeight,
+  behavior: "smooth"
+});
+
 
   // Sections control
   function hideAll() {
@@ -541,7 +662,23 @@ document.addEventListener("DOMContentLoaded", () => {
     courses.style.display = "none";
     internships.style.display = "none";
   }
-  window.showChat = () => { hideAll(); chatbot.style.display = "block"; };
+  window.showChat = () => {
+  hideAll();
+  chatbot.style.display = "block";
+
+  const anchor = document.getElementById("chatbot-anchor");
+
+  anchor.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+  setTimeout(() => {
+    chatInput.focus();
+  }, 700);
+};
+
+
   window.showCourses = () => {
   hideAll();
   courses.style.display = "grid";
@@ -567,7 +704,12 @@ sendBtn.onclick = async () => {
 
     // 2. Add Loading Indicator
     const loadingId = "bot-loading-" + Date.now();
-    chatWindow.innerHTML += `<div class="msg bot-msg" id="${loadingId}"><i>Thinking...</i></div>`;
+   chatWindow.innerHTML += `
+  <div class="msg bot-msg" id="${loadingId}">
+    <span class="typing">AI is thinking<span>.</span><span>.</span><span>.</span></span>
+  </div>
+`;
+
     chatWindow.scrollTop = chatWindow.scrollHeight;
 
     try {
