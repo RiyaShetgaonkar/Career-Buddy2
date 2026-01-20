@@ -363,7 +363,7 @@ module.exports = [
   branch: ["Finance"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/financial-management",
+  link: "https://www.coursera.org/specializations/financial-management",
   image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c"
 },
 {
@@ -373,7 +373,7 @@ module.exports = [
   branch: ["Finance"],
   cgpaMin: 6,
   platform: "Udemy",
-  link: "https://www.udemy.com/course/investment-banking",
+  link: "https://www.udemy.com/course/the-complete-investment-banking-course-2016/",
   image: "https://images.unsplash.com/photo-1565373677928-90e963765eac"
 },
 {
@@ -383,7 +383,7 @@ module.exports = [
   branch: ["Finance"],
   cgpaMin: 6,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/corporate-finance",
+  link: "https://www.coursera.org/learn/corporate-finance-fundamentals",
   image: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a"
 },
 {
@@ -403,7 +403,7 @@ module.exports = [
   branch: ["Finance"],
   cgpaMin: 0,
   platform: "Udemy",
-  link: "https://www.udemy.com/course/excel-for-finance",
+  link: "https://www.udemy.com/course/beginner-to-pro-in-excel-financial-modeling-and-valuation/",
   image: "https://www.smartsheet.com/sites/default/files/2025-02/IC-Excel-5-Year-Financial-Planning-Template-12332_Example.png"
 },
 {
@@ -433,7 +433,7 @@ module.exports = [
   branch: ["Marketing"],
   cgpaMin: 0,
   platform: "Udemy",
-  link: "https://www.udemy.com/course/social-media-marketing",
+  link: "https://www.udemy.com/course/social-media-marketing-ai-10-digital-marketing-courses/",
   image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7"
 },
 {
@@ -447,13 +447,13 @@ module.exports = [
   image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71"
 },
 {
-  title: "Consumer Behavior",
+  title: "Market Research and Consumer Behavior",
   skills: ["consumer psychology", "market research"],
   degree: ["BBA"],
   branch: ["Marketing"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/consumer-behavior",
+  link: "https://www.coursera.org/learn/market-research",
   image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
 },
 {
@@ -463,7 +463,7 @@ module.exports = [
   branch: ["HR"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/human-resource-management",
+  link: "https://www.coursera.org/specializations/human-resource-management",
   image: "https://jadeer.ai/wp-content/uploads/2023/11/ethics-fair-treatment-in-human-resources-management_.jpg"
 },
 {
@@ -493,7 +493,7 @@ module.exports = [
   branch: ["HR"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/performance-management",
+  link: "https://www.coursera.org/learn/manager-of-managers-performance-management-and-metrics",
   image: "https://performance.eleapsoftware.com/wp-content/uploads/2020/08/performance-management-process-scaled.jpg"
 },
 {
@@ -503,7 +503,7 @@ module.exports = [
   branch: ["HR"],
   cgpaMin: 6,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/hr-analytics",
+  link: "https://www.coursera.org/learn/human-resources-analytics",
   image: "https://media.invisioncic.com/r273034/monthly_2023_04/large.IMG_20230309_182701_678.jpg.8622b05053a024b6eabf505f7a36fa48.jpg"
 },
 
@@ -516,7 +516,7 @@ module.exports = [
   branch: ["General Commerce"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/business-foundations",
+  link: "https://www.coursera.org/specializations/wharton-business-foundations",
   image: "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/338931081/original/624ae7545babb38bf269d63eb9c0f63c1c92131a/be-your-coach-for-your-business-foundations.png"
 },
 {
@@ -536,7 +536,7 @@ module.exports = [
   branch: ["General Commerce"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/business-communication",
+  link: "https://www.coursera.org/specializations/business-communication",
   image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
 },
 {
@@ -546,7 +546,7 @@ module.exports = [
   branch: ["General Commerce"],
   cgpaMin: 5,
   platform: "NPTEL",
-  link: "https://nptel.ac.in/courses/110/107/110107113/",
+  link: "https://nptel.ac.in/courses/110105146",
   image: "https://www.simplilearn.com/ice9/free_resources_article_thumb/project-management-basic-principles-article.jpg"
 },
 {
@@ -556,7 +556,7 @@ module.exports = [
   branch: ["General Commerce"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/business-law",
+  link: "https://www.coursera.org/learn/business-law-community-of-practice",
   image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f"
 },
 {
@@ -576,7 +576,7 @@ module.exports = [
   branch: ["Accounting"],
   cgpaMin: 6,
   platform: "NPTEL",
-  link: "https://nptel.ac.in/courses/110/105/110105114/",
+  link: "https://nptel.ac.in/courses/110107127",
   image: "https://hospitalityinsights.ehl.edu/hubfs/Imported_Blog_Media/Hospitality_Insights_Strategic_Management_Accounting.jpg"
 },
 {
@@ -586,17 +586,17 @@ module.exports = [
   branch: ["Accounting"],
   cgpaMin: 5,
   platform: "Udemy",
-  link: "https://www.udemy.com/course/tally-erp-9-with-gst/",
+  link: "https://www.udemy.com/course/tally-erp-9-and-microsoft-excel-training-in-hindi/",
   image: "https://images.unsplash.com/photo-1556155092-490a1ba16284"
 },
 {
-  title: "Corporate Accounting",
+  title: "Corporate Accounting and Financial Reporting",
   skills: ["company accounts", "final accounts"],
   degree: ["BCOM"],
   branch: ["Accounting"],
   cgpaMin: 6,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/corporate-accounting",
+  link: "https://www.coursera.org/specializations/advanced-corporate-accounting-financial-reporting",
   image: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d"
 },
 {
@@ -605,8 +605,8 @@ module.exports = [
   degree: ["BCOM"],
   branch: ["Accounting"],
   cgpaMin: 5,
-  platform: "NPTEL",
-  link: "https://nptel.ac.in/courses/110/105/110105121/",
+  platform: "Swayam",
+  link: "https://onlinecourses.swayam2.ac.in/cec23_cm09/preview",
   image: "https://images.unsplash.com/photo-1586486855514-8c633cc6fd38"
 },
 
@@ -633,13 +633,13 @@ module.exports = [
   image: "https://cdn.prod.website-files.com/5dcc7f8c449e597be23356e0/65788300e4727694b6898722_top-algorithms-and-data-structures-you-really-need-to-know-blog-hero-image.webp"
 },
 {
-  title: "Database Management Systems",
+  title: "Database Structures and Management",
   skills: ["sql", "dbms", "databases"],
   degree: ["BSC"],
   branch: ["Computer Science"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/dbms",
+  link: "https://www.coursera.org/learn/database-structures-and-management-with-mysql",
   image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d"
 },
 {
@@ -659,7 +659,7 @@ module.exports = [
   branch: ["Computer Science"],
   cgpaMin: 5,
   platform: "Udemy",
-  link: "https://www.udemy.com/course/web-development/",
+  link: "https://www.udemy.com/course/the-complete-web-development-bootcamp/",
   image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c"
 },
 {
@@ -699,17 +699,17 @@ module.exports = [
   branch: ["Mathematics"],
   cgpaMin: 6,
   platform: "NPTEL",
-  link: "https://nptel.ac.in/courses/111106130",
+  link: "https://nptel.ac.in/courses/127106019",
   image: "https://static.vecteezy.com/system/resources/thumbnails/021/256/852/original/differential-equation-math-formula-text-background-teaching-engineering-teaching-equations-and-formulas-backgrounds-for-teaching-presentations-graphic-background-animation-free-video.jpg"
 },
 {
-  title: "Mathematics for Data Science",
-  skills: ["statistics", "linear algebra", "data science"],
+  title: "Mathematics for Machine Learning",
+  skills: ["statistics", "linear algebra", "machine learning"],
   degree: ["BSC"],
   branch: ["Mathematics"],
   cgpaMin: 6,
   platform: "Coursera",
-  link: "https://www.coursera.org/specializations/mathematics-for-data-science",
+  link: "https://www.coursera.org/specializations/mathematics-machine-learning",
   image: "https://miro.medium.com/v2/resize:fit:750/0*EMrX2AA1MpsClODa.jpg"
 },
 {
@@ -719,7 +719,7 @@ module.exports = [
   branch: ["Physics"],
   cgpaMin: 5,
   platform: "NPTEL",
-  link: "https://nptel.ac.in/courses/115101005",
+  link: "https://nptel.ac.in/courses/115105098",
   image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31"
 },
 {
@@ -733,23 +733,23 @@ module.exports = [
   image: "https://cdn.britannica.com/50/190450-131-527BAEF7.jpg"
 },
 {
-  title: "Electromagnetism",
+  title: "Electromagnetic Theory",
   skills: ["electromagnetism", "fields", "maxwell equations"],
   degree: ["BSC"],
   branch: ["Physics"],
   cgpaMin: 6,
   platform: "NPTEL",
-  link: "https://nptel.ac.in/courses/115106061",
+  link: "https://nptel.ac.in/courses/108104087",
   image: "https://images.newscientist.com/wp-content/uploads/2020/08/26150002/electromagnetsim-fyckc9_web.jpg"
 },
 {
-  title: "Computational Physics",
-  skills: ["python", "simulation", "numerical methods"],
+  title: "Statistical Mechanics",
+  skills: ["linear algebra", "simulation", "numerical methods"],
   degree: ["BSC"],
   branch: ["Physics"],
   cgpaMin: 6,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/computational-physics",
+  link: "https://www.coursera.org/learn/statistical-mechanics",
   image: "https://tse2.mm.bing.net/th/id/OIP.Hpcia8__83oRXdDzFXisSAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3"
 },
 {
@@ -759,7 +759,7 @@ module.exports = [
   branch: ["Physics"],
   cgpaMin: 5,
   platform: "Udemy",
-  link: "https://www.udemy.com/course/modern-physics/",
+  link: "https://www.udemy.com/course/physics-modern-physics/",
   image: "https://static.vecteezy.com/system/resources/previews/028/340/804/large_2x/quantum-mechanics-scientific-concept-of-modern-physics-ai-generated-free-photo.jpeg"
 },
 
@@ -772,7 +772,7 @@ module.exports = [
   branch: ["English"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/english-language-teaching",
+  link: "https://www.coursera.org/specializations/tesol",
   image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f"
 },
 {
@@ -782,7 +782,7 @@ module.exports = [
   branch: ["English"],
   cgpaMin: 5,
   platform: "Udemy",
-  link: "https://www.udemy.com/course/creative-writing/",
+  link: "https://www.udemy.com/course/how-to-teach-a-creative-writing-course/",
   image: "https://images.unsplash.com/photo-1455390582262-044cdead277a"
 },
 {
@@ -796,13 +796,13 @@ module.exports = [
   image: "https://zak-learning.com/wp-content/uploads/2020/10/AdobeStock_103437308-2.jpeg"
 },
 {
-  title: "Communication Skills for Teachers",
+  title: "Understanding Classroom Interaction",
   skills: ["communication", "presentation"],
   degree: ["BED"],
   branch: ["English"],
   cgpaMin: 5,
   platform: "edX",
-  link: "https://www.edx.org/course/communication-skills",
+  link: "https://www.edx.org/learn/teacher-training/university-of-pennsylvania-understanding-classroom-interaction?index=rv_product_summary&queryId=b6e788ceccc62990db3f6edcf09e5c86&position=11",
   image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
 },
 {
@@ -812,17 +812,17 @@ module.exports = [
   branch: ["English"],
   cgpaMin: 6,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/digital-teaching",
+  link: "https://www.coursera.org/specializations/generative-ai-for-educators-teachers",
   image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
 },
 {
-  title: "Modern Teaching Methods in Science",
-  skills: ["lesson planning", "scientific thinking"],
+  title: "Designing Effective Science Communication",
+  skills: ["technical communication", "scientific thinking"],
   degree: ["BED"],
   branch: ["Science"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/science-teaching",
+  link: "https://www.coursera.org/specializations/designing-effective-science-communication",
   image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d"
 },
 {
@@ -832,37 +832,37 @@ module.exports = [
   branch: ["Science"],
   cgpaMin: 6,
   platform: "edX",
-  link: "https://www.edx.org/course/stem-education",
+  link: "https://www.edx.org/learn/teacher-training/cornell-university-an-introduction-to-evidence-based-undergraduate-stem-teaching?index=product&queryID=56570df6cdbd46b29ff1d27d0ed98864&position=1&results_level=first-level-results&term=STEM+Education+for+Teachers&objectID=course-16d7a6cd-7973-451a-b2ba-4471665eb61a&campaign=An+Introduction+to+Evidence-Based+Undergraduate+STEM+Teaching&source=edX&product_category=course&placement_url=https%3A%2F%2Fwww.edx.org%2Fsearch",
   image: "https://science-teaching.org/wp-content/uploads/2022/12/stem-banner-que-es-educacion-stem.jpg"
 },
 {
-  title: "Online Science Teaching Tools",
-  skills: ["virtual labs", "online teaching"],
+  title: "Online Teaching Tools",
+  skills: ["online teaching", "online quiz"],
   degree: ["BED"],
   branch: ["Science"],
   cgpaMin: 5,
   platform: "Udemy",
-  link: "https://www.udemy.com/course/online-teaching-tools/",
+  link: "https://www.udemy.com/course/best-online-teaching-tools-for-teacher/",
   image: "https://edumanias.com/wp-content/uploads/2023/04/Breaking-Into-Online-Science-Teaching-Tips-And-Advice.jpg"
 },
 {
-  title: "Educational Psychology for Science Teachers",
-  skills: ["psychology", "student assessment"],
+  title: "The Teacher and Social and Emotional Learning (SEL)",
+  skills: ["psychology", "classroom management"],
   degree: ["BED"],
   branch: ["Science"],
   cgpaMin: 6,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/educational-psychology",
+  link: "https://www.coursera.org/specializations/teacher-sel",
   image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644"
 },
 {
-  title: "Practical Laboratory Management",
-  skills: ["lab safety", "experiments"],
+  title: "Laboratory Management Systems (LMS)",
+  skills: ["lab operations", "experiments"],
   degree: ["BED"],
   branch: ["Science"],
   cgpaMin: 5,
-  platform: "edX",
-  link: "https://www.edx.org/course/laboratory-management",
+  platform: "Udemy",
+  link: "https://www.udemy.com/course/laboratory-management-systems-lms-essentials/",
   image: "https://cores.emory.edu/dar/_includes/images/sections/services/diagnostic_lab.png"
 },
 {
@@ -872,27 +872,27 @@ module.exports = [
   branch: ["Special Education"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/special-education",
+  link: "https://www.coursera.org/learn/providing-social-emotional-behavioral-and-special-education-services-in-school",
   image: "https://images.unsplash.com/photo-1509062522246-3755977927d7"
 },
 {
-  title: "Inclusive Classroom Strategies",
+  title: "Inclusive Teaching",
   skills: ["classroom management", "inclusion"],
   degree: ["BED"],
   branch: ["Special Education"],
   cgpaMin: 6,
   platform: "edX",
-  link: "https://www.edx.org/course/inclusive-teaching",
+  link: "https://www.edx.org/learn/education/columbia-university-inclusive-teaching-supporting-all-students-in-the-college-classroom?index=product&queryID=dc0bceece8a5b6228a21589d6eef3795&position=4&results_level=first-level-results&term=Inclusive+Classroom+Strategies&objectID=course-5419a850-f5d8-4965-9690-6a5d0bc0be40&campaign=Inclusive+Teaching%3A+Supporting+All+Students+in+the+College+Classroom&source=edX&product_category=course&placement_url=https%3A%2F%2Fwww.edx.org%2Fsearch",
   image: "https://3.files.edl.io/6b8d/21/05/12/163440-34b1b240-db01-4455-9389-41ec46b7f3f4.jpg"
 },
 {
   title: "Teaching Students with Learning Disabilities",
-  skills: ["learning support", "assessment"],
+  skills: ["psychology", "assessment"],
   degree: ["BED"],
   branch: ["Special Education"],
   cgpaMin: 5,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/learning-disabilities",
+  link: "https://www.coursera.org/learn/managing-adhd-autism-learning-disabilities-and-concussion-in-school",
   image: "https://media.istockphoto.com/id/891832634/photo/drawing-together.jpg?s=612x612&w=0&k=20&c=Vj4OwgEJvBI5_1flF_c9d5iRZaiml3KUS0h59z-_jlc="
 },
 {
@@ -907,12 +907,12 @@ module.exports = [
 },
 {
   title: "Assistive Technology in Education",
-  skills: ["assistive tools", "technology integration"],
+  skills: ["assistive tools", "education software and technology"],
   degree: ["BED"],
   branch: ["Special Education"],
   cgpaMin: 6,
   platform: "Coursera",
-  link: "https://www.coursera.org/learn/assistive-technology",
+  link: "https://www.coursera.org/specializations/generative-ai-educators",
   image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2"
 }
 ];
