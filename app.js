@@ -399,33 +399,35 @@ app.get("/getRecommendedInternships", async (req, res) => {
 
 // ------------------- GEMINI CHATBOT (Firestore Integrated) -------------------
 
+const systemInstruction = `
+ROLE: You are a strict Career and Academic Guidance Chatbot.
+
+TOPICS ALLOWED:
+1. Interviewing: Technical/HR preparation, top interview questions.
+2. Resumes: Formatting, bullet points, and optimization.
+3. Academics: Study plans, timetables, and what to study next in a curriculum.
+4. Skills: Career-relevant technical or soft skills to develop next.
+
+STRICT GUARDRAILS:
+1. LENGTH: Your entire response MUST be between 5 to 6 lines long. Be extremely concise.
+2. SCOPE: Refuse topics like clothing, food, celebrities, or general lifestyle.
+3. REFUSAL TEXT: "I apologize, but I am specialized in career and academic guidance only. I cannot provide information on other topics."
+4. FORMAT: Use Markdown: **bold** for key careers/skills and bullet points for lists.
+`;
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-// Try 2.5 first, fallback to gemini-pro
+// Model Initialization with fallback
 let model;
 try {
   model = genAI.getGenerativeModel({
     model: "gemini-2.5-flash-lite",
-    systemInstruction: `
-ROLE: You are a strict Career and Academic Guidance Chatbot.
-
-GUARDRAILS:
-1. ONLY answer questions related to careers, resumes, skills, and academic paths.
-2. If a user asks about anything else, refuse.
-3. Use this refusal:
-"I apologize, but I am specialized in career and academic guidance only. I cannot provide information on other topics."
-4. Use Markdown: **bold** for careers, bullet points for steps.
-`
+    systemInstruction: systemInstruction
   });
 } catch (e) {
-  // Fallback (guaranteed)
   model = genAI.getGenerativeModel({
     model: "gemini-pro",
-    systemInstruction: `
-ROLE: You are a strict Career and Academic Guidance Chatbot.
-(Same guardrails apply)
-`
+    systemInstruction: systemInstruction
   });
 }
 
@@ -457,8 +459,9 @@ User Message:
 "${message}"
 
 Instructions:
-Provide personalized career advice based on the student's branch and year.
-If the query is off-topic, use the standard refusal.
+1. Answer the message only if it relates to careers, interviews, resumes, or academics.
+2. Keep the answer strictly between 5 to 6 lines.
+3. Provide specific advice based on the student's branch (${userData.branch}) and year (${userData.year}).
 `;
 
     const result = await model.generateContent(prompt);
@@ -467,12 +470,10 @@ If the query is off-topic, use the standard refusal.
   } catch (err) {
     console.error("Chat Error:", err);
     res.status(500).json({
-      reply:
-        "I apologize, but I'm having trouble connecting to the AI right now."
+      reply: "I apologize, but I'm having trouble connecting to the AI right now."
     });
   }
 });
-
 // ------------------- LOGOUT -------------------
 app.get("/logout", (req, res) => {
   req.session.destroy(() => {
