@@ -41,6 +41,10 @@
         .page-bg { position:fixed; inset:0; background: linear-gradient(rgba(15,32,39,0.85), rgba(15,32,39,0.85)), url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d"); background-size:cover; z-index:-1; }
         #detailsModal { position:fixed; inset:0; background:rgba(0,0,0,.7); display:none; justify-content:center; align-items:center; z-index:10; }
         .details-card { background:#0f2027; padding:30px; border-radius:20px; width:90%; max-width:450px; box-shadow:0 0 30px rgba(0,255,255,.4); }
+        .skills-box { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+        .skill-chip { background: rgba(0,255,200,0.15); border: 1px solid rgba(0,255,200,0.4); padding: 8px 14px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: 0.25s; }
+        .skill-chip input { display: none; }
+        .skill-chip.selected { background: #00ffc8; color: #003333; font-weight: 600; }
     </style>
 
 </head>
@@ -125,9 +129,10 @@
 
             <div class="form-group">
                 <i class="fas fa-lightbulb"></i>
-                <label>Skills (Comma separated)</label>
-                <textarea name="data[Skills]" placeholder="Ex: Java, Python, HTML" rows="3" required></textarea>
+                <label>Skills</label>
+                <div id="skillsContainer" class="skills-box"></div>
             </div>
+
 
             <div class="buttons">
                 <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit</button>
@@ -148,6 +153,10 @@
         </div>
     </div>
 <script>
+    const degreeSelect = document.getElementById("degreeSelect");
+    const branchSelect = document.getElementById("branchSelect");
+    const skillsContainer = document.getElementById("skillsContainer");
+
     const branches = {
         BCA: ["Computer Applications", "Software Development", "Data Science"],
         BE: ["Computer Science Engineering", "Information Technology", "Mechanical Engineering", "Civil Engineering"],
@@ -157,51 +166,178 @@
         BED: ["English", "Science", "Special Education"]
     };
 
-    // Populate Branch based on Degree
-    document.getElementById("degreeSelect").addEventListener("change", (e) => {
-        const branchSelect = document.getElementById("branchSelect");
-        branchSelect.innerHTML = '<option value="">--Select branch--</option>';
-        if (branches[e.target.value]) {
-            branches[e.target.value].forEach(b => {
-                const opt = document.createElement("option");
-                opt.value = b; 
-                opt.textContent = b;
-                branchSelect.appendChild(opt);
-            });
-        }
+    const skillsMap = {
+    "BCA|Computer Applications": [
+        "computer basics","ms office","problem solving","c","logic building",
+        "java","oops","sql","dbms","os","memory management"
+    ],
+    "BCA|Software Development": [
+        "html","css","javascript","react","nodejs","express","mongodb",
+        "java","oops","software design","uml","git","version control"
+    ],
+    "BCA|Data Science": [
+        "data analysis","statistics","python","numpy","pandas","matplotlib",
+        "seaborn","machine learning","sql","data querying"
+    ],
+
+    "BE|Computer Science Engineering": [
+        "dsa","problem solving","c++","os","process management",
+        "sql","dbms","networking","tcp/ip","sdlc","uml"
+    ],
+    "BE|Information Technology": [
+        "html","css","javascript","cloud","aws","cyber security",
+        "network security","python","automation","project management","agile"
+    ],
+    "BE|Mechanical Engineering": [
+        "thermodynamics","energy systems","autocad","design","manufacturing",
+        "production","fluid mechanics","hydraulics","robotics","automation"
+    ],
+    "BE|Civil Engineering": [
+        "structural analysis","mechanics","project planning","management",
+        "autocad","drafting","soil mechanics","foundation",
+        "water treatment","environment"
+    ],
+
+    "BBA|Finance": [
+        "financial analysis","budgeting","accounting","investment banking",
+        "valuation","corporate finance","risk management",
+        "stock market","trading","investments","excel","financial modeling"
+    ],
+    "BBA|Marketing": [
+        "digital marketing","seo","content marketing","branding",
+        "marketing strategy","social media","instagram marketing",
+        "data analysis","marketing analytics","consumer psychology","market research"
+    ],
+    "BBA|HR": [
+        "hr management","recruitment","interviewing","organizational behavior",
+        "leadership","performance management","appraisal","hr analytics","data analysis"
+    ],
+
+    "BCOM|General Commerce": [
+        "business basics","economics","management","microeconomics",
+        "macroeconomics","communication","presentation","writing",
+        "leadership","planning","business law","contracts","compliance"
+    ],
+    "BCOM|Accounting": [
+        "accounting","financial statements","costing","budgeting","analysis",
+        "tally","gst","taxation","company accounts","final accounts",
+        "income tax","tax planning"
+    ],
+
+    "BSC|Computer Science": [
+        "python","programming","algorithms","data structures","problem solving",
+        "sql","dbms","databases","operating systems",
+        "processes","memory management","html","css","javascript"
+    ],
+    "BSC|Mathematics": [
+        "linear algebra","matrices","vectors","probability","statistics",
+        "data analysis","logic","sets","graph theory",
+        "numerical analysis","computations","matlab","machine learning"
+    ],
+    "BSC|Physics": [
+        "mechanics","motion","laws of physics","quantum mechanics",
+        "electromagnetism","fields","maxwell equations",
+        "simulation","numerical methods","relativity","atomic physics"
+    ],
+
+    "BED|English": [
+        "grammar","communication","lesson planning","creative writing",
+        "storytelling","teaching methods","presentation",
+        "digital teaching","online tools"
+    ],
+    "BED|Science": [
+        "technical communication","scientific thinking","stem",
+        "experiential learning","online teaching","online quiz",
+        "psychology","classroom management","lab operations","experiments"
+    ],
+    "BED|Special Education": [
+        "inclusive education","student support","classroom management",
+        "psychology","assessment","behavior analysis",
+        "student counseling","assistive tools","education software and technology"
+    ]
+};
+
+    degreeSelect.addEventListener("change", () => {
+    branchSelect.innerHTML = '<option value="">--Select branch--</option>';
+    skillsContainer.innerHTML = "";
+
+    if (branches[degreeSelect.value]) {
+        branches[degreeSelect.value].forEach(branch => {
+            const opt = document.createElement("option");
+            opt.value = branch;
+            opt.textContent = branch;
+            branchSelect.appendChild(opt);
+        });
+    }
     });
+
+    branchSelect.addEventListener("change", () => {
+        renderSkills();
+    });
+
+    function renderSkills(selected = []) {
+        skillsContainer.innerHTML = "";
+        const key = `${degreeSelect.value}|${branchSelect.value}`;
+        const skills = skillsMap[key] || [];
+
+        skills.forEach(skill => {
+            const label = document.createElement("label");
+            label.className = "skill-chip";
+
+            const input = document.createElement("input");
+            input.type = "checkbox";
+            input.value = skill;
+
+            if (selected.includes(skill)) {
+                input.checked = true;
+                label.classList.add("selected");
+            }
+
+            input.addEventListener("change", () => {
+                label.classList.toggle("selected", input.checked);
+            });
+
+            label.appendChild(input);
+            label.append(" " + skill);
+            skillsContainer.appendChild(label);
+        });
+    }
 
     // HANDLE FORM SUBMISSION
     document.getElementById("userForm").addEventListener("submit", async (e) => {
-        e.preventDefault();
-        
-        const formData = new FormData(e.target);
-        const data = {};
-        
-        // This captures all fields including data[Year of Study]
-        formData.forEach((value, key) => { data[key] = value; });
+    e.preventDefault();
 
-        try {
-            const response = await fetch("/updateUserDetails", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            });
+    const formData = new FormData(e.target);
+    const data = {};
 
-            const result = await response.json();
-
-            if (response.ok && result.success) {
-                alert("Profile Saved to Database!");
-                // The server sends the redirect URL (/main)
-                window.location.href = result.redirect; 
-            } else {
-                alert("Error: " + (result.message || "Update failed"));
-            }
-        } catch (err) {
-            console.error("Submission error:", err);
-            alert("Connection to server failed. Please ensure the server is running.");
-        }
+    formData.forEach((value, key) => {
+        data[key] = value;
     });
+
+    data["data[Skills]"] = [...document.querySelectorAll("#skillsContainer input:checked")]
+        .map(cb => cb.value);
+
+    try {
+        const response = await fetch("/updateUserDetails", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+            alert("Profile Saved to Database!");
+            window.location.href = result.redirect;
+        } else {
+            alert("Error: " + (result.message || "Update failed"));
+        }
+    } catch (err) {
+        console.error("Submission error:", err);
+        alert("Server connection failed.");
+    }
+    });
+
 
     // Preview Function
     function viewLocalDetails() {

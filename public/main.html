@@ -777,11 +777,9 @@ chatInput.addEventListener("keypress", (e) => {
   }
 }
 
-  // Internships Loading
-async function loadInternships() {
+ async function loadInternships() {
   try {
     const res = await fetch("/getRecommendedInternships");
-
     if (!res.ok) throw new Error("Failed to load internships");
 
     const internships = await res.json();
@@ -790,7 +788,7 @@ async function loadInternships() {
     container.innerHTML = "";
 
     if (internships.length === 0) {
-      container.innerHTML = "<p>No internships found for your profile.</p>";
+      container.innerHTML = "<p style='color:white;'>No internships found for your profile.</p>";
       return;
     }
 
@@ -800,93 +798,22 @@ async function loadInternships() {
 
       card.innerHTML = `
         <img src="${intern.image}" alt="${intern.title}">
-        <h3>${intern.title}</h3>
-        <p><strong>Company:</strong> ${intern.company}</p>
-        <p><strong>Duration:</strong> ${intern.duration}</p>
-        <p><strong>Stipend:</strong> ${intern.stipend}</p>
-        <p><strong>Skills:</strong> ${intern.skills.join(", ")}</p>
-        <a href="${intern.link}" target="_blank">Apply Now</a>
-      `;
-
-      container.appendChild(card);
-    });
-  } catch (err) {
-    console.error("Internship load error:", err);
-  }
-}
-
-
-  // Courses Loading
-  async function loadCourses() {
-  const coursesGrid = document.getElementById("courses");
-  coursesGrid.innerHTML = "";
-
-  try {
-    const res = await fetch("/getRecommendedCourses");
-    const courses = await res.json();
-
-    if (courses.length === 0) {
-      coursesGrid.innerHTML = "<p style='color:white;'>No courses found for your profile.</p>";
-      return;
-    }
-
-    courses.forEach(course => {
-      const card = document.createElement("div");
-      card.className = "card";
-
-      card.innerHTML = `
-        <img src="${course.image}">
         <div class="card-body">
-          <h3>${course.title}</h3>
-          <p>${course.platform}</p>
-          <a href="${course.link}" target="_blank" style="color:#00ffc8;font-weight:bold;">
-            View Course →
+          <h3>${intern.title}</h3>
+          <p><strong>Platform:</strong> ${intern.platform}</p>
+          <p><strong>Skills:</strong> ${intern.skills.join(", ")}</p>
+          <a href="${intern.link}" target="_blank" style="color:#00ffc8;font-weight:bold;">
+            Apply Now →
           </a>
         </div>
       `;
-      coursesGrid.appendChild(card);
-    });
-  } catch (err) {
-    console.error(err);
-    coursesGrid.innerHTML = "<p>Error loading courses</p>";
-  }
-}
-
-  // Internships Loading
-async function loadInternships() {
-  try {
-    const res = await fetch("/getRecommendedInternships");
-
-    if (!res.ok) throw new Error("Failed to load internships");
-
-    const internships = await res.json();
-    const container = document.getElementById("internships");
-
-    container.innerHTML = "";
-
-    if (internships.length === 0) {
-      container.innerHTML = "<p>No internships found for your profile.</p>";
-      return;
-    }
-
-    internships.forEach(intern => {
-      const card = document.createElement("div");
-      card.className = "card";
-
-      card.innerHTML = `
-        <img src="${intern.image}" alt="${intern.title}">
-        <h3>${intern.title}</h3>
-        <p><strong>Company:</strong> ${intern.company}</p>
-        <p><strong>Duration:</strong> ${intern.duration}</p>
-        <p><strong>Stipend:</strong> ${intern.stipend}</p>
-        <p><strong>Skills:</strong> ${intern.skills.join(", ")}</p>
-        <a href="${intern.link}" target="_blank">Apply Now</a>
-      `;
 
       container.appendChild(card);
     });
   } catch (err) {
     console.error("Internship load error:", err);
+    document.getElementById("internships").innerHTML =
+      "<p style='color:red;'>Error loading internships</p>";
   }
 }
 
