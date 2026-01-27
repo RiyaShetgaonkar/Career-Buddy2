@@ -158,7 +158,7 @@ module.exports = [
 {
   title: "Software Development Intern",
   platform: "Infosys",
-  skills: ["java", "data structures", "oops"],
+  skills: ["dsa", "problem solving", "c++", "os", "sql", "dbms"],
   degree: ["BE"],
   branch: ["Computer Science Engineering"],
   cgpaMin: 6,
@@ -168,7 +168,7 @@ module.exports = [
 {
   title: "Web Development Intern",
   platform: "TCS",
-  skills: ["html", "css", "javascript"],
+  skills: ["html", "css", "javascript", "sdlc"],
   degree: ["BE"],
   branch: ["Computer Science Engineering"],
   cgpaMin: 6,
@@ -178,7 +178,7 @@ module.exports = [
 {
   title: "AI & ML Intern",
   platform: "IBM",
-  skills: ["python", "machine learning"],
+  skills: ["problem solving", "python", "sql", "dbms"],
   degree: ["BE"],
   branch: ["Computer Science Engineering"],
   cgpaMin: 7,
@@ -188,7 +188,7 @@ module.exports = [
 {
   title: "Cloud Computing Intern",
   platform: "Amazon AWS",
-  skills: ["cloud", "aws"],
+  skills: ["cloud", "aws", "networking", "tcp/ip"],
   degree: ["BE"],
   branch: ["Computer Science Engineering"],
   cgpaMin: 6,
@@ -198,7 +198,7 @@ module.exports = [
 {
   title: "Cyber Security Intern",
   platform: "Cisco",
-  skills: ["cyber security", "network security"],
+  skills: ["cyber security", "network security", "networking", "tcp/ip"],
   degree: ["BE"],
   branch: ["Computer Science Engineering"],
   cgpaMin: 6,
@@ -208,7 +208,7 @@ module.exports = [
 {
   title: "IT Support Intern",
   platform: "Wipro",
-  skills: ["networking", "troubleshooting"],
+  skills: ["networking", "tcp/ip", "project management"],
   degree: ["BE"],
   branch: ["Information Technology"],
   cgpaMin: 5,
@@ -218,7 +218,7 @@ module.exports = [
 {
   title: "Web Technologies Intern",
   platform: "Zoho",
-  skills: ["html", "css", "javascript"],
+  skills: ["html", "css", "javascript", "agile"],
   degree: ["BE"],
   branch: ["Information Technology"],
   cgpaMin: 6,
@@ -228,7 +228,7 @@ module.exports = [
 {
   title: "Cloud Operations Intern",
   platform: "Google",
-  skills: ["cloud", "linux"],
+  skills: ["cloud", "aws", "automation"],
   degree: ["BE"],
   branch: ["Information Technology"],
   cgpaMin: 7,
@@ -238,7 +238,7 @@ module.exports = [
 {
   title: "Data Analytics Intern",
   platform: "Accenture",
-  skills: ["data analysis", "excel"],
+  skills: ["python", "project management", "agile"],
   degree: ["BE"],
   branch: ["Information Technology"],
   cgpaMin: 6,
@@ -248,7 +248,7 @@ module.exports = [
 {
   title: "Cyber Security Operations Intern",
   platform: "HCL",
-  skills: ["cyber security", "network security"],
+  skills: ["cyber security", "network security", "automation"],
   degree: ["BE"],
   branch: ["Information Technology"],
   cgpaMin: 6,
@@ -258,7 +258,7 @@ module.exports = [
 {
   title: "Mechanical Design Intern",
   platform: "L&T",
-  skills: ["autocad", "solidworks"],
+  skills: ["autocad", "design", "manufacturing"],
   degree: ["BE"],
   branch: ["Mechanical Engineering"],
   cgpaMin: 6,
@@ -268,7 +268,7 @@ module.exports = [
 {
   title: "Production Engineering Intern",
   platform: "Internshala",
-  skills: ["manufacturing", "quality control"],
+  skills: ["production", "manufacturing"],
   degree: ["BE"],
   branch: ["Mechanical Engineering"],
   cgpaMin: 6,
@@ -278,7 +278,7 @@ module.exports = [
 {
   title: "Maintenance Engineering Intern",
   platform: "Indeed",
-  skills: ["maintenance", "thermodynamics"],
+  skills: ["thermodynamics", "fluid mechanics"],
   degree: ["BE"],
   branch: ["Mechanical Engineering"],
   cgpaMin: 5,
@@ -308,7 +308,7 @@ module.exports = [
 {
   title: "Site Engineering Intern",
   platform: "Internshala",
-  skills: ["site management", "construction"],
+  skills: ["project planning", "management"],
   degree: ["BE"],
   branch: ["Civil Engineering"],
   cgpaMin: 5,
@@ -318,7 +318,7 @@ module.exports = [
 {
   title: "Structural Design Intern",
   platform: "Indeed",
-  skills: ["structural analysis", "design"],
+  skills: ["structural analysis", "mechanics"],
   degree: ["BE"],
   branch: ["Civil Engineering"],
   cgpaMin: 6,
@@ -328,7 +328,7 @@ module.exports = [
 {
   title: "Highway Engineering Intern",
   platform: "NHAI",
-  skills: ["highway design", "surveying"],
+  skills: ["project planning", "management"],
   degree: ["BE"],
   branch: ["Civil Engineering"],
   cgpaMin: 6,
@@ -347,8 +347,8 @@ module.exports = [
 },
 {
   title: "Quantity Surveying Intern",
-  platform: "Shapoorji Pallonji",
-  skills: ["estimation", "costing"],
+  platform: "LinkedIn",
+  skills: ["project planning", "management"],
   degree: ["BE"],
   branch: ["Civil Engineering"],
   cgpaMin: 6,
@@ -371,7 +371,7 @@ module.exports = [
 {
   title: "Investment Banking Intern",
   platform: "LinkedIn",
-  skills: ["investment banking", "valuation"],
+  skills: ["investment banking", "valuation", "financial modeling"],
   degree: ["BBA"],
   branch: ["Finance"],
   cgpaMin: 6,
@@ -381,7 +381,7 @@ module.exports = [
 {
   title: "Corporate Finance Internship",
   platform: "Indeed",
-  skills: ["corporate finance", "budgeting"],
+  skills: ["corporate finance", "budgeting", "financial analysis"],
   degree: ["BBA"],
   branch: ["Finance"],
   cgpaMin: 5,
@@ -391,7 +391,7 @@ module.exports = [
 {
   title: "Accounts & Taxation Intern",
   platform: "Internshala",
-  skills: ["accounting", "taxation", "tally"],
+  skills: ["accounting", "risk management", "financial analysis"],
   degree: ["BBA"],
   branch: ["Finance"],
   cgpaMin: 4,
@@ -401,7 +401,7 @@ module.exports = [
 {
   title: "Financial Modeling Internship",
   platform: "Internshala",
-  skills: ["financial modeling", "excel"],
+  skills: ["financial modeling", "excel", "valuation"],
   degree: ["BBA"],
   branch: ["Finance"],
   cgpaMin: 6,
@@ -411,7 +411,7 @@ module.exports = [
 {
   title: "Digital Marketing Internship",
   platform: "Internshala",
-  skills: ["digital marketing", "seo", "social media"],
+  skills: ["digital marketing", "seo", "content marketing"],
   degree: ["BBA"],
   branch: ["Marketing"],
   cgpaMin: 4,
@@ -421,7 +421,7 @@ module.exports = [
 {
   title: "Social Media Marketing Intern",
   platform: "LinkedIn",
-  skills: ["instagram marketing", "content creation"],
+  skills: ["social media", "instagram marketing", "content marketing"],
   degree: ["BBA"],
   branch: ["Marketing"],
   cgpaMin: 0,
@@ -431,7 +431,7 @@ module.exports = [
 {
   title: "Brand Management Internship",
   platform: "Indeed",
-  skills: ["branding", "market research"],
+  skills: ["branding", "marketing strategy", "consumer psychology"],
   degree: ["BBA"],
   branch: ["Marketing"],
   cgpaMin: 5,
@@ -441,7 +441,7 @@ module.exports = [
 {
   title: "Marketing Research Intern",
   platform: "Internshala",
-  skills: ["market research", "data analysis"],
+  skills: ["market research", "data analysis", "marketing analytics"],
   degree: ["BBA"],
   branch: ["Marketing"],
   cgpaMin: 5,
@@ -451,7 +451,7 @@ module.exports = [
 {
   title: "Performance Marketing Intern",
   platform: "LinkedIn",
-  skills: ["google ads", "facebook ads"],
+  skills: ["marketing analytics", "data analysis", "marketing strategy"],
   degree: ["BBA"],
   branch: ["Marketing"],
   cgpaMin: 6,
@@ -461,7 +461,7 @@ module.exports = [
 {
   title: "Human Resources Internship",
   platform: "Internshala",
-  skills: ["recruitment", "hr operations"],
+  skills: ["hr management", "recruitment", "organizational behavior"],
   degree: ["BBA"],
   branch: ["HR"],
   cgpaMin: 4,
@@ -471,7 +471,7 @@ module.exports = [
 {
   title: "Talent Acquisition Intern",
   platform: "LinkedIn",
-  skills: ["hiring", "interviewing"],
+  skills: ["recruitment", "interviewing", "leadership"],
   degree: ["BBA"],
   branch: ["HR"],
   cgpaMin: 5,
@@ -481,7 +481,7 @@ module.exports = [
 {
   title: "HR Operations Intern",
   platform: "Indeed",
-  skills: ["employee engagement", "documentation"],
+  skills: ["hr management", "performance management", "appraisal"],
   degree: ["BBA"],
   branch: ["HR"],
   cgpaMin: 4,
@@ -491,7 +491,7 @@ module.exports = [
 {
   title: "Payroll & Compliance Intern",
   platform: "Internshala",
-  skills: ["payroll", "labor laws"],
+  skills: ["hr management", "performance management", "organizational behavior"],
   degree: ["BBA"],
   branch: ["HR"],
   cgpaMin: 6,
@@ -501,7 +501,7 @@ module.exports = [
 {
   title: "HR Analytics Intern",
   platform: "Glassdoor",
-  skills: ["hr analytics", "excel"],
+  skills: ["hr analytics", "data analysis", "excel"],
   degree: ["BBA"],
   branch: ["HR"],
   cgpaMin: 6,
@@ -514,7 +514,7 @@ module.exports = [
 {
   title: "Business Operations Intern",
   platform: "Internshala",
-  skills: ["business operations", "reporting", "communication"],
+  skills: ["management", "planning", "communication"],
   degree: ["BCOM"],
   branch: ["General Commerce"],
   cgpaMin: 5,
@@ -524,7 +524,7 @@ module.exports = [
 {
   title: "Sales & Commerce Intern",
   platform: "Indeed",
-  skills: ["sales", "customer handling", "market analysis"],
+  skills: ["communication", "presentation", "business basics"],
   degree: ["BCOM"],
   branch: ["General Commerce"],
   cgpaMin: 5,
@@ -534,7 +534,7 @@ module.exports = [
 {
   title: "Business Research Intern",
   platform: "LinkedIn",
-  skills: ["research", "data collection", "analysis"],
+  skills: ["economics", "microeconomics", "analysis"],
   degree: ["BCOM"],
   branch: ["General Commerce"],
   cgpaMin: 6,
@@ -544,7 +544,7 @@ module.exports = [
 {
   title: "Supply Chain Intern",
   platform: "Internshala",
-  skills: ["logistics", "inventory", "coordination"],
+  skills: ["management", "planning", "business law"],
   degree: ["BCOM"],
   branch: ["General Commerce"],
   cgpaMin: 5,
@@ -554,7 +554,7 @@ module.exports = [
 {
   title: "Operations Management Intern",
   platform: "Indeed",
-  skills: ["operations", "process improvement", "documentation"],
+  skills: ["management", "planning", "leadership"],
   degree: ["BCOM"],
   branch: ["General Commerce"],
   cgpaMin: 6,
@@ -564,7 +564,7 @@ module.exports = [
 {
   title: "Accounting Intern",
   platform: "Internshala",
-  skills: ["accounting", "bookkeeping", "ledger entries"],
+  skills: ["accounting", "final accounts", "company accounts"],
   degree: ["BCOM"],
   branch: ["Accounting"],
   cgpaMin: 6,
@@ -574,7 +574,7 @@ module.exports = [
 {
   title: "Finance & Accounts Intern",
   platform: "Indeed",
-  skills: ["financial reporting", "accounting", "excel"],
+  skills: ["accounting", "financial statements", "analysis"],
   degree: ["BCOM"],
   branch: ["Accounting"],
   cgpaMin: 6,
@@ -584,7 +584,7 @@ module.exports = [
 {
   title: "GST & Taxation Intern",
   platform: "Internshala",
-  skills: ["gst", "tax filing", "compliance"],
+  skills: ["gst", "taxation", "income tax"],
   degree: ["BCOM"],
   branch: ["Accounting"],
   cgpaMin: 5,
@@ -594,7 +594,7 @@ module.exports = [
 {
   title: "Audit Intern",
   platform: "LinkedIn",
-  skills: ["auditing", "financial analysis", "documentation"],
+  skills: ["analysis", "financial statements", "company accounts"],
   degree: ["BCOM"],
   branch: ["Accounting"],
   cgpaMin: 6,
@@ -604,7 +604,7 @@ module.exports = [
 {
   title: "Tally ERP Intern",
   platform: "Udemy",
-  skills: ["tally", "accounting software", "gst"],
+  skills: ["tally", "gst", "final accounts"],
   degree: ["BCOM"],
   branch: ["Accounting"],
   cgpaMin: 5,
@@ -616,7 +616,7 @@ module.exports = [
 /* ======================= BSC ======================= */
 {
   title: "Software Development Intern",
-  skills: ["python", "java", "problem solving"],
+  skills: ["python", "programming", "problem solving"],
   degree: ["BSC"],
   branch: ["Computer Science"],
   cgpaMin: 6,
@@ -646,7 +646,7 @@ module.exports = [
 },
 {
   title: "Cyber Security Intern",
-  skills: ["networking", "cyber security", "linux"],
+  skills: ["operating systems", "processes", "databases"],
   degree: ["BSC"],
   branch: ["Computer Science"],
   cgpaMin: 6,
@@ -656,7 +656,7 @@ module.exports = [
 },
 {
   title: "Database Management Intern",
-  skills: ["sql", "dbms", "data handling"],
+  skills: ["sql", "dbms", "databases"],
   degree: ["BSC"],
   branch: ["Computer Science"],
   cgpaMin: 5,
@@ -666,7 +666,7 @@ module.exports = [
 },
 {
   title: "Data Analyst Intern",
-  skills: ["statistics", "excel", "python"],
+  skills: ["statistics", "data analysis", "computations"],
   degree: ["BSC"],
   branch: ["Mathematics"],
   cgpaMin: 6,
@@ -676,7 +676,7 @@ module.exports = [
 },
 {
   title: "Operations Research Intern",
-  skills: ["optimization", "linear programming"],
+  skills: ["linear algebra", "matrices", "numerical analysis"],
   degree: ["BSC"],
   branch: ["Mathematics"],
   cgpaMin: 6,
@@ -686,7 +686,7 @@ module.exports = [
 },
 {
   title: "Business Analytics Intern",
-  skills: ["statistics", "data analysis", "excel"],
+  skills: ["statistics", "data analysis", "logic"],
   degree: ["BSC"],
   branch: ["Mathematics"],
   cgpaMin: 5,
@@ -696,7 +696,7 @@ module.exports = [
 },
 {
   title: "Research Assistant Intern",
-  skills: ["mathematical modeling", "research"],
+  skills: ["numerical analysis", "computations", "logic"],
   degree: ["BSC"],
   branch: ["Mathematics"],
   cgpaMin: 7,
@@ -706,7 +706,7 @@ module.exports = [
 },
 {
   title: "Quantitative Analysis Intern",
-  skills: ["probability", "statistics", "analysis"],
+  skills: ["probability", "statistics", "data analysis"],
   degree: ["BSC"],
   branch: ["Mathematics"],
   cgpaMin: 7,
@@ -718,72 +718,72 @@ module.exports = [
 /* ======================= BED ======================= */
 {
   title: "English Teaching Intern",
-  skills: ["communication", "lesson planning", "grammar"],
+  skills: ["grammar", "communication", "lesson planning"],
   degree: ["BED"],
   branch: ["English"],
   cgpaMin: 5,
   platform: "Internshala",
-  link: "https://internshala.com/english-teaching-internship",
+  link: "https://internshala.com/internships/keywords-English%20Teaching%20Intern/",
   image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f"
 },
 {
   title: "Content Writing & Teaching Intern",
-  skills: ["creative writing", "content development"],
+  skills: ["creative writing", "storytelling", "teaching methods"],
   degree: ["BED"],
   branch: ["English"],
   cgpaMin: 5,
   platform: "Internshala",
-  link: "https://internshala.com/content-writing-internship",
+  link: "https://internshala.com/internships/keywords-Content%20Writing%20%26%20Teaching%20Intern/",
   image: "https://images.unsplash.com/photo-1455390582262-044cdead277a"
 },
 {
   title: "Online English Tutor Intern",
-  skills: ["online teaching", "communication"],
+  skills: ["online tools", "digital teaching", "communication"],
   degree: ["BED"],
   branch: ["English"],
   cgpaMin: 6,
-  platform: "Vedantu",
-  link: "https://www.vedantu.com/careers",
-  image: "https://images.unsplash.com/photo-1519681393784-d120267933ba"
+  platform: "LinkedIn",
+  link: "https://www.linkedin.com/jobs/search/?currentJobId=4304432363&geoId=102713980&keywords=Online%20English%20Tutor%20Intern&origin=JOB_SEARCH_PAGE_SEARCH_BUTTON&originalSubdomain=in&refresh=true",
+  image: "https://www.prlog.org/12931212-private-act-tutoring-via-zoom.png"
 },
 {
   title: "Science Teaching Intern",
-  skills: ["lesson planning", "scientific thinking"],
+  skills: ["scientific thinking", "experiments", "classroom management"],
   degree: ["BED"],
   branch: ["Science"],
   cgpaMin: 5,
   platform: "Internshala",
-  link: "https://internshala.com/science-teaching-internship",
+  link: "https://internshala.com/internships/keywords-Science%20Teaching%20Intern/",
   image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d"
 },
 {
   title: "STEM Education Intern",
-  skills: ["stem", "problem solving"],
+  skills: ["stem", "experiential learning", "online teaching"],
   degree: ["BED"],
   branch: ["Science"],
   cgpaMin: 6,
   platform: "Internshala",
-  link: "https://internshala.com/stem-internship",
-  image: "https://images.unsplash.com/photo-1581091012184-7c54ab2f7b83"
+  link: "https://internshala.com/internships/keywords-STEM%20Education%20Intern/",
+  image: "https://cdn.prod.website-files.com/63beade1f5efc1244dba4f28/67ad5a75cd1db5bca52572ff_Top%20STEM%20Internship%20for%20High%20School%20Students%20(1)-p-800.png"
 },
 {
   title: "Special Education Teaching Intern",
-  skills: ["inclusive education", "student support"],
+  skills: ["inclusive education", "student support", "classroom management"],
   degree: ["BED"],
   branch: ["Special Education"],
   cgpaMin: 5,
   platform: "Internshala",
-  link: "https://internshala.com/special-education-internship",
+  link: "https://internshala.com/internships/keywords-Special%20Education%20Teaching%20Intern/",
   image: "https://images.unsplash.com/photo-1509062522246-3755977927d7"
 },
 {
   title: "Learning Disability Support Intern",
-  skills: ["assessment", "learning support"],
+  skills: ["assessment", "psychology", "student counseling"],
   degree: ["BED"],
   branch: ["Special Education"],
   cgpaMin: 5,
-  platform: "Internshala",
-  link: "https://internshala.com/learning-disability-internship",
-  image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2"
+  platform: "Indeed",
+  link: "https://in.indeed.com/jobs?q=Learning+Disability+Support+Intern&l=&from=searchOnDesktopSerp&vjk=5f29c8bf747bf597",
+  image: "https://www.churchnativity.com/wp-content/uploads/2021/08/Buddy-Ministry-26.jpg"
 }
 ];
