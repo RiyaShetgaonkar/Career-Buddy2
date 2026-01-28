@@ -212,102 +212,57 @@ app.get("/getUserDetails", async (req, res) => {
   res.json(doc.data());
 });
 
-// ------------------- RECOMMEND COURSES -------------------
+// ------------------- RECOMMEND COURSES (Dual-Logic for Dropdown & Cards) -------------------
 app.get("/getRecommendedCourses", async (req, res) => {
   try {
-    console.log("HIT /getRecommendedCourses");
-
-    if (!req.session.uid) {
-      console.log("NO SESSION UID");
-      return res.status(401).json([]);
-    }
+    if (!req.session.uid) return res.status(401).json([]);
 
     const doc = await db.collection("users").doc(req.session.uid).get();
-
-    if (!doc.exists) {
-      console.log("USER DOC NOT FOUND");
-      return res.json([]);
-    }
+    if (!doc.exists) return res.json([]);
 
     const user = doc.data();
-    console.log("USER DATA:", user);
+    const normalize = (s) => s ? s.toLowerCase().trim() : "";
+    const normalizeArray = (arr) => Array.isArray(arr) ? arr.map(v => normalize(v)) : [];
 
-    const normalize = (s) => s.toLowerCase().trim();
-    const normalizeArray = (arr) => arr.map(v => normalize(v));
+    const userBranch = normalize(user.branch);
+    const userDegree = normalize(user.degree);
+    const userYear = user.year; 
+    const userCGPA = parseFloat(user.cgpa) || 0;
+    const userSkills = normalizeArray(user.skills);
 
-    const userSkills = Array.isArray(user.skills)
-  ? normalizeArray(user.skills)
-  : [];
+    // 🟢 LOGIC: Filter EVERYTHING for the user's Degree and Branch
+    // This ignores Year and CGPA for now so the Dropdown gets the full list.
+    const departmentalCourses = coursesData.filter(course => {
+      const courseDegrees = normalizeArray(course.degree);
+      const courseBranches = normalizeArray(course.branch);
+      
+      const degreeMatch = courseDegrees.includes("any") || courseDegrees.includes(userDegree);
+      const branchMatch = courseBranches.includes("any") || courseBranches.includes(userBranch);
 
-const userBranch = user.branch ? normalize(user.branch) : "";
-const userDegree = user.degree ? normalize(user.degree) : "";
-const userCGPA = parseFloat(user.cgpa) || 0;
+      return degreeMatch && branchMatch;
+    }).map(course => {
+      // Still calculate skillScore for the frontend to use in sorting if desired
+      let skillScore = 0;
+      course.skills.forEach(skill => {
+        if (userSkills.includes(normalize(skill))) skillScore += 1;
+      });
+      return { ...course, skillScore };
+    }).sort((a, b) => b.skillScore - a.skillScore);
 
-let recommended = coursesData
-  .filter(course => {
-    const courseDegrees = normalizeArray(course.degree);
-    const courseBranches = normalizeArray(course.branch);
-
-    // ✅ DEGREE MUST MATCH
-    const degreeMatch =
-      courseDegrees.includes("any") ||
-      courseDegrees.includes(userDegree);
-
-    if (!degreeMatch) return false;
-
-    // ✅ BRANCH MUST MATCH
-    const branchMatch =
-      courseBranches.includes("any") ||
-      courseBranches.includes(userBranch);
-
-    if (!branchMatch) return false;
-
-    // ✅ CGPA CHECK
-    if (userCGPA < course.cgpaMin) return false;
-
-    return true;
-  })
-  .map(course => {
-    // 🎯 Skill relevance scoring (ONLY after degree+branch match)
-    let skillScore = 0;
-
-    course.skills.forEach(skill => {
-      if (userSkills.includes(normalize(skill))) {
-        skillScore += 1;
+    // ✅ RETURN BOTH: The full list and the user data for frontend smart-filtering
+    res.json({
+      allCourses: departmentalCourses,
+      userProfile: {
+        year: userYear,
+        cgpa: userCGPA,
+        skills: userSkills
       }
     });
 
-    return {
-      ...course,
-      skillScore
-    };
-  })
-  // ❌ Remove courses with ZERO skill relevance
-  .filter(c => c.skillScore > 0)
-  // 🔥 Best matches first
-  .sort((a, b) => b.skillScore - a.skillScore);
-
-  if (recommended.length === 0) {
-  recommended = coursesData.filter(course => {
-    const courseDegrees = normalizeArray(course.degree);
-    const courseBranches = normalizeArray(course.branch);
-
-    return (
-      (courseDegrees.includes("any") || courseDegrees.includes(userDegree)) &&
-      courseBranches.includes("any") &&
-      userCGPA >= course.cgpaMin
-    );
-  });
-}
-
-    console.log("RECOMMENDED COUNT:", recommended.length);
-
-    res.json(recommended);
   } catch (err) {
     console.error("COURSE ROUTE ERROR:", err);
-    res.status(500).json([]);
+    res.status(500).json({ allCourses: [], userProfile: {} });
   }
-
 });
 
 // ------------------- RECOMMEND INTERNSHIPS -------------------
@@ -395,7 +350,6 @@ app.get("/getRecommendedInternships", async (req, res) => {
     res.status(500).json([]);
   }
 });
-
 
 // ------------------- GEMINI CHATBOT (Firestore Integrated) -------------------
 
