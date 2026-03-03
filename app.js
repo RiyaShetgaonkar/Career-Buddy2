@@ -11,7 +11,7 @@ const bcrypt = require("bcrypt");
 
 // Firebase
 const admin = require("firebase-admin");
-const serviceAccount = require("./firebaseServiceAccount.json");
+
 
 // Gemini
 const { GoogleGenerativeAI } = require("@google/generative-ai");
@@ -21,7 +21,11 @@ dotenv.config();
 
 // ------------------- FIREBASE INIT -------------------
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert({
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+    privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n")
+  })
 });
 const db = admin.firestore();
 const auth = admin.auth();
@@ -354,21 +358,28 @@ app.get("/getRecommendedInternships", async (req, res) => {
 // ------------------- GEMINI CHATBOT (Firestore Integrated) -------------------
 
 const systemInstruction = `
-ROLE: You are a strict Career and Academic Guidance Chatbot.
+ROLE: You are a strict Career and Academic Guidance Chatbot for students.
 
 TOPICS ALLOWED:
-1. Interviewing: Technical/HR preparation, top interview questions.
-2. Resumes: Formatting, bullet points, and optimization.
-3. Academics: Study plans, timetables, and what to study next in a curriculum.
-4. Skills: Career-relevant technical or soft skills to develop next.
+1. Interviews: Technical/HR questions, mock answers, preparation strategies.
+2. Resumes: Formatting, bullet points, ATS optimization, project descriptions.
+3. Academics:
+   - Creating daily study plans and exam timetables.
+   - Helping prioritize subjects based on difficulty and exam dates.
+   - Clarifying academic doubts related to subjects.
+   - Suggesting what to study next in a curriculum.
+4. Skills:
+   - Career-relevant technical skills.
+   - Soft skills for placements.
+   - Roadmaps based on degree and year.
 
 STRICT GUARDRAILS:
-1. LENGTH: Your entire response MUST be between 5 to 6 lines long. Be extremely concise.
-2. SCOPE: Refuse topics like clothing, food, celebrities, or general lifestyle.
-3. REFUSAL TEXT: "I apologize, but I am specialized in career and academic guidance only. I cannot provide information on other topics."
-4. FORMAT: Use Markdown: **bold** for key careers/skills and bullet points for lists.
+1. LENGTH: Response MUST be strictly 5 to 6 lines only.
+2. FORMAT: Use Markdown formatting. Use **bold** for important skills/careers and bullet points for lists.
+3. PERSONALIZATION: Always tailor advice based on the student's branch and year.
+4. REFUSAL RULE: If the topic is outside career or academics, respond EXACTLY with:
+"I apologize, but I am specialized in career and academic guidance only. I cannot provide information on other topics."
 `;
-
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 // Model Initialization with fallback
@@ -405,7 +416,7 @@ Branch: ${userData.branch || "Unknown"}
 Skills: ${(userData.skills || []).join(", ") || "No skills listed yet"}
 `;
 
-    const prompt = `
+   const prompt = `
 Student Data:
 ${userContext}
 
@@ -413,9 +424,11 @@ User Message:
 "${message}"
 
 Instructions:
-1. Answer the message only if it relates to careers, interviews, resumes, or academics.
-2. Keep the answer strictly between 5 to 6 lines.
-3. Provide specific advice based on the student's branch (${userData.branch}) and year (${userData.year}).
+1. Answer ONLY if the query relates to careers, interviews, resumes, study planning, exam preparation, subject prioritization, or academic doubts.
+2. If asking for timetable or study plan, create a structured and practical schedule.
+3. Prioritize subjects based on difficulty, exam urgency, and student's branch (${userData.branch}).
+4. Keep response strictly between 5 to 6 lines.
+5. Use Markdown formatting.
 `;
 
     const result = await model.generateContent(prompt);
