@@ -9,6 +9,10 @@ Context-Aware: Tailors responses based on the user's current year, degree,branch
 
 Guardrailed: Focused strictly on resumes, interviews, and study plans.
 
+🚀 Live Demo
+
+🔗 [Visit Career Buddy](https://career-buddy2-1hod.onrender.com)
+
 📚 Smart Course Catalog
 Dual-Filtering System: * Catalog View: A dropdown select-bar shows every course available for the user's specific Degree and Branch.
 
@@ -76,5 +80,6 @@ Plaintext
 
 📝 Usage Note
 The platform uses Dual-Logic filtering. To see all departmental courses in the dropdown, ensure your profile has your Degree and Branch accurately filled out. Recommendations will automatically update as you update your Year of Study and CGPA.
+
 
 
