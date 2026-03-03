@@ -49,8 +49,8 @@
 
             <div class="form-group">
                 <i class="fas fa-graduation-cap"></i>
-                <label>Degree</label>
-                <select name="data[Degree]" id="degreeSelect" required>
+                <label>Degree (Change Restricted)</label>
+                <select name="data[Degree]" id="degreeSelect" required disabled>
                     <option value="">--Select Degree--</option>
                     <option value="BCA">BCA</option>
                     <option value="BE">BE</option>
@@ -63,8 +63,8 @@
 
             <div class="form-group">
                 <i class="fas fa-code"></i>
-                <label>Branch / Specialization</label>
-                <select name="data[Branch / Specialization]" id="branchSelect" required>
+                <label>Branch / Specialization (Change Restricted)</label>
+                <select name="data[Branch / Specialization]" id="branchSelect" required disabled>
                     <option value="">--Select branch--</option>
                 </select>
             </div>
@@ -103,103 +103,248 @@
     </div>
 
     <script>
-        const branches = {
-            BCA: ["Computer Applications", "Software Development", "Web Development", "Data Science", "Cyber Security", "Cloud Computing"],
-            BE: ["Computer Science Engineering", "Information Technology", "Artificial Intelligence & ML", "Electronics & Communication", "Electrical Engineering", "Mechanical Engineering", "Civil Engineering"],
-            BBA: ["General Management", "Finance", "Marketing", "Human Resource Management", "International Business", "Business Analytics"],
-            BCOM: ["General Commerce", "Accounting & Finance", "Banking & Insurance", "Taxation", "Corporate Secretaryship"],
-            BSC: ["Computer Science", "Information Technology", "Mathematics", "Physics", "Chemistry", "Biotechnology", "Microbiology"],
-            BED: ["English", "Mathematics", "Science", "Social Science", "Special Education"]
-        };
+       const branches = {
+    BCA: [
+        "Computer Applications",
+        "Software Development",
+        "Web Development",
+        "Data Science",
+        "Cyber Security",
+        "Cloud Computing"
+    ],
+
+    BE: [
+        "Computer Science Engineering",
+        "Information Technology",
+        "Artificial Intelligence & ML",
+        "Electronics & Communication",
+        "Electrical Engineering",
+        "Mechanical Engineering",
+        "Civil Engineering"
+    ],
+
+    BBA: [
+        "General Management",
+        "Finance",
+        "Marketing",
+        "Human Resource Management",
+        "International Business",
+        "Business Analytics"
+    ],
+
+    BCOM: [
+        "General Commerce",
+        "Accounting & Finance",
+        "Banking & Insurance",
+        "Taxation",
+        "Corporate Secretaryship"
+    ],
+
+    BSC: [
+        "Computer Science",
+        "Information Technology",
+        "Mathematics",
+        "Physics",
+        "Chemistry",
+        "Biotechnology",
+        "Microbiology"
+    ],
+
+    BED: [
+        "English",
+        "Mathematics",
+        "Science",
+        "Social Science",
+        "Special Education"
+    ]
+};
 
         const skillsMap = {
+
+    // ===== BCA =====
     "BCA|Computer Applications": [
         "computer basics","ms office","problem solving","c","logic building",
         "java","oops","sql","dbms","os","memory management"
     ],
+
     "BCA|Software Development": [
         "html","css","javascript","react","nodejs","express","mongodb",
         "java","oops","software design","uml","git","version control"
     ],
+
+    "BCA|Web Development": [
+        "html","css","javascript","react","nodejs","express",
+        "mongodb","api integration","responsive design"
+    ],
+
     "BCA|Data Science": [
         "data analysis","statistics","python","numpy","pandas","matplotlib",
         "seaborn","machine learning","sql","data querying"
     ],
 
+    "BCA|Cyber Security": [
+        "network security","ethical hacking","penetration testing",
+        "cryptography","linux","firewalls"
+    ],
+
+    "BCA|Cloud Computing": [
+        "aws","azure","cloud security","docker",
+        "kubernetes","devops"
+    ],
+
+    // ===== BE =====
     "BE|Computer Science Engineering": [
         "dsa","problem solving","c++","os","process management",
         "sql","dbms","networking","tcp/ip","sdlc","uml"
     ],
+
     "BE|Information Technology": [
         "html","css","javascript","cloud","aws","cyber security",
         "network security","python","automation","project management","agile"
     ],
-    "BE|Mechanical Engineering": [
-        "thermodynamics","energy systems","autocad","design","manufacturing",
-        "production","fluid mechanics","hydraulics","robotics","automation"
+
+    "BE|Artificial Intelligence & ML": [
+        "python","machine learning","deep learning",
+        "tensorflow","data modeling","nlp"
     ],
+
+    "BE|Electronics & Communication": [
+        "embedded systems","vlsi","signal processing",
+        "iot","microcontrollers"
+    ],
+
+    "BE|Electrical Engineering": [
+        "power systems","circuit analysis",
+        "transformers","control systems"
+    ],
+
+    "BE|Mechanical Engineering": [
+        "thermodynamics","energy systems","autocad",
+        "design","manufacturing","robotics"
+    ],
+
     "BE|Civil Engineering": [
-        "structural analysis","mechanics","project planning","management",
-        "autocad","drafting","soil mechanics","foundation",
-        "water treatment","environment"
+        "structural analysis","project planning",
+        "autocad","soil mechanics","environment"
+    ],
+
+    // ===== BBA =====
+    "BBA|General Management": [
+        "leadership","strategy","communication",
+        "operations management"
     ],
 
     "BBA|Finance": [
-        "financial analysis","budgeting","accounting","investment banking",
-        "valuation","corporate finance","risk management",
-        "stock market","trading","investments","excel","financial modeling"
+        "financial analysis","budgeting","investment banking",
+        "excel","financial modeling","risk management"
     ],
+
     "BBA|Marketing": [
-        "digital marketing","seo","content marketing","branding",
-        "marketing strategy","social media","instagram marketing",
-        "data analysis","marketing analytics","consumer psychology","market research"
-    ],
-    "BBA|HR": [
-        "hr management","recruitment","interviewing","organizational behavior",
-        "leadership","performance management","appraisal","hr analytics","data analysis"
+        "digital marketing","seo","branding",
+        "market research","social media","consumer psychology"
     ],
 
+    "BBA|Human Resource Management": [
+        "recruitment","hr analytics","organizational behavior",
+        "performance management","leadership"
+    ],
+
+    "BBA|International Business": [
+        "global trade","export management",
+        "business law","supply chain"
+    ],
+
+    "BBA|Business Analytics": [
+        "data analysis","excel","power bi",
+        "business intelligence"
+    ],
+
+    // ===== BCOM =====
     "BCOM|General Commerce": [
-        "business basics","economics","management","microeconomics",
-        "macroeconomics","communication","presentation","writing",
-        "leadership","planning","business law","contracts","compliance"
-    ],
-    "BCOM|Accounting": [
-        "accounting","financial statements","costing","budgeting","analysis",
-        "tally","gst","taxation","company accounts","final accounts",
-        "income tax","tax planning"
+        "economics","business law","management",
+        "communication","planning"
     ],
 
+    "BCOM|Accounting & Finance": [
+        "accounting","financial statements","tally",
+        "gst","taxation","costing"
+    ],
+
+    "BCOM|Banking & Insurance": [
+        "banking operations","risk management",
+        "insurance law","financial services"
+    ],
+
+    "BCOM|Taxation": [
+        "income tax","gst","tax planning",
+        "compliance"
+    ],
+
+    "BCOM|Corporate Secretaryship": [
+        "corporate law","company accounts",
+        "compliance","secretarial practice"
+    ],
+
+    // ===== BSC =====
     "BSC|Computer Science": [
-        "python","programming","algorithms","data structures","problem solving",
-        "sql","dbms","databases","operating systems",
-        "processes","memory management","html","css","javascript"
-    ],
-    "BSC|Mathematics": [
-        "linear algebra","matrices","vectors","probability","statistics",
-        "data analysis","logic","sets","graph theory",
-        "numerical analysis","computations","matlab","machine learning"
-    ],
-    "BSC|Physics": [
-        "mechanics","motion","laws of physics","quantum mechanics",
-        "electromagnetism","fields","maxwell equations",
-        "simulation","numerical methods","relativity","atomic physics"
+        "python","algorithms","data structures",
+        "dbms","html","css","javascript"
     ],
 
+    "BSC|Information Technology": [
+        "networking","web development",
+        "cloud computing","cyber security"
+    ],
+
+    "BSC|Mathematics": [
+        "linear algebra","probability",
+        "statistics","matlab"
+    ],
+
+    "BSC|Physics": [
+        "quantum mechanics","electromagnetism",
+        "numerical methods"
+    ],
+
+    "BSC|Chemistry": [
+        "organic chemistry","analytical chemistry",
+        "lab techniques"
+    ],
+
+    "BSC|Biotechnology": [
+        "genetics","bioprocessing",
+        "microbiology"
+    ],
+
+    "BSC|Microbiology": [
+        "immunology","virology",
+        "lab diagnostics"
+    ],
+
+    // ===== BED =====
     "BED|English": [
-        "grammar","communication","lesson planning","creative writing",
-        "storytelling","teaching methods","presentation",
-        "digital teaching","online tools"
+        "grammar","lesson planning",
+        "creative writing","digital teaching"
     ],
+
+    "BED|Mathematics": [
+        "problem solving","lesson planning",
+        "classroom management"
+    ],
+
     "BED|Science": [
-        "technical communication","scientific thinking","stem",
-        "experiential learning","online teaching","online quiz",
-        "psychology","classroom management","lab operations","experiments"
+        "scientific thinking","experiments",
+        "lab operations"
     ],
+
+    "BED|Social Science": [
+        "history","geography",
+        "civics","lesson planning"
+    ],
+
     "BED|Special Education": [
-        "inclusive education","student support","classroom management",
-        "psychology","assessment","behavior analysis",
-        "student counseling","assistive tools","education software and technology"
+        "inclusive education","student counseling",
+        "behavior analysis"
     ]
 };
 
@@ -290,17 +435,24 @@
     });
 }
         function toggleEdit(isEditing) {
-            const container = document.getElementById('container');
-            document.getElementById('editBtn').style.display = isEditing ? 'none' : 'block';
-            document.getElementById('saveBtn').style.display = isEditing ? 'block' : 'none';
-            document.getElementById('cancelBtn').style.display = isEditing ? 'block' : 'none';
-            if (isEditing) {
-                container.classList.remove('view-mode');
-                document.getElementById('status-text').innerText = "Editing your information";
-            } else {
-                location.reload();
-            }
-        }
+    const container = document.getElementById('container');
+
+    document.getElementById('editBtn').style.display = isEditing ? 'none' : 'block';
+    document.getElementById('saveBtn').style.display = isEditing ? 'block' : 'none';
+    document.getElementById('cancelBtn').style.display = isEditing ? 'block' : 'none';
+
+    if (isEditing) {
+        container.classList.remove('view-mode');
+        document.getElementById('status-text').innerText = "Editing your information";
+
+        // 🔒 Keep Degree & Branch locked
+        document.getElementById('degreeSelect').disabled = true;
+        document.getElementById('branchSelect').disabled = true;
+
+    } else {
+        location.reload();
+    }
+}
 
         document.getElementById('detailsForm').addEventListener('submit', async (e) => {
     e.preventDefault();
